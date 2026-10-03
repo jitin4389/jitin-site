@@ -46,12 +46,12 @@ L2 Store + rate limit + IP hash ──┴──► L3 Server action ──► L4
 
 ### Phase 3: Supabase (needs your setup)
 
-- [ ] L5: Migration file, Supabase store, Vercel env vars
-- [ ] L6: Real submission on preview verified in Supabase, anon access denied, test row deleted
+- [x] L5: Migration file, Supabase store, Vercel env vars
+- [x] L6: Real submission on preview verified in Supabase, anon access denied, test row deleted
 
 ### Checkpoint B: your review
 
-- [ ] **You submit the form on the preview and see it in your Supabase dashboard**
+- [x] **You submit the form on the preview and see it in your Supabase dashboard**
 
 ### Phase 4: Ship
 

@@ -79,30 +79,30 @@ Definition of done for every task: `npm run check` green with no warnings, `npm 
 
 ## Phase 3: Supabase
 
-### L5: Supabase store and environment ⚠️ needs your setup
+### L5: Supabase store and environment ✅ done
 
 **Description:** Add `@supabase/supabase-js`; `supabase-store.ts` (guarded by `server-only`); migration file; you run the SQL and add env vars in Vercel (Production + Preview).
 
 **Acceptance criteria:**
 
-- [ ] Migration applied: table, enum, index, RLS on, no policies
-- [ ] Env vars set in Vercel; none are `NEXT_PUBLIC_`
-- [ ] Build output contains no `sb_secret` string
+- [x] Migration applied: table, enum, index, RLS on, no policies
+- [x] Env vars set in Vercel; none are `NEXT_PUBLIC_`
+- [x] Build output contains no `sb_secret` string
 
 **Verification:** `npm run check`; `grep -r sb_secret .next/static` returns nothing
 **Dependencies:** L3, your Supabase project
 **Files:** `supabase/migrations/0001_contact_messages.sql`, `src/lib/contact/supabase-store.ts`, `src/lib/contact/store.ts`, `package.json`, `.env.example`
 **Scope:** M
 
-### L6: Preview integration check ⚠️ with you
+### L6: Preview integration check ✅ done
 
 **Description:** On the PR preview, submit one real message; confirm it appears in Supabase with `source = preview`; confirm the anon key cannot read the table; delete the test row.
 
 **Acceptance criteria:**
 
-- [ ] Row visible in the dashboard with correct fields and hashed IP
-- [ ] Anon REST read returns no rows or a permission error
-- [ ] Test row deleted
+- [x] Row visible in the dashboard with correct fields and hashed IP
+- [x] Anon REST read returns no rows or a permission error
+- [x] Test row deleted
 
 **Verification:** Supabase dashboard; `curl` with the anon key
 **Dependencies:** L4, L5
@@ -111,7 +111,7 @@ Definition of done for every task: `npm run check` green with no warnings, `npm 
 
 ### ✅ Checkpoint B
 
-- [ ] **You submit on the preview and see the message in your dashboard**
+- [x] **You submit on the preview and see the message in your dashboard**
 
 ---
 
