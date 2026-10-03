@@ -11,6 +11,8 @@ export type Role = {
   /** "YYYY-MM"; omitted means present */
   end?: string;
   summary?: string;
+  /** Short label shown next to the title, e.g. "Promoted". */
+  badge?: string;
   highlights: string[];
 };
 
@@ -74,6 +76,7 @@ export const experience: ExperienceEntry[] = [
       {
         title: "Applied AI Architect",
         start: "2025-07",
+        badge: "Promoted",
         summary:
           "Lead architecture and product direction for an AI-assisted research and forecasting platform that identifies structural market inflection points (technology-driven phase changes) before they are reflected in market prices. Built for a global hedge fund with ~$1B AUM, in close collaboration with a globally recognized expert on technology-driven economic disruption.",
         highlights: [

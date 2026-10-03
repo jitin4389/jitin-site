@@ -35,18 +35,18 @@ P2–P5 depend only on P1 and touch separate files, so their order is flexible.
 
 ### Phase 1: Content
 
-- [ ] P1: Typed content file + facts-guard unit test
+- [x] P1: Typed content file + facts-guard unit test
 
 ### Phase 2: Home page sections
 
-- [ ] P2: Hero with glow/grid, CTAs (Email, LinkedIn), nav anchor for About
-- [ ] P3: About section
-- [ ] P4: Experience timeline with "Earlier" disclosure
-- [ ] P5: Skills & certifications + Contact section
+- [x] P2: Hero with glow/grid, CTAs (Email, LinkedIn), nav anchor for About
+- [x] P3: About section
+- [x] P4: Experience timeline with "Earlier" disclosure
+- [x] P5: Skills & certifications + Contact section
 
 ### Checkpoint A: home page review
 
-- [ ] All tests green; axe clean in both themes
+- [x] All tests green; axe clean in both themes
 - [ ] **You review the preview: hero, sections, both themes, phone + desktop**
 
 ### Phase 3: CV

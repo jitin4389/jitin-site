@@ -1,17 +1,22 @@
-import { siteConfig } from "@/config/site";
+import { About } from "@/components/profile/about";
+import { Contact } from "@/components/profile/contact";
+import { Experience } from "@/components/profile/experience";
+import { Hero } from "@/components/profile/hero";
+import { Skills } from "@/components/profile/skills";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({ path: "/" });
 
 export default function HomePage() {
   return (
-    <main className="mx-auto flex w-full max-w-5xl flex-1 flex-col justify-center px-4 py-24">
-      <h1 className="text-4xl font-semibold tracking-tight">
-        {siteConfig.name}
-      </h1>
-      <p className="mt-3 text-lg text-muted-foreground">
-        {siteConfig.role}. Site coming soon.
-      </p>
+    <main className="flex-1">
+      <Hero />
+      <div className="mx-auto max-w-5xl divide-y divide-border/60 px-4">
+        <About />
+        <Experience />
+        <Skills />
+        <Contact />
+      </div>
     </main>
   );
 }

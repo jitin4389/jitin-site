@@ -13,12 +13,16 @@ export const siteConfig = {
   url: "https://jitin-site.vercel.app",
   email: "jitin4389@gmail.com",
   linkedin: "https://www.linkedin.com/in/jitin-gupta-20395421/",
+  /** Header + ⌘K links. The site name in the header always links home. */
   nav: [
-    { label: "Home", href: "/", enabled: true },
+    { label: "About", href: "/#about", enabled: true },
+    { label: "Experience", href: "/#experience", enabled: true },
+    { label: "CV", href: "/cv", enabled: false },
     { label: "Work", href: "/work", enabled: false },
     { label: "Writing", href: "/writing", enabled: false },
-    { label: "Contact", href: "/contact", enabled: false },
   ] satisfies NavItem[],
+  /** Indexable pages, for the sitemap. Section anchors are not pages. */
+  routes: ["/"],
 };
 
 export function getEnabledNav(items: NavItem[] = siteConfig.nav): NavItem[] {

@@ -114,3 +114,24 @@
     scroll-behavior: auto !important;
   }
 }
+
+/* Hero decoration (decorative only; elements are aria-hidden). */
+.hero-glow {
+  background: radial-gradient(
+    ellipse 70% 60% at 15% 0%,
+    var(--glow),
+    transparent 70%
+  );
+}
+.hero-grid {
+  background-image:
+    linear-gradient(to right, var(--border) 1px, transparent 1px),
+    linear-gradient(to bottom, var(--border) 1px, transparent 1px);
+  background-size: 48px 48px;
+  mask-image: radial-gradient(
+    ellipse 80% 70% at 30% 0%,
+    black,
+    transparent 75%
+  );
+  opacity: 0.6;
+}
