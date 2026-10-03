@@ -17,12 +17,16 @@ export function normalizeSupabaseUrl(raw: string): string {
 export function createSupabaseStore(): ContactStore {
   const rawUrl = process.env.SUPABASE_URL;
   const secretKey = process.env.SUPABASE_SECRET_KEY;
-  if (!url || !secretKey)
+  if (!rawUrl || !secretKey)
     throw new Error("SUPABASE_URL or SUPABASE_SECRET_KEY is not set");
 
-  const supabase = createClient(url, secretKey, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
+  const supabase = createClient(
+    normalizeSupabaseUrl(rawUrl),
+    secretKey.trim(),
+    {
+      auth: { persistSession: false, autoRefreshToken: false },
+    },
+  );
   const table = () => supabase.from("contact_messages");
 
   return {
