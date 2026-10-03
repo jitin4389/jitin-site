@@ -131,8 +131,10 @@ export const experience: {
 
 `profile` is done when every acceptance criterion is checked, `npm run check` and `npm run test:e2e` pass, the PDF is committed, Lighthouse holds on production, and you've approved the home page and CV PDF.
 
-## Open Questions
+## Decisions (2026-10-03)
 
-1. **Photo:** add a headshot to the hero? (Default: no photo; text-led, Linear-style. A photo can come later.)
-2. **"Earlier" roles:** OK to collapse Curate, Loqation, FoxBox, Senior Faculty and Head of Physics under one "Earlier" disclosure?
-3. **CV PDF vs `cv/CV-master.md`:** once this ships, `profile.ts` becomes the CV's source of truth and `CV-master.md` in profile_builder is frozen. OK?
+| Question           | Decision                                                                                                             |
+| ------------------ | -------------------------------------------------------------------------------------------------------------------- |
+| Photo              | **No photo**; text-led hero                                                                                          |
+| "Earlier" roles    | Collapse Curate, Loqation, FoxBox, Senior Faculty, Head of Physics under one "Earlier" disclosure (default accepted) |
+| CV source of truth | `src/content/profile.ts` from now on; `profile_builder/cv/CV-master.md` frozen (default accepted)                    |
