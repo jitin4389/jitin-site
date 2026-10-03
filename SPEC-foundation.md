@@ -7,10 +7,12 @@ Module `foundation` from [CAPABILITY-MAP.md](CAPABILITY-MAP.md). Every other mod
 Build the empty but production-ready shell of the site: layout, navigation, design system, SEO basics and a working deploy pipeline. Later modules then only add pages and content.
 
 **Users**
-- *Visitor (recruiter, client, peer):* lands on any page and immediately gets a fast, polished, readable site on phone or desktop.
-- *Jitin (owner):* can add a page or component in one place and get a preview deploy for every change.
+
+- _Visitor (recruiter, client, peer):_ lands on any page and immediately gets a fast, polished, readable site on phone or desktop.
+- _Jitin (owner):_ can add a page or component in one place and get a preview deploy for every change.
 
 **Linear-inspired design principles** (this is how "learning from Linear" is applied)
+
 1. Dark-first, with an equally polished light mode. Follows the system setting, with a manual toggle.
 2. Restraint: one accent colour, a neutral grey scale, generous whitespace, no decorative clutter.
 3. Typography does the work: tight, high-contrast headings and comfortable body text.
@@ -19,6 +21,7 @@ Build the empty but production-ready shell of the site: layout, navigation, desi
 6. Keyboard-friendly: visible focus rings and a ⌘K / Ctrl+K command menu for navigation.
 
 **Acceptance criteria**
+
 - [ ] Site deploys to `jitin-site.vercel.app` (or a similar `*.vercel.app` URL) from the `main` branch. Every pull request gets a preview URL.
 - [ ] Header with name/logo and nav links: Home, Work, Writing, Contact. Links to unbuilt modules are hidden behind a config flag, never broken.
 - [ ] Footer with LinkedIn link, email link, copyright and "last updated" date.
@@ -32,19 +35,19 @@ Build the empty but production-ready shell of the site: layout, navigation, desi
 
 ## Tech Stack
 
-| Concern | Choice | Version |
-|---|---|---|
-| Framework | Next.js (App Router, React Server Components, TypeScript strict) | 16.x |
-| Styling | Tailwind CSS (CSS-first `@theme` tokens) | 4.x |
-| Components | shadcn/ui (copied into repo, Radix primitives) | latest CLI |
-| Command menu | `cmdk` (via the shadcn `command` component) | latest |
-| Theming | `next-themes` | latest |
-| Fonts | Geist Sans + Geist Mono via `next/font` (self-hosted, no layout shift) | — |
-| Icons | `lucide-react` | latest |
-| Runtime | Node.js | 24.x (local: 24.13.1) |
-| Package manager | npm | 11.x |
-| Hosting | Vercel (Git integration with personal GitHub `jitin4389`; never the work account) | — |
-| Data (later modules) | Supabase. **Not used in foundation** | — |
+| Concern              | Choice                                                                            | Version               |
+| -------------------- | --------------------------------------------------------------------------------- | --------------------- |
+| Framework            | Next.js (App Router, React Server Components, TypeScript strict)                  | 16.x                  |
+| Styling              | Tailwind CSS (CSS-first `@theme` tokens)                                          | 4.x                   |
+| Components           | shadcn/ui (copied into repo, Radix primitives)                                    | latest CLI            |
+| Command menu         | `cmdk` (via the shadcn `command` component)                                       | latest                |
+| Theming              | `next-themes`                                                                     | latest                |
+| Fonts                | Geist Sans + Geist Mono via `next/font` (self-hosted, no layout shift)            | —                     |
+| Icons                | `lucide-react`                                                                    | latest                |
+| Runtime              | Node.js                                                                           | 24.x (local: 24.13.1) |
+| Package manager      | npm                                                                               | 11.x                  |
+| Hosting              | Vercel (Git integration with personal GitHub `jitin4389`; never the work account) | —                     |
+| Data (later modules) | Supabase. **Not used in foundation**                                              | —                     |
 
 ## Commands
 
@@ -104,15 +107,21 @@ export function SiteHeader() {
   const items = siteConfig.nav.filter((item) => item.enabled);
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
-      <nav aria-label="Main" className="mx-auto flex h-14 max-w-5xl items-center gap-6 px-4">
+    <header className="border-border/60 sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
+      <nav
+        aria-label="Main"
+        className="mx-auto flex h-14 max-w-5xl items-center gap-6 px-4"
+      >
         <Link href="/" className="font-medium tracking-tight">
           {siteConfig.name}
         </Link>
-        <ul className="ml-auto flex items-center gap-4 text-sm text-muted-foreground">
+        <ul className="text-muted-foreground ml-auto flex items-center gap-4 text-sm">
           {items.map((item) => (
             <li key={item.href}>
-              <Link href={item.href} className="hover:text-foreground focus-visible:text-foreground">
+              <Link
+                href={item.href}
+                className="hover:text-foreground focus-visible:text-foreground"
+              >
                 {item.label}
               </Link>
             </li>
@@ -127,24 +136,26 @@ export function SiteHeader() {
 
 ## Testing Strategy
 
-| Level | Tool | Covers | Location |
-|---|---|---|---|
-| Unit / component | Vitest + Testing Library | config filtering (disabled nav hidden), metadata helpers, theme toggle behaviour | `tests/unit/` |
-| End-to-end | Playwright (Chromium; mobile + desktop viewports) | every live route returns 200; 404 renders; theme persists after reload; ⌘K opens and navigates; no horizontal scroll at 360 px | `tests/e2e/` |
-| Accessibility | `@axe-core/playwright` | zero violations on every live route, in both themes | `tests/e2e/` |
-| Performance / SEO | Lighthouse (manual run on the preview URL; CI later) | thresholds in the acceptance criteria | — |
+| Level             | Tool                                                 | Covers                                                                                                                         | Location      |
+| ----------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ------------- |
+| Unit / component  | Vitest + Testing Library                             | config filtering (disabled nav hidden), metadata helpers, theme toggle behaviour                                               | `tests/unit/` |
+| End-to-end        | Playwright (Chromium; mobile + desktop viewports)    | every live route returns 200; 404 renders; theme persists after reload; ⌘K opens and navigates; no horizontal scroll at 360 px | `tests/e2e/`  |
+| Accessibility     | `@axe-core/playwright`                               | zero violations on every live route, in both themes                                                                            | `tests/e2e/`  |
+| Performance / SEO | Lighthouse (manual run on the preview URL; CI later) | thresholds in the acceptance criteria                                                                                          | —             |
 
 Rule: every acceptance criterion maps to at least one test or a named manual check. `npm run check` must be green before every commit.
 
 ## Boundaries
 
 **Always**
+
 - Run `npm run check` before committing.
 - Keep all personal facts consistent with `~/projects/profile_builder/drafts/00-facts.md`.
 - Respect `prefers-reduced-motion` and keep focus states visible.
 - Keep `.env*` files out of git; use Vercel environment variables.
 
 **Ask first**
+
 - Adding any dependency not listed in Tech Stack.
 - Creating the GitHub repo (public or private) and linking the Vercel project.
 - Any analytics, tracking or cookies.
@@ -152,6 +163,7 @@ Rule: every acceptance criterion maps to at least one test or a named manual che
 - Anything Supabase-related (that belongs to the `leads` module).
 
 **Never**
+
 - Commit secrets, API keys or Supabase keys.
 - Publish the phone number, or client details beyond the approved claims.
 - Ship a nav link to a page that doesn't exist.
@@ -160,6 +172,7 @@ Rule: every acceptance criterion maps to at least one test or a named manual che
 ## Success Criteria
 
 `foundation` is done when:
+
 1. `npm run check` and `npm run test:e2e` pass on a clean clone.
 2. A preview URL and the production `*.vercel.app` URL both serve the shell (placeholder home page) with header, footer, theme toggle, ⌘K and 404.
 3. Lighthouse mobile scores meet the thresholds above on the deployed home page.
@@ -167,12 +180,12 @@ Rule: every acceptance criterion maps to at least one test or a named manual che
 
 ## Decisions (2026-10-03)
 
-| Question | Decision |
-|---|---|
-| GitHub repo visibility | **Public**, under `jitin4389` |
-| Accent colour | **Indigo** (single accent; neutral grey scale) |
-| ⌘K command menu | **Keep** (in scope for foundation) |
-| Analytics | **Later**. No analytics, tracking or cookies in foundation |
+| Question               | Decision                                                   |
+| ---------------------- | ---------------------------------------------------------- |
+| GitHub repo visibility | **Public**, under `jitin4389`                              |
+| Accent colour          | **Indigo** (single accent; neutral grey scale)             |
+| ⌘K command menu        | **Keep** (in scope for foundation)                         |
+| Analytics              | **Later**. No analytics, tracking or cookies in foundation |
 
 ## Open Questions
 

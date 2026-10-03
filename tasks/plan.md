@@ -41,42 +41,48 @@ T7 and T8 are independent and can run in either order.
 ## Task List
 
 ### Phase 1: Pipeline (fail fast)
-- [ ] T1: Scaffold Next.js 16 + TypeScript strict + Tailwind 4 + lint/format
-- [ ] T2: Test harness (Vitest, Playwright, axe) + `npm run check`
+
+- [x] T1: Scaffold Next.js 16 + TypeScript strict + Tailwind 4 + lint/format
+- [x] T2: Test harness (Vitest, Playwright, axe) + `npm run check`
 - [ ] T3: Create public GitHub repo + Vercel project; first preview and production deploy of placeholder
 
 ### Checkpoint A: pipeline proven
+
 - [ ] `npm run check` and `npm run test:e2e` green locally
 - [ ] Placeholder live on `*.vercel.app`; a pull request gets a preview URL
 
 ### Phase 2: Shell and design system
+
 - [ ] T4: Design tokens (indigo, neutrals, Geist), shadcn init, dark/light theme with toggle
 - [ ] T5: Site config + header + footer with flag-gated navigation
 - [ ] T6: 404 page, responsive at 360 px, reduced-motion handling
 
 ### Checkpoint B: look and feel review
+
 - [ ] All tests green; axe clean in both themes
 - [ ] **You review the preview URL on phone and desktop, in both themes, and approve the look**
 
 ### Phase 3: Linear touches and SEO
+
 - [ ] T7: ⌘K command menu (live pages + theme toggle)
 - [ ] T8: SEO: metadata helper, OG image, sitemap, robots, canonical URLs
 - [ ] T9: Lighthouse pass on preview; fix gaps; promote to production (with your go-ahead)
 
 ### Checkpoint C: foundation complete
+
 - [ ] Every acceptance criterion in SPEC-foundation.md met and checked off
 - [ ] Ready to start the `profile` module spec
 
 ## Risks and Mitigations
 
-| Risk | Impact | Mitigation |
-|---|---|---|
-| Vercel CLI token is invalid; personal Vercel account may not exist yet | High (blocks T3) | You run `vercel login` with the personal account (GitHub `jitin4389`); I verify with `vercel whoami` before linking |
-| `jitin-site.vercel.app` already taken | Low | Fall back to `jitin-gupta.vercel.app` or let Vercel assign one |
-| Next 16 / Tailwind 4 / shadcn version mismatch | Medium | Scaffold with official CLIs (`create-next-app`, `shadcn@latest`); pin exact versions in `package.json` once green |
-| Theme flash on load | Medium (CLS, polish) | `next-themes` script in `<head>` + `suppressHydrationWarning`; e2e test reloads and checks the theme |
-| Lighthouse perf < 95 (fonts, JS) | Medium | `next/font` self-hosting, Server Components by default, ⌘K loaded lazily on first open |
-| Pushing to the wrong GitHub account | Medium | Repo-local git identity is set; verify `gh api user` = `jitin4389` before `gh repo create` |
+| Risk                                                                   | Impact               | Mitigation                                                                                                          |
+| ---------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------- |
+| Vercel CLI token is invalid; personal Vercel account may not exist yet | High (blocks T3)     | You run `vercel login` with the personal account (GitHub `jitin4389`); I verify with `vercel whoami` before linking |
+| `jitin-site.vercel.app` already taken                                  | Low                  | Fall back to `jitin-gupta.vercel.app` or let Vercel assign one                                                      |
+| Next 16 / Tailwind 4 / shadcn version mismatch                         | Medium               | Scaffold with official CLIs (`create-next-app`, `shadcn@latest`); pin exact versions in `package.json` once green   |
+| Theme flash on load                                                    | Medium (CLS, polish) | `next-themes` script in `<head>` + `suppressHydrationWarning`; e2e test reloads and checks the theme                |
+| Lighthouse perf < 95 (fonts, JS)                                       | Medium               | `next/font` self-hosting, Server Components by default, ⌘K loaded lazily on first open                              |
+| Pushing to the wrong GitHub account                                    | Medium               | Repo-local git identity is set; verify `gh api user` = `jitin4389` before `gh repo create`                          |
 
 ## Open Questions
 
