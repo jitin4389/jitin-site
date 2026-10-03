@@ -53,13 +53,13 @@ T7 and T8 are independent and can run in either order.
 
 ### Phase 2: Shell and design system
 
-- [ ] T4: Design tokens (indigo, neutrals, Geist), shadcn init, dark/light theme with toggle
-- [ ] T5: Site config + header + footer with flag-gated navigation
-- [ ] T6: 404 page, responsive at 360 px, reduced-motion handling
+- [x] T4: Design tokens (indigo, neutrals, Geist), shadcn init, dark/light theme with toggle
+- [x] T5: Site config + header + footer with flag-gated navigation
+- [x] T6: 404 page, responsive at 360 px, reduced-motion handling
 
 ### Checkpoint B: look and feel review
 
-- [ ] All tests green; axe clean in both themes
+- [x] All tests green; axe clean in both themes
 - [ ] **You review the preview URL on phone and desktop, in both themes, and approve the look**
 
 ### Phase 3: Linear touches and SEO

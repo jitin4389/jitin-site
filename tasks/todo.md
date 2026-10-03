@@ -56,51 +56,51 @@ Definition of done for every task: `npm run check` green, no new lint warnings, 
 
 - [x] `npm run check` + `npm run test:e2e` green
 - [x] Placeholder live; previews working
-- [ ] Quick review with you before design work
+- [x] Quick review with you before design work
 
 ---
 
 ## Phase 2: Shell and design system
 
-### T4: Design tokens and theme
+### T4: Design tokens and theme ✅ done
 
 **Description:** Initialise shadcn/ui. Define Tailwind 4 `@theme` tokens: indigo accent, neutral grey scale, Geist Sans/Mono via `next/font`, radii, subtle border and gradient tokens. Wire `next-themes` (system default, persisted toggle, no flash) and a `ThemeToggle` component.
 
 **Acceptance criteria:**
 
-- [ ] Dark when the system is dark, light when light; the toggle overrides and persists after reload
-- [ ] No flash of the wrong theme on hard reload
-- [ ] Zero axe violations (including colour contrast) in both themes
+- [x] Dark when the system is dark, light when light; the toggle overrides and persists after reload
+- [x] No flash of the wrong theme on hard reload
+- [x] Zero axe violations (including colour contrast) in both themes
 
 **Verification:** `npm run check`; e2e `theme.spec.ts` (emulate dark/light, toggle, reload, assert `html` class); manual hard-reload check
 **Dependencies:** T1, T2
 **Files:** `src/styles/globals.css`, `src/app/layout.tsx`, `src/components/site/theme-provider.tsx`, `src/components/site/theme-toggle.tsx`, `tests/e2e/theme.spec.ts`
 **Scope:** M
 
-### T5: Site config, header and footer
+### T5: Site config, header and footer ✅ done
 
 **Description:** Create `src/config/site.ts` (name, email, LinkedIn URL, nav items with `enabled` flags). Build `SiteHeader` (as in the spec's code-style example) and `SiteFooter` (LinkedIn, email, ©, last-updated date). Render both in the root layout.
 
 **Acceptance criteria:**
 
-- [ ] Only `enabled` nav items render (unit test)
-- [ ] Every rendered nav link returns 200 (e2e)
-- [ ] Footer shows LinkedIn and email links; no phone number anywhere
+- [x] Only `enabled` nav items render (unit test)
+- [x] Every rendered nav link returns 200 (e2e)
+- [x] Footer shows LinkedIn and email links; no phone number anywhere
 
 **Verification:** `npm run check`; `tests/unit/site-config.test.ts`; `tests/e2e/navigation.spec.ts`
 **Dependencies:** T4
 **Files:** `src/config/site.ts`, `src/components/site/site-header.tsx`, `src/components/site/site-footer.tsx`, `src/app/layout.tsx`, tests
 **Scope:** M
 
-### T6: 404, responsiveness and motion
+### T6: 404, responsiveness and motion ✅ done
 
 **Description:** Add a styled `not-found.tsx`. Make sure layouts hold from 360 px to 1440 px+. Add a global `prefers-reduced-motion` rule capping transitions.
 
 **Acceptance criteria:**
 
-- [ ] Unknown URL shows the custom 404 with a link home (status 404)
-- [ ] No horizontal scroll at 360 px on all live routes
-- [ ] With reduced motion emulated, transitions are disabled
+- [x] Unknown URL shows the custom 404 with a link home (status 404)
+- [x] No horizontal scroll at 360 px on all live routes
+- [x] With reduced motion emulated, transitions are disabled
 
 **Verification:** `npm run check`; `tests/e2e/layout.spec.ts` (404 status; `scrollWidth <= clientWidth` at 360 px; reduced-motion emulation)
 **Dependencies:** T5
@@ -109,7 +109,7 @@ Definition of done for every task: `npm run check` green, no new lint warnings, 
 
 ### ✅ Checkpoint B: look and feel review
 
-- [ ] All tests green; axe clean in both themes
+- [x] All tests green; axe clean in both themes
 - [ ] Preview deployed; **you review on phone + desktop, both themes, and approve the look**
 
 ---
