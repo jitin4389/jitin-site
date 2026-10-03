@@ -35,8 +35,10 @@ export function createMemoryStore(now: () => Date = () => new Date()) {
 
 const memoryStore = createMemoryStore();
 
-/** `CONTACT_STORE=memory` selects the in-memory store; otherwise Supabase (added in L5). */
+/** `CONTACT_STORE=memory` selects the in-memory store; otherwise Supabase. */
 export async function getContactStore(): Promise<ContactStore> {
   if (process.env.CONTACT_STORE === "memory") return memoryStore;
-  throw new Error("Supabase contact store is not configured yet");
+  // Imported lazily so tests and client bundles never load the server-only Supabase module.
+  const { createSupabaseStore } = await import("@/lib/contact/supabase-store");
+  return createSupabaseStore();
 }
