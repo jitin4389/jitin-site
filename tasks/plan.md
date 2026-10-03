@@ -44,22 +44,22 @@ T7 and T8 are independent and can run in either order.
 
 - [x] T1: Scaffold Next.js 16 + TypeScript strict + Tailwind 4 + lint/format
 - [x] T2: Test harness (Vitest, Playwright, axe) + `npm run check`
-- [ ] T3: Create public GitHub repo + Vercel project; first preview and production deploy of placeholder
+- [x] T3: Create public GitHub repo + Vercel project; first preview and production deploy of placeholder
 
 ### Checkpoint A: pipeline proven
 
-- [ ] `npm run check` and `npm run test:e2e` green locally
-- [ ] Placeholder live on `*.vercel.app`; a pull request gets a preview URL
+- [x] `npm run check` and `npm run test:e2e` green locally
+- [x] Placeholder live on `*.vercel.app`; a pull request gets a preview URL
 
 ### Phase 2: Shell and design system
 
-- [ ] T4: Design tokens (indigo, neutrals, Geist), shadcn init, dark/light theme with toggle
-- [ ] T5: Site config + header + footer with flag-gated navigation
-- [ ] T6: 404 page, responsive at 360 px, reduced-motion handling
+- [x] T4: Design tokens (indigo, neutrals, Geist), shadcn init, dark/light theme with toggle
+- [x] T5: Site config + header + footer with flag-gated navigation
+- [x] T6: 404 page, responsive at 360 px, reduced-motion handling
 
 ### Checkpoint B: look and feel review
 
-- [ ] All tests green; axe clean in both themes
+- [x] All tests green; axe clean in both themes
 - [ ] **You review the preview URL on phone and desktop, in both themes, and approve the look**
 
 ### Phase 3: Linear touches and SEO

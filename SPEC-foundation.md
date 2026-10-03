@@ -107,7 +107,7 @@ export function SiteHeader() {
   const items = siteConfig.nav.filter((item) => item.enabled);
 
   return (
-    <header className="border-border/60 sticky top-0 z-40 border-b bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
       <nav
         aria-label="Main"
         className="mx-auto flex h-14 max-w-5xl items-center gap-6 px-4"
@@ -115,7 +115,7 @@ export function SiteHeader() {
         <Link href="/" className="font-medium tracking-tight">
           {siteConfig.name}
         </Link>
-        <ul className="text-muted-foreground ml-auto flex items-center gap-4 text-sm">
+        <ul className="ml-auto flex items-center gap-4 text-sm text-muted-foreground">
           {items.map((item) => (
             <li key={item.href}>
               <Link
