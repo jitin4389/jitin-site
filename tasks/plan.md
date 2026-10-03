@@ -60,7 +60,7 @@ T7 and T8 are independent and can run in either order.
 ### Checkpoint B: look and feel review
 
 - [x] All tests green; axe clean in both themes
-- [ ] **You review the preview URL on phone and desktop, in both themes, and approve the look**
+- [x] **You review the preview URL on phone and desktop, in both themes, and approve the look**
 
 ### Phase 3: Linear touches and SEO
 

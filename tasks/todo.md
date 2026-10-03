@@ -110,7 +110,7 @@ Definition of done for every task: `npm run check` green, no new lint warnings, 
 ### ✅ Checkpoint B: look and feel review
 
 - [x] All tests green; axe clean in both themes
-- [ ] Preview deployed; **you review on phone + desktop, both themes, and approve the look**
+- [x] Preview deployed; **you review on phone + desktop, both themes, and approve the look**
 
 ---
 
