@@ -117,14 +117,14 @@ Definition of done for every task: `npm run check` green with no warnings, `npm 
 
 ## Phase 4: Ship
 
-### L7: Production ⚠️ needs your go-ahead to merge
+### L7: Production ✅ done
 
 **Description:** Merge; verify the form renders in production (no test submission unless you want one); Lighthouse; record results; mark module complete.
 
 **Acceptance criteria:**
 
-- [ ] Lighthouse on `/` still ≥ 95 / 100 / ≥ 95 / 100
-- [ ] All SPEC-leads acceptance criteria checked
+- [x] Lighthouse on `/` still ≥ 95 / 100 / ≥ 95 / 100
+- [x] All SPEC-leads acceptance criteria checked
 
 **Verification:** `PLAYWRIGHT_BASE_URL=https://jitin-site.vercel.app` read-only e2e subset; Lighthouse
 **Dependencies:** L6

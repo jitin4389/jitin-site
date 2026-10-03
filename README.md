@@ -36,3 +36,13 @@ Lighthouse, mobile, production, 3 runs per page:
 | `/cv` | 98–99       | 100           | 100            | 100 | 2.0–2.3 s | 0   |
 
 Automated: 28 unit tests (incl. facts guard and CV freshness), 80 Playwright e2e tests, passing locally and against production.
+
+## Quality (leads, 2026-10-04)
+
+Lighthouse, mobile, production `/`, 3 runs: Performance 96 · Accessibility 100 · Best Practices 100 · SEO 100 · LCP 2.7 s · CLS 0.
+
+Automated: 56 unit tests, 94 e2e tests locally (80 read-only against production; contact submissions are never sent to production by tests). No Supabase secrets in the client bundle.
+
+### Contact messages
+
+Stored in Supabase table `contact_messages` (Table Editor; filter `status = new`). Schema: [supabase/migrations/0001_contact_messages.sql](supabase/migrations/0001_contact_messages.sql). Vercel env: `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `CONTACT_IP_SALT` (Production + Preview). See [.env.example](.env.example).

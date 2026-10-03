@@ -1,6 +1,6 @@
 # Spec: leads
 
-Module `leads` from [CAPABILITY-MAP.md](CAPABILITY-MAP.md). Depends on `foundation` (complete). Completes the "first public launch" set.
+**Status: ✅ complete (2026-10-04).** Module `leads` from [CAPABILITY-MAP.md](CAPABILITY-MAP.md). Depends on `foundation` (complete). Completes the "first public launch" set.
 
 ## Objective
 
@@ -22,17 +22,17 @@ Let visitors send you a message from the site, and keep every message safely in 
 
 **Acceptance criteria**
 
-- [ ] The Contact section shows a form (name, email, topic, message) next to the existing email and LinkedIn links. A "Contact" nav item jumps to it.
-- [ ] Valid submissions are stored in Supabase table `contact_messages` and the visitor sees a success message.
-- [ ] Invalid input shows field-level errors (announced to screen readers); nothing is stored.
-- [ ] Limits: name ≤ 100 chars, email valid and ≤ 254, message 10–4,000 chars, topic from the fixed list.
-- [ ] Honeypot: if the hidden field is filled, the visitor sees "success" but nothing is stored.
-- [ ] Rate limit: more than **5 submissions per IP per hour** are rejected with a friendly message. IPs are stored only as a salted hash.
-- [ ] If Supabase is unreachable, the visitor sees an error with the email fallback; the error is logged server-side.
-- [ ] The database is locked down: row-level security on, no public read or write; only the server (secret key) can insert.
-- [ ] Secrets live only in Vercel environment variables, never in the repo or the browser bundle.
-- [ ] Preview deployments tag rows `source = 'preview'` so test messages are easy to filter out.
-- [ ] Works without JavaScript (plain form POST via a Server Action); zero axe violations in both themes; Lighthouse holds.
+- [x] The Contact section shows a form (name, email, topic, message) next to the existing email and LinkedIn links. A "Contact" nav item jumps to it.
+- [x] Valid submissions are stored in Supabase table `contact_messages` and the visitor sees a success message.
+- [x] Invalid input shows field-level errors (announced to screen readers); nothing is stored.
+- [x] Limits: name ≤ 100 chars, email valid and ≤ 254, message 10–4,000 chars, topic from the fixed list.
+- [x] Honeypot: if the hidden field is filled, the visitor sees "success" but nothing is stored.
+- [x] Rate limit: more than **5 submissions per IP per hour** are rejected with a friendly message. IPs are stored only as a salted hash.
+- [x] If Supabase is unreachable, the visitor sees an error with the email fallback; the error is logged server-side.
+- [x] The database is locked down: row-level security on, no public read or write; only the server (secret key) can insert.
+- [x] Secrets live only in Vercel environment variables, never in the repo or the browser bundle.
+- [x] Preview deployments tag rows `source = 'preview'` so test messages are easy to filter out.
+- [x] Works without JavaScript (plain form POST via a Server Action); zero axe violations in both themes; Lighthouse holds.
 
 ## Tech Stack
 
