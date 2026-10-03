@@ -8,7 +8,7 @@ Approved: 2026-10-03 (repo `~/projects/jitin-site`, personal name brand, `*.verc
 | Module id    | Responsibility                                                                                                     | Depends on        | Spec                                        |
 | ------------ | ------------------------------------------------------------------------------------------------------------------ | ----------------- | ------------------------------------------- |
 | foundation   | App shell, layout, navigation, design system (Linear-style tokens, dark/light), SEO base, Vercel deploy, CI checks | —                 | [SPEC-foundation.md](SPEC-foundation.md) ✅ |
-| profile      | Hero, About, experience timeline, skills & certifications, CV PDF download                                         | foundation        | —                                           |
+| profile      | Hero, About, experience timeline, skills & certifications, CV PDF download                                         | foundation        | [SPEC-profile.md](SPEC-profile.md)          |
 | leads        | Contact form + newsletter signup → Supabase, email notification, spam protection                                   | foundation        | —                                           |
 | case-studies | Featured work pages (MDX), starting with one public-safe forecasting-platform write-up                             | foundation        | —                                           |
 | writing      | Blog (MDX), tags, RSS                                                                                              | foundation        | —                                           |
