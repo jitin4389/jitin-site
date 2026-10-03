@@ -1,6 +1,6 @@
 # Spec: profile
 
-Module `profile` from [CAPABILITY-MAP.md](CAPABILITY-MAP.md). Depends on `foundation` (complete).
+**Status: ✅ complete (2026-10-03).** Module `profile` from [CAPABILITY-MAP.md](CAPABILITY-MAP.md). Depends on `foundation` (complete).
 
 ## Objective
 
@@ -33,14 +33,14 @@ Plus **`/cv`**: a print-optimised CV page (light theme, A4) and **`/jitin-gupta-
 
 **Acceptance criteria**
 
-- [ ] All five sections render on `/` with content matching `profile_builder/drafts/00-facts.md`: titles, dates, metrics, approved claims only.
-- [ ] Nav shows **About · Experience · CV** (section anchors and `/cv`); ⌘K lists the same.
-- [ ] _Download CV_ serves `/jitin-gupta-cv.pdf` (PDF, ≤ 2 A4 pages, selectable text, no phone number).
-- [ ] `/cv` renders the same content as the PDF; prints cleanly from the browser.
-- [ ] Changing a fact in the content file changes the home page, `/cv` and the PDF after `npm run cv:pdf`.
-- [ ] Hero looks right in both themes at 360 px, 768 px and 1280 px+; no horizontal scroll.
-- [ ] Zero axe violations on `/` and `/cv` in both themes.
-- [ ] Lighthouse mobile on production still ≥ 95 / 100 / ≥ 95 / 100.
+- [x] All five sections render on `/` with content matching `profile_builder/drafts/00-facts.md`: titles, dates, metrics, approved claims only.
+- [x] Nav shows **About · Experience · CV** (section anchors and `/cv`); ⌘K lists the same.
+- [x] _Download CV_ serves `/jitin-gupta-cv.pdf` (PDF, ≤ 2 A4 pages, selectable text, no phone number).
+- [x] `/cv` renders the same content as the PDF; prints cleanly from the browser.
+- [x] Changing a fact in the content file changes the home page, `/cv` and the PDF after `npm run cv:pdf`.
+- [x] Hero looks right in both themes at 360 px, 768 px and 1280 px+; no horizontal scroll.
+- [x] Zero axe violations on `/` and `/cv` in both themes.
+- [x] Lighthouse mobile on production still ≥ 95 / 100 / ≥ 95 / 100.
 
 ## Tech Stack
 

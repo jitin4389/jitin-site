@@ -126,20 +126,20 @@ Definition of done for every task: `npm run check` green with no warnings, `npm 
 
 ### ✅ Checkpoint B: CV review
 
-- [ ] **You review the PDF and `/cv` page**
+- [x] **You review the PDF and `/cv` page**
 
 ---
 
 ## Phase 4: Ship
 
-### P8: Production and Lighthouse ⚠️ needs your go-ahead to merge
+### P8: Production and Lighthouse ✅ done
 
 **Description:** Merge to `main`; run e2e and Lighthouse (mobile, 3 runs) on production; record results; mark module complete.
 
 **Acceptance criteria:**
 
-- [ ] Lighthouse ≥ 95 / 100 / ≥ 95 / 100 on production
-- [ ] All SPEC-profile acceptance criteria checked
+- [x] Lighthouse ≥ 95 / 100 / ≥ 95 / 100 on production
+- [x] All SPEC-profile acceptance criteria checked
 
 **Verification:** `PLAYWRIGHT_BASE_URL=https://jitin-site.vercel.app npm run test:e2e`; Lighthouse
 **Dependencies:** P7

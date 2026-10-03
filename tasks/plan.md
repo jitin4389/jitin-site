@@ -56,11 +56,11 @@ P2–P5 depend only on P1 and touch separate files, so their order is flexible.
 
 ### Checkpoint B: CV review
 
-- [ ] **You review the PDF (≤ 2 pages, content, no phone number)**
+- [x] **You review the PDF (≤ 2 pages, content, no phone number)**
 
 ### Phase 4: Ship
 
-- [ ] P8: Merge to production; Lighthouse ≥ targets; mark module complete
+- [x] P8: Merge to production; Lighthouse ≥ targets; mark module complete
 
 ## Risks and Mitigations
 
