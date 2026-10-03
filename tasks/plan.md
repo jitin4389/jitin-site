@@ -66,12 +66,12 @@ T7 and T8 are independent and can run in either order.
 
 - [x] T7: ⌘K command menu (live pages + theme toggle)
 - [x] T8: SEO: metadata helper, OG image, sitemap, robots, canonical URLs
-- [ ] T9: Lighthouse pass on preview; fix gaps; promote to production (with your go-ahead)
+- [x] T9: Lighthouse pass on preview; fix gaps; promote to production (with your go-ahead)
 
 ### Checkpoint C: foundation complete
 
-- [ ] Every acceptance criterion in SPEC-foundation.md met and checked off
-- [ ] Ready to start the `profile` module spec
+- [x] Every acceptance criterion in SPEC-foundation.md met and checked off
+- [x] Ready to start the `profile` module spec
 
 ## Risks and Mitigations
 

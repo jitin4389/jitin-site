@@ -1,6 +1,6 @@
 # Spec: foundation
 
-Module `foundation` from [CAPABILITY-MAP.md](CAPABILITY-MAP.md). Every other module builds on it.
+**Status: ✅ complete (2026-10-03).** Module `foundation` from [CAPABILITY-MAP.md](CAPABILITY-MAP.md). Every other module builds on it.
 
 ## Objective
 
@@ -22,16 +22,16 @@ Build the empty but production-ready shell of the site: layout, navigation, desi
 
 **Acceptance criteria**
 
-- [ ] Site deploys to `jitin-site.vercel.app` (or a similar `*.vercel.app` URL) from the `main` branch. Every pull request gets a preview URL.
-- [ ] Header with name/logo and nav links: Home, Work, Writing, Contact. Links to unbuilt modules are hidden behind a config flag, never broken.
-- [ ] Footer with LinkedIn link, email link, copyright and "last updated" date.
-- [ ] Theme: dark by default when the system is dark, light when light. The toggle persists across visits. No flash of the wrong theme on load.
-- [ ] ⌘K / Ctrl+K opens a command menu listing all live pages and the theme toggle.
-- [ ] Custom 404 page in the site style.
-- [ ] SEO: per-page title and description, Open Graph / Twitter image, `sitemap.xml`, `robots.txt`, canonical URLs.
-- [ ] Responsive from 360 px to 1440 px+ with no horizontal scroll.
-- [ ] Accessibility: zero axe violations on every page; all interactive elements reachable by keyboard.
-- [ ] Lighthouse (mobile) on the home page: Performance ≥ 95, Accessibility 100, Best Practices ≥ 95, SEO 100.
+- [x] Site deploys to `jitin-site.vercel.app` (or a similar `*.vercel.app` URL) from the `main` branch. Every pull request gets a preview URL.
+- [x] Header with name/logo and nav links: Home, Work, Writing, Contact. Links to unbuilt modules are hidden behind a config flag, never broken.
+- [x] Footer with LinkedIn link, email link, copyright and "last updated" date.
+- [x] Theme: dark by default when the system is dark, light when light. The toggle persists across visits. No flash of the wrong theme on load.
+- [x] ⌘K / Ctrl+K opens a command menu listing all live pages and the theme toggle.
+- [x] Custom 404 page in the site style.
+- [x] SEO: per-page title and description, Open Graph / Twitter image, `sitemap.xml`, `robots.txt`, canonical URLs.
+- [x] Responsive from 360 px to 1440 px+ with no horizontal scroll.
+- [x] Accessibility: zero axe violations on every page; all interactive elements reachable by keyboard.
+- [x] Lighthouse (mobile) on the home page: Performance ≥ 95, Accessibility 100, Best Practices ≥ 95, SEO 100.
 
 ## Tech Stack
 

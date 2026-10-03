@@ -146,14 +146,14 @@ Definition of done for every task: `npm run check` green, no new lint warnings, 
 **Files:** `src/lib/metadata.ts`, `src/app/opengraph-image.tsx`, `src/app/sitemap.ts`, `src/app/robots.ts`, tests
 **Scope:** M
 
-### T9: Lighthouse pass and production promote ⚠️ needs your go-ahead
+### T9: Lighthouse pass and production promote ✅ done
 
 **Description:** Run Lighthouse (mobile) on the preview home page; fix anything below target; merge to `main` to update production.
 
 **Acceptance criteria:**
 
-- [ ] Performance ≥ 95, Accessibility 100, Best Practices ≥ 95, SEO 100 (mobile)
-- [ ] Production URL updated after your approval
+- [x] Performance ≥ 95, Accessibility 100, Best Practices ≥ 95, SEO 100 (mobile)
+- [x] Production URL updated after your approval
 
 **Verification:** `npx lighthouse <preview-url> --preset=perf --form-factor=mobile` plus full categories; scores recorded in `README.md`
 **Dependencies:** T6, T7, T8
@@ -162,5 +162,5 @@ Definition of done for every task: `npm run check` green, no new lint warnings, 
 
 ### ✅ Checkpoint C: foundation complete
 
-- [ ] Every acceptance criterion in SPEC-foundation.md checked
+- [x] Every acceptance criterion in SPEC-foundation.md checked
 - [ ] Next: write `SPEC-profile.md`
