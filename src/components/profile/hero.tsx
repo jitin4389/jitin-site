@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight, Download, Mail } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import { siteConfig } from "@/config/site";
@@ -37,6 +37,12 @@ export function Hero() {
         <p className="mt-4 text-sm text-muted-foreground">{hero.focus}</p>
         <div className="mt-10 flex flex-wrap gap-3">
           <Button asChild size="lg">
+            <a href={siteConfig.cvPdf} download>
+              <Download aria-hidden="true" />
+              Download CV
+            </a>
+          </Button>
+          <Button asChild size="lg" variant="outline">
             <a href={`mailto:${siteConfig.email}`}>
               <Mail aria-hidden="true" />
               Email me

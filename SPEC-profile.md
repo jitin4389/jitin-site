@@ -65,7 +65,7 @@ src/content/profile.ts          → single typed source: hero, about, experience
 src/components/profile/          → hero.tsx, about.tsx, experience.tsx, skills.tsx, contact.tsx
 src/app/page.tsx                 → composes the sections
 src/app/cv/page.tsx              → print-styled CV built from profile.ts
-scripts/generate-cv-pdf.ts       → Playwright: open /cv, page.pdf() → public/jitin-gupta-cv.pdf
+scripts/generate-cv-pdf.mts       → Playwright: open /cv, page.pdf() → public/jitin-gupta-cv.pdf
 public/jitin-gupta-cv.pdf        → generated, committed
 tests/unit/profile-content.test.ts
 tests/e2e/profile.spec.ts, cv.spec.ts

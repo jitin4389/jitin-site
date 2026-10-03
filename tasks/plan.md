@@ -12,7 +12,7 @@ Replace the placeholder home page with a one-page profile (Hero, About, Experien
 - **Content first.** `src/content/profile.ts` and its facts-guard test land before any UI, so every later task renders data that has already been checked.
 - **Sections are Server Components.** Only the "Earlier roles" disclosure needs interaction, and it uses native `<details>`, which needs no JavaScript. This protects the Lighthouse score.
 - **Nav never links to something missing.** Section anchors switch on as each section ships; the CV link and _Download CV_ buttons switch on only when the PDF exists (P7).
-- **PDF via Playwright, not a PDF library.** `scripts/generate-cv-pdf.ts` builds the site, prints `/cv` with `page.pdf()` and commits the result. There is no runtime cost and no new dependency.
+- **PDF via Playwright, not a PDF library.** `scripts/generate-cv-pdf.mts` builds the site, prints `/cv` with `page.pdf()` and commits the result. There is no runtime cost and no new dependency.
 - **Decorative visuals are CSS only.** The glow uses a radial gradient on the `--glow` token and the grid is a masked background; both are `aria-hidden`. No images, no motion beyond a ≤200 ms fade.
 
 ## Dependency Graph
@@ -47,12 +47,12 @@ P2–P5 depend only on P1 and touch separate files, so their order is flexible.
 ### Checkpoint A: home page review
 
 - [x] All tests green; axe clean in both themes
-- [ ] **You review the preview: hero, sections, both themes, phone + desktop**
+- [x] **You review the preview: hero, sections, both themes, phone + desktop**
 
 ### Phase 3: CV
 
-- [ ] P6: `/cv` print-styled page
-- [ ] P7: PDF generation script, _Download CV_ buttons, CV nav link
+- [x] P6: `/cv` print-styled page
+- [x] P7: PDF generation script, _Download CV_ buttons, CV nav link
 
 ### Checkpoint B: CV review
 

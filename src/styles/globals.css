@@ -41,7 +41,9 @@
   --radius-2xl: calc(var(--radius) * 1.8);
 }
 
-:root {
+/* .theme-light re-applies the light tokens inside dark mode (used by the CV document). */
+:root,
+.theme-light {
   --radius: 0.625rem;
 
   --background: oklch(0.99 0.002 270);
@@ -134,4 +136,16 @@
     transparent 75%
   );
   opacity: 0.6;
+}
+
+/* CV print layout: A4 with real page margins so every page gets them. */
+@page {
+  size: A4;
+  margin: 12mm 14mm;
+}
+@media print {
+  html,
+  body {
+    background: white !important;
+  }
 }

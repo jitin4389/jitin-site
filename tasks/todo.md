@@ -88,40 +88,40 @@ Definition of done for every task: `npm run check` green with no warnings, `npm 
 ### ✅ Checkpoint A: home page review
 
 - [x] All tests green; axe clean in both themes
-- [ ] Preview deployed; **you review hero and sections on phone + desktop, both themes**
+- [x] Preview deployed; **you review hero and sections on phone + desktop, both themes**
 
 ---
 
 ## Phase 3: CV
 
-### P6: `/cv` print page
+### P6: `/cv` print page ✅ done
 
 **Description:** Print-optimised CV page from `profile.ts`: light theme forced, A4 print CSS, compact layout, header with name, role, email and LinkedIn (no phone). Header/footer chrome hidden in print.
 
 **Acceptance criteria:**
 
-- [ ] `/cv` renders all CV sections; axe clean
-- [ ] Browser print preview fits ≤ 2 A4 pages
-- [ ] Has its own metadata (title "CV")
+- [x] `/cv` renders all CV sections; axe clean
+- [x] Browser print preview fits ≤ 2 A4 pages
+- [x] Has its own metadata (title "CV")
 
 **Verification:** `npm run check`; `tests/e2e/cv.spec.ts` (render + axe); manual print preview
 **Dependencies:** P1
 **Files:** `src/app/cv/page.tsx`, `src/components/profile/cv-document.tsx`, `src/styles/globals.css` (print rules), `tests/e2e/cv.spec.ts`
 **Scope:** M
 
-### P7: PDF generation and Download CV
+### P7: PDF generation and Download CV ✅ done
 
-**Description:** `scripts/generate-cv-pdf.ts` (build, start, print `/cv` to `public/jitin-gupta-cv.pdf`) and `npm run cv:pdf`. Add _Download CV_ to the hero and contact; enable the "CV" nav item; generate and commit the PDF.
+**Description:** `scripts/generate-cv-pdf.mts` (build, start, print `/cv` to `public/jitin-gupta-cv.pdf`) and `npm run cv:pdf`. Add _Download CV_ to the hero and contact; enable the "CV" nav item; generate and commit the PDF.
 
 **Acceptance criteria:**
 
-- [ ] `npm run cv:pdf` writes the PDF; `/jitin-gupta-cv.pdf` returns `application/pdf`
-- [ ] PDF has ≤ 2 pages, selectable text containing "Applied AI Architect", no phone number
-- [ ] _Download CV_ buttons and CV nav link work
+- [x] `npm run cv:pdf` writes the PDF; `/jitin-gupta-cv.pdf` returns `application/pdf`
+- [x] PDF has ≤ 2 pages, selectable text containing "Applied AI Architect", no phone number
+- [x] _Download CV_ buttons and CV nav link work
 
 **Verification:** `npm run cv:pdf && npm run test:e2e` (cv.spec PDF checks)
 **Dependencies:** P2, P6
-**Files:** `scripts/generate-cv-pdf.ts`, `package.json`, `public/jitin-gupta-cv.pdf`, `src/components/profile/hero.tsx`, `src/config/site.ts`, `tests/e2e/cv.spec.ts`
+**Files:** `scripts/generate-cv-pdf.mts`, `package.json`, `public/jitin-gupta-cv.pdf`, `src/components/profile/hero.tsx`, `src/config/site.ts`, `tests/e2e/cv.spec.ts`
 **Scope:** M
 
 ### ✅ Checkpoint B: CV review

@@ -1,4 +1,4 @@
-import { ArrowUpRight, Mail } from "lucide-react";
+import { ArrowUpRight, Download, Mail } from "lucide-react";
 
 import { Section } from "@/components/profile/section";
 import { Button } from "@/components/ui/button";
@@ -22,6 +22,12 @@ export function Contact() {
             <a href={siteConfig.linkedin} rel="me noopener" target="_blank">
               LinkedIn
               <ArrowUpRight aria-hidden="true" />
+            </a>
+          </Button>
+          <Button asChild variant="ghost">
+            <a href={siteConfig.cvPdf} download>
+              <Download aria-hidden="true" />
+              Download CV (PDF)
             </a>
           </Button>
         </div>
