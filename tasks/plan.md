@@ -60,12 +60,12 @@ T7 and T8 are independent and can run in either order.
 ### Checkpoint B: look and feel review
 
 - [x] All tests green; axe clean in both themes
-- [ ] **You review the preview URL on phone and desktop, in both themes, and approve the look**
+- [x] **You review the preview URL on phone and desktop, in both themes, and approve the look**
 
 ### Phase 3: Linear touches and SEO
 
-- [ ] T7: ⌘K command menu (live pages + theme toggle)
-- [ ] T8: SEO: metadata helper, OG image, sitemap, robots, canonical URLs
+- [x] T7: ⌘K command menu (live pages + theme toggle)
+- [x] T8: SEO: metadata helper, OG image, sitemap, robots, canonical URLs
 - [ ] T9: Lighthouse pass on preview; fix gaps; promote to production (with your go-ahead)
 
 ### Checkpoint C: foundation complete

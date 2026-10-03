@@ -1,5 +1,6 @@
 import Link from "next/link";
 
+import { CommandMenu } from "@/components/site/command-menu";
 import { ThemeToggle } from "@/components/site/theme-toggle";
 import { getEnabledNav, siteConfig } from "@/config/site";
 
@@ -27,7 +28,10 @@ export function SiteHeader() {
             </li>
           ))}
         </ul>
-        <ThemeToggle />
+        <div className="flex items-center gap-1">
+          <CommandMenu />
+          <ThemeToggle />
+        </div>
       </nav>
     </header>
   );

@@ -1,4 +1,7 @@
 import { siteConfig } from "@/config/site";
+import { buildMetadata } from "@/lib/metadata";
+
+export const metadata = buildMetadata({ path: "/" });
 
 export default function HomePage() {
   return (

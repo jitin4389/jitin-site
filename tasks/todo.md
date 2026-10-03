@@ -110,36 +110,36 @@ Definition of done for every task: `npm run check` green, no new lint warnings, 
 ### ✅ Checkpoint B: look and feel review
 
 - [x] All tests green; axe clean in both themes
-- [ ] Preview deployed; **you review on phone + desktop, both themes, and approve the look**
+- [x] Preview deployed; **you review on phone + desktop, both themes, and approve the look**
 
 ---
 
 ## Phase 3: Linear touches and SEO
 
-### T7: ⌘K command menu
+### T7: ⌘K command menu ✅ done
 
 **Description:** Add the shadcn `command` component (cmdk). ⌘K / Ctrl+K opens a dialog listing enabled pages from `site.ts` plus "Toggle theme". Load it lazily so it doesn't add to initial JavaScript.
 
 **Acceptance criteria:**
 
-- [ ] ⌘K (macOS) and Ctrl+K (others) open the menu; Esc closes it and returns focus
-- [ ] Selecting a page navigates; selecting "Toggle theme" switches theme
-- [ ] Menu is fully keyboard-operable with zero axe violations when open
+- [x] ⌘K (macOS) and Ctrl+K (others) open the menu; Esc closes it and returns focus
+- [x] Selecting a page navigates; selecting "Toggle theme" switches theme
+- [x] Menu is fully keyboard-operable with zero axe violations when open
 
 **Verification:** `npm run check`; `tests/e2e/command-menu.spec.ts`
 **Dependencies:** T5
 **Files:** `src/components/ui/command.tsx`, `src/components/ui/dialog.tsx`, `src/components/site/command-menu.tsx`, `src/app/layout.tsx`, test
 **Scope:** M
 
-### T8: SEO basics
+### T8: SEO basics ✅ done
 
 **Description:** Add a `buildMetadata()` helper (title template, description, canonical, Open Graph/Twitter). Generate a default OG image with `opengraph-image.tsx` in the site style. Add `sitemap.ts` and `robots.ts` driven by enabled routes.
 
 **Acceptance criteria:**
 
-- [ ] Each page has a unique title and description and a canonical URL (unit test on helper)
-- [ ] `/sitemap.xml` lists only live routes; `/robots.txt` allows indexing and points to the sitemap
-- [ ] `/opengraph-image` returns a 1200×630 PNG
+- [x] Each page has a unique title and description and a canonical URL (unit test on helper)
+- [x] `/sitemap.xml` lists only live routes; `/robots.txt` allows indexing and points to the sitemap
+- [x] `/opengraph-image` returns a 1200×630 PNG
 
 **Verification:** `npm run check`; `tests/unit/metadata.test.ts`; `tests/e2e/seo.spec.ts`
 **Dependencies:** T5
