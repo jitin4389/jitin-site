@@ -1,10 +1,10 @@
 import type { MetadataRoute } from "next";
 
-import { getEnabledNav, siteConfig } from "@/config/site";
+import { siteConfig } from "@/config/site";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  return getEnabledNav().map((item) => ({
-    url: new URL(item.href, siteConfig.url).toString(),
+  return siteConfig.routes.map((route) => ({
+    url: new URL(route, siteConfig.url).toString(),
     lastModified: new Date(),
   }));
 }

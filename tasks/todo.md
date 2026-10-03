@@ -1,166 +1,147 @@
-# Tasks: foundation
+# Tasks: profile
 
-Plan: [plan.md](plan.md) · Spec: [SPEC-foundation.md](../SPEC-foundation.md)
-Definition of done for every task: `npm run check` green, no new lint warnings, changes committed on a branch.
+Plan: [plan.md](plan.md) · Spec: [SPEC-profile.md](../SPEC-profile.md)
+Definition of done for every task: `npm run check` green with no warnings, `npm run test:e2e` green, committed on a branch.
 
 ---
 
-## Phase 1: Pipeline
+## Phase 1: Content
 
-### T1: Scaffold Next.js app ✅ done
+### P1: Typed content file + facts guard ✅ done
 
-**Description:** Create the Next.js 16 app (App Router, TypeScript strict, Tailwind 4, ESLint, `src/` dir, `@/*` alias) with a placeholder home page. Add Prettier and the scripts listed in the spec.
+**Description:** Create `src/content/profile.ts` with typed data for hero, about, experience, skills and certifications, copied from the approved drafts. Add a date-range formatting helper. Add the facts-guard unit test.
 
 **Acceptance criteria:**
 
-- [x] `npm run dev` serves a placeholder home page ("Jitin Gupta, coming soon")
-- [x] `npm run lint`, `npm run typecheck` and `npm run build` pass
-- [x] `tsconfig.json` has `"strict": true`; `.gitignore` covers `.env*`, `.next`, `node_modules`
+- [x] All content from `drafts/00-facts.md`, `02-about.txt`, `03-cloudsufi.md`, `04-older-roles.md` and CV capability groups is represented
+- [x] Facts test passes: required claims present; no phone number, "Woolf" or "Product & AI Lead"; roles in reverse-chronological order
+- [x] `formatRange("2025-07")` → "Jul 2025 – Present"; `formatRange("2024-10", "2025-06")` → "Oct 2024 – Jun 2025"
 
-**Verification:** `npm run lint && npm run typecheck && npm run build`; open http://localhost:3000
+**Verification:** `npm test`
 **Dependencies:** None
-**Files:** `package.json`, `tsconfig.json`, `next.config.ts`, `src/app/layout.tsx`, `src/app/page.tsx`, `src/styles/globals.css`, `.prettierrc` (plus generated config)
+**Files:** `src/content/profile.ts`, `src/lib/dates.ts`, `tests/unit/profile-content.test.ts`, `tests/unit/dates.test.ts`
 **Scope:** M
-
-### T2: Test harness and `check` script ✅ done
-
-**Description:** Add Vitest + Testing Library for unit tests and Playwright + `@axe-core/playwright` for e2e. Write one smoke test at each level. Add `npm test`, `npm run test:e2e` and `npm run check`.
-
-**Acceptance criteria:**
-
-- [x] Unit smoke test passes under `npm test`
-- [x] E2E: home returns 200 and has zero axe violations (mobile + desktop viewports)
-- [x] `npm run check` runs lint → typecheck → test → build and fails if any step fails
-
-**Verification:** `npm run check && npm run test:e2e`
-**Dependencies:** T1
-**Files:** `vitest.config.ts`, `playwright.config.ts`, `tests/unit/smoke.test.ts`, `tests/e2e/smoke.spec.ts`, `package.json`
-**Scope:** M
-
-### T3: GitHub repo and Vercel deploy ✅ done
-
-**Description:** Create the public repo `jitin4389/jitin-site`, push `main`, and create a Vercel project under your personal account linked to it. Confirm production and preview deploys work.
-
-**Acceptance criteria:**
-
-- [x] `gh api user` returns `jitin4389` before the repo is created; repo is public
-- [x] Production URL (`*.vercel.app`) serves the placeholder
-- [x] A test pull request gets a Vercel preview URL
-
-**Verification:** open the production URL; open the PR's preview link
-**Dependencies:** T2; you logged in with `vercel login` on the personal account
-**Files:** none in code (`README.md` with live URL)
-**Scope:** S
-
-### ✅ Checkpoint A: pipeline proven
-
-- [x] `npm run check` + `npm run test:e2e` green
-- [x] Placeholder live; previews working
-- [x] Quick review with you before design work
 
 ---
 
-## Phase 2: Shell and design system
+## Phase 2: Home page sections
 
-### T4: Design tokens and theme ✅ done
+### P2: Hero ✅ done
 
-**Description:** Initialise shadcn/ui. Define Tailwind 4 `@theme` tokens: indigo accent, neutral grey scale, Geist Sans/Mono via `next/font`, radii, subtle border and gradient tokens. Wire `next-themes` (system default, persisted toggle, no flash) and a `ThemeToggle` component.
+**Description:** Replace the placeholder with the hero: name, role, value statement, _Email me_ and _LinkedIn_ buttons. Add the decorative indigo glow and faint grid (CSS, `aria-hidden`). Enable an "About" nav anchor once P3 lands (flag stays off here).
 
 **Acceptance criteria:**
 
-- [x] Dark when the system is dark, light when light; the toggle overrides and persists after reload
-- [x] No flash of the wrong theme on hard reload
-- [x] Zero axe violations (including colour contrast) in both themes
+- [x] Hero shows name (h1), "Applied AI Architect" and the value statement in both themes
+- [x] Buttons link to `mailto:` and LinkedIn; glow/grid are hidden from assistive tech
+- [x] No horizontal scroll at 360 px; axe clean in both themes
 
-**Verification:** `npm run check`; e2e `theme.spec.ts` (emulate dark/light, toggle, reload, assert `html` class); manual hard-reload check
-**Dependencies:** T1, T2
-**Files:** `src/styles/globals.css`, `src/app/layout.tsx`, `src/components/site/theme-provider.tsx`, `src/components/site/theme-toggle.tsx`, `tests/e2e/theme.spec.ts`
+**Verification:** `npm run check`; `tests/e2e/profile.spec.ts` (hero block); screenshot review at 360/768/1280
+**Dependencies:** P1
+**Files:** `src/components/profile/hero.tsx`, `src/app/page.tsx`, `src/styles/globals.css`, `tests/e2e/profile.spec.ts`
 **Scope:** M
 
-### T5: Site config, header and footer ✅ done
+### P3: About ✅ done
 
-**Description:** Create `src/config/site.ts` (name, email, LinkedIn URL, nav items with `enabled` flags). Build `SiteHeader` (as in the spec's code-style example) and `SiteFooter` (LinkedIn, email, ©, last-updated date). Render both in the root layout.
-
-**Acceptance criteria:**
-
-- [x] Only `enabled` nav items render (unit test)
-- [x] Every rendered nav link returns 200 (e2e)
-- [x] Footer shows LinkedIn and email links; no phone number anywhere
-
-**Verification:** `npm run check`; `tests/unit/site-config.test.ts`; `tests/e2e/navigation.spec.ts`
-**Dependencies:** T4
-**Files:** `src/config/site.ts`, `src/components/site/site-header.tsx`, `src/components/site/site-footer.tsx`, `src/app/layout.tsx`, tests
-**Scope:** M
-
-### T6: 404, responsiveness and motion ✅ done
-
-**Description:** Add a styled `not-found.tsx`. Make sure layouts hold from 360 px to 1440 px+. Add a global `prefers-reduced-motion` rule capping transitions.
+**Description:** About section (`id="about"`) with intro, "What I do" bullets and "How I got here". Enable the "About" nav item (`/#about`).
 
 **Acceptance criteria:**
 
-- [x] Unknown URL shows the custom 404 with a link home (status 404)
-- [x] No horizontal scroll at 360 px on all live routes
-- [x] With reduced motion emulated, transitions are disabled
+- [x] Section heading "About" and all four "What I do" bullets render
+- [x] Nav "About" link scrolls to the section; ⌘K lists it
 
-**Verification:** `npm run check`; `tests/e2e/layout.spec.ts` (404 status; `scrollWidth <= clientWidth` at 360 px; reduced-motion emulation)
-**Dependencies:** T5
-**Files:** `src/app/not-found.tsx`, `src/styles/globals.css`, `tests/e2e/layout.spec.ts`
+**Verification:** `npm run check`; e2e about block
+**Dependencies:** P1
+**Files:** `src/components/profile/about.tsx`, `src/app/page.tsx`, `src/config/site.ts`, `tests/e2e/profile.spec.ts`
 **Scope:** S
 
-### ✅ Checkpoint B: look and feel review
+### P4: Experience timeline ✅ done
+
+**Description:** Experience section (`id="experience"`): timeline grouped by company; CLOUDSUFI shows both roles with a "Promoted" marker; Share India, Vidyamandir Data Scientist and Scaler in full; Curate and pre-2020 roles inside a native `<details>` "Earlier roles". Enable the "Experience" nav item.
+
+**Acceptance criteria:**
+
+- [x] Roles render in reverse-chronological order with correct date ranges
+- [x] "Earlier roles" is collapsed by default and opens with keyboard and mouse
+- [x] Nav "Experience" link works
+
+**Verification:** `npm run check`; e2e experience block (order, details toggle)
+**Dependencies:** P1
+**Files:** `src/components/profile/experience.tsx`, `src/app/page.tsx`, `src/config/site.ts`, `tests/e2e/profile.spec.ts`
+**Scope:** M
+
+### P5: Skills, certifications and contact ✅ done
+
+**Description:** Skills section with four capability groups as badges; certifications with Claude Certified Architect (current) and Databricks under "Past (2024–2026)". Contact section with email and LinkedIn.
+
+**Acceptance criteria:**
+
+- [x] Four skill groups render; Claude cert marked current; Databricks marked past
+- [x] Contact section links to email and LinkedIn
+- [x] Axe clean in both themes for the full page
+
+**Verification:** `npm run check`; e2e skills/contact blocks
+**Dependencies:** P1
+**Files:** `src/components/profile/skills.tsx`, `src/components/profile/contact.tsx`, `src/components/ui/badge.tsx`, `src/app/page.tsx`, `tests/e2e/profile.spec.ts`
+**Scope:** M
+
+### ✅ Checkpoint A: home page review
 
 - [x] All tests green; axe clean in both themes
-- [x] Preview deployed; **you review on phone + desktop, both themes, and approve the look**
+- [x] Preview deployed; **you review hero and sections on phone + desktop, both themes**
 
 ---
 
-## Phase 3: Linear touches and SEO
+## Phase 3: CV
 
-### T7: ⌘K command menu ✅ done
+### P6: `/cv` print page ✅ done
 
-**Description:** Add the shadcn `command` component (cmdk). ⌘K / Ctrl+K opens a dialog listing enabled pages from `site.ts` plus "Toggle theme". Load it lazily so it doesn't add to initial JavaScript.
+**Description:** Print-optimised CV page from `profile.ts`: light theme forced, A4 print CSS, compact layout, header with name, role, email and LinkedIn (no phone). Header/footer chrome hidden in print.
 
 **Acceptance criteria:**
 
-- [x] ⌘K (macOS) and Ctrl+K (others) open the menu; Esc closes it and returns focus
-- [x] Selecting a page navigates; selecting "Toggle theme" switches theme
-- [x] Menu is fully keyboard-operable with zero axe violations when open
+- [x] `/cv` renders all CV sections; axe clean
+- [x] Browser print preview fits ≤ 2 A4 pages
+- [x] Has its own metadata (title "CV")
 
-**Verification:** `npm run check`; `tests/e2e/command-menu.spec.ts`
-**Dependencies:** T5
-**Files:** `src/components/ui/command.tsx`, `src/components/ui/dialog.tsx`, `src/components/site/command-menu.tsx`, `src/app/layout.tsx`, test
+**Verification:** `npm run check`; `tests/e2e/cv.spec.ts` (render + axe); manual print preview
+**Dependencies:** P1
+**Files:** `src/app/cv/page.tsx`, `src/components/profile/cv-document.tsx`, `src/styles/globals.css` (print rules), `tests/e2e/cv.spec.ts`
 **Scope:** M
 
-### T8: SEO basics ✅ done
+### P7: PDF generation and Download CV ✅ done
 
-**Description:** Add a `buildMetadata()` helper (title template, description, canonical, Open Graph/Twitter). Generate a default OG image with `opengraph-image.tsx` in the site style. Add `sitemap.ts` and `robots.ts` driven by enabled routes.
+**Description:** `scripts/generate-cv-pdf.mts` (build, start, print `/cv` to `public/jitin-gupta-cv.pdf`) and `npm run cv:pdf`. Add _Download CV_ to the hero and contact; enable the "CV" nav item; generate and commit the PDF.
 
 **Acceptance criteria:**
 
-- [x] Each page has a unique title and description and a canonical URL (unit test on helper)
-- [x] `/sitemap.xml` lists only live routes; `/robots.txt` allows indexing and points to the sitemap
-- [x] `/opengraph-image` returns a 1200×630 PNG
+- [x] `npm run cv:pdf` writes the PDF; `/jitin-gupta-cv.pdf` returns `application/pdf`
+- [x] PDF has ≤ 2 pages, selectable text containing "Applied AI Architect", no phone number
+- [x] _Download CV_ buttons and CV nav link work
 
-**Verification:** `npm run check`; `tests/unit/metadata.test.ts`; `tests/e2e/seo.spec.ts`
-**Dependencies:** T5
-**Files:** `src/lib/metadata.ts`, `src/app/opengraph-image.tsx`, `src/app/sitemap.ts`, `src/app/robots.ts`, tests
+**Verification:** `npm run cv:pdf && npm run test:e2e` (cv.spec PDF checks)
+**Dependencies:** P2, P6
+**Files:** `scripts/generate-cv-pdf.mts`, `package.json`, `public/jitin-gupta-cv.pdf`, `src/components/profile/hero.tsx`, `src/config/site.ts`, `tests/e2e/cv.spec.ts`
 **Scope:** M
 
-### T9: Lighthouse pass and production promote ✅ done
+### ✅ Checkpoint B: CV review
 
-**Description:** Run Lighthouse (mobile) on the preview home page; fix anything below target; merge to `main` to update production.
+- [ ] **You review the PDF and `/cv` page**
+
+---
+
+## Phase 4: Ship
+
+### P8: Production and Lighthouse ⚠️ needs your go-ahead to merge
+
+**Description:** Merge to `main`; run e2e and Lighthouse (mobile, 3 runs) on production; record results; mark module complete.
 
 **Acceptance criteria:**
 
-- [x] Performance ≥ 95, Accessibility 100, Best Practices ≥ 95, SEO 100 (mobile)
-- [x] Production URL updated after your approval
+- [ ] Lighthouse ≥ 95 / 100 / ≥ 95 / 100 on production
+- [ ] All SPEC-profile acceptance criteria checked
 
-**Verification:** `npx lighthouse <preview-url> --preset=perf --form-factor=mobile` plus full categories; scores recorded in `README.md`
-**Dependencies:** T6, T7, T8
-**Files:** fixes only as needed; `README.md`
+**Verification:** `PLAYWRIGHT_BASE_URL=https://jitin-site.vercel.app npm run test:e2e`; Lighthouse
+**Dependencies:** P7
+**Files:** `README.md`, `SPEC-profile.md`, `CAPABILITY-MAP.md`, tasks files
 **Scope:** S
-
-### ✅ Checkpoint C: foundation complete
-
-- [x] Every acceptance criterion in SPEC-foundation.md checked
-- [ ] Next: write `SPEC-profile.md`

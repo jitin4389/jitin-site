@@ -44,7 +44,7 @@ export default function CommandMenuDialog({
         <CommandList>
           <CommandEmpty>No results.</CommandEmpty>
           <CommandGroup heading="Pages">
-            {getEnabledNav().map((item) => (
+            {[{ label: "Home", href: "/" }, ...getEnabledNav()].map((item) => (
               <CommandItem
                 key={item.href}
                 onSelect={() => run(() => router.push(item.href))}

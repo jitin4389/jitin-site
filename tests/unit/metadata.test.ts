@@ -31,12 +31,14 @@ describe("buildMetadata", () => {
 });
 
 describe("sitemap and robots", () => {
-  it("lists only enabled routes as absolute URLs", () => {
+  it("lists the configured routes as absolute URLs, without section anchors", () => {
     const urls = sitemap().map((entry) => entry.url);
-    const expected = siteConfig.nav
-      .filter((item) => item.enabled)
-      .map((item) => new URL(item.href, siteConfig.url).toString());
-    expect(urls).toEqual(expected);
+    expect(urls).toEqual(
+      siteConfig.routes.map((route) =>
+        new URL(route, siteConfig.url).toString(),
+      ),
+    );
+    expect(urls.some((url) => url.includes("#"))).toBe(false);
   });
 
   it("allows indexing and points to the sitemap", () => {

@@ -13,6 +13,7 @@ npm install
 npm run dev        # http://localhost:3000
 npm run check      # lint + typecheck + unit tests + build
 npm run test:e2e   # Playwright + axe (set PLAYWRIGHT_BASE_URL to test a deployment)
+npm run cv:pdf     # regenerate public/jitin-gupta-cv.pdf after editing src/content/profile.ts
 ```
 
 ## Quality (foundation, 2026-10-03)

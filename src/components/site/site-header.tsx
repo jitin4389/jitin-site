@@ -8,7 +8,7 @@ export function SiteHeader() {
   const items = getEnabledNav();
 
   return (
-    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur">
+    <header className="sticky top-0 z-40 border-b border-border/60 bg-background/80 backdrop-blur print:hidden">
       <nav
         aria-label="Main"
         className="mx-auto flex h-14 max-w-5xl items-center gap-6 px-4"

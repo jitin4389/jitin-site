@@ -1,6 +1,9 @@
 import { expect, test } from "@playwright/test";
 
-test("every header nav link resolves", async ({ page, request }) => {
+test("every header nav link resolves, and section anchors have a target", async ({
+  page,
+  request,
+}) => {
   await page.goto("/");
   const hrefs = await page
     .getByRole("navigation", { name: "Main" })
@@ -9,10 +12,12 @@ test("every header nav link resolves", async ({ page, request }) => {
       links.map((link) => link.getAttribute("href") ?? ""),
     );
 
-  expect(hrefs.length).toBeGreaterThan(0);
+  expect(hrefs.length).toBeGreaterThan(1);
   for (const href of hrefs) {
-    const response = await request.get(href);
+    const [path, hash] = href.split("#");
+    const response = await request.get(path || "/");
     expect(response.status(), href).toBe(200);
+    if (hash) await expect(page.locator(`#${hash}`), href).toHaveCount(1);
   }
 });
 

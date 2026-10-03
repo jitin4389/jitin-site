@@ -1,89 +1,77 @@
-# Implementation Plan: foundation
+# Implementation Plan: profile
 
-Spec: [SPEC-foundation.md](../SPEC-foundation.md) · Module map: [CAPABILITY-MAP.md](../CAPABILITY-MAP.md)
-Tasks tracked in [tasks/todo.md](todo.md).
+Spec: [SPEC-profile.md](../SPEC-profile.md) · Module map: [CAPABILITY-MAP.md](../CAPABILITY-MAP.md)
+Tasks tracked in [tasks/todo.md](todo.md). Previous module: [foundation-plan.md](foundation-plan.md) (complete).
 
 ## Overview
 
-Build the production-ready shell of `jitin-site`: a Next.js 16 app with a Linear-inspired design system (indigo accent, dark/light), header, footer, ⌘K menu, 404 page and SEO basics. It deploys to Vercel from the public GitHub repo `jitin4389/jitin-site`. The home page is a placeholder; the `profile` module fills it next.
+Replace the placeholder home page with a one-page profile (Hero, About, Experience, Skills & certifications, Contact). Add a print-styled `/cv` page and a generated `/jitin-gupta-cv.pdf`. Everything reads from one typed content file, guarded by a facts test.
 
 ## Architecture Decisions
 
-- **Deploy pipeline first.** The riskiest unknowns are account linking (personal GitHub + personal Vercel) and new major versions (Next 16, Tailwind 4). Proving a placeholder deploys end-to-end in Phase 1 surfaces these before any design work.
-- **Next.js App Router with Server Components by default.** Only the theme toggle and command menu are client components, which keeps JavaScript small for the Lighthouse ≥ 95 target.
-- **Tailwind 4 CSS-first tokens** in `globals.css` (`@theme`) are the single source of colours, radii and fonts. shadcn components read the same CSS variables, so the theme stays consistent.
-- **`next-themes` with the `class` strategy** gives system-default plus a persisted manual toggle, without a flash of the wrong theme.
-- **`src/config/site.ts` drives navigation**, with an `enabled` flag per item. Later modules switch their link on; nothing ships a broken link.
-- **Tests from Task 2 onward.** Vitest for logic and components; Playwright + axe for routes, accessibility, theme and ⌘K. `npm run check` gates every commit.
+- **Content first.** `src/content/profile.ts` and its facts-guard test land before any UI, so every later task renders data that has already been checked.
+- **Sections are Server Components.** Only the "Earlier roles" disclosure needs interaction, and it uses native `<details>`, which needs no JavaScript. This protects the Lighthouse score.
+- **Nav never links to something missing.** Section anchors switch on as each section ships; the CV link and _Download CV_ buttons switch on only when the PDF exists (P7).
+- **PDF via Playwright, not a PDF library.** `scripts/generate-cv-pdf.mts` builds the site, prints `/cv` with `page.pdf()` and commits the result. There is no runtime cost and no new dependency.
+- **Decorative visuals are CSS only.** The glow uses a radial gradient on the `--glow` token and the grid is a masked background; both are `aria-hidden`. No images, no motion beyond a ≤200 ms fade.
 
 ## Dependency Graph
 
 ```
-T1 Scaffold ──► T2 Test harness ──► T3 Repo + Vercel deploy
-                                        │
-                     ┌──────────────────┘
-                     ▼
-              T4 Design tokens + theme
-                     │
-                     ▼
-              T5 Config + header + footer ──► T6 404 + responsive + motion
-                     │
-          ┌──────────┴──────────┐
-          ▼                     ▼
-   T7 ⌘K command menu     T8 SEO (metadata, OG, sitemap, robots)
-          └──────────┬──────────┘
-                     ▼
-              T9 Lighthouse pass + production promote
+P1 Content + facts guard
+   ├──► P2 Hero (+ nav anchors)
+   ├──► P3 About
+   ├──► P4 Experience timeline
+   ├──► P5 Skills, certifications, contact
+   │         └── Checkpoint A (home page review)
+   └──► P6 /cv print page ──► P7 PDF script + Download CV + CV nav
+                                   └── Checkpoint B (CV review)
+                                         └──► P8 Merge, Lighthouse on production
 ```
 
-T7 and T8 are independent and can run in either order.
+P2–P5 depend only on P1 and touch separate files, so their order is flexible.
 
 ## Task List
 
-### Phase 1: Pipeline (fail fast)
+### Phase 1: Content
 
-- [x] T1: Scaffold Next.js 16 + TypeScript strict + Tailwind 4 + lint/format
-- [x] T2: Test harness (Vitest, Playwright, axe) + `npm run check`
-- [x] T3: Create public GitHub repo + Vercel project; first preview and production deploy of placeholder
+- [x] P1: Typed content file + facts-guard unit test
 
-### Checkpoint A: pipeline proven
+### Phase 2: Home page sections
 
-- [x] `npm run check` and `npm run test:e2e` green locally
-- [x] Placeholder live on `*.vercel.app`; a pull request gets a preview URL
+- [x] P2: Hero with glow/grid, CTAs (Email, LinkedIn), nav anchor for About
+- [x] P3: About section
+- [x] P4: Experience timeline with "Earlier" disclosure
+- [x] P5: Skills & certifications + Contact section
 
-### Phase 2: Shell and design system
-
-- [x] T4: Design tokens (indigo, neutrals, Geist), shadcn init, dark/light theme with toggle
-- [x] T5: Site config + header + footer with flag-gated navigation
-- [x] T6: 404 page, responsive at 360 px, reduced-motion handling
-
-### Checkpoint B: look and feel review
+### Checkpoint A: home page review
 
 - [x] All tests green; axe clean in both themes
-- [x] **You review the preview URL on phone and desktop, in both themes, and approve the look**
+- [x] **You review the preview: hero, sections, both themes, phone + desktop**
 
-### Phase 3: Linear touches and SEO
+### Phase 3: CV
 
-- [x] T7: ⌘K command menu (live pages + theme toggle)
-- [x] T8: SEO: metadata helper, OG image, sitemap, robots, canonical URLs
-- [x] T9: Lighthouse pass on preview; fix gaps; promote to production (with your go-ahead)
+- [x] P6: `/cv` print-styled page
+- [x] P7: PDF generation script, _Download CV_ buttons, CV nav link
 
-### Checkpoint C: foundation complete
+### Checkpoint B: CV review
 
-- [x] Every acceptance criterion in SPEC-foundation.md met and checked off
-- [x] Ready to start the `profile` module spec
+- [ ] **You review the PDF (≤ 2 pages, content, no phone number)**
+
+### Phase 4: Ship
+
+- [ ] P8: Merge to production; Lighthouse ≥ targets; mark module complete
 
 ## Risks and Mitigations
 
-| Risk                                                                   | Impact               | Mitigation                                                                                                          |
-| ---------------------------------------------------------------------- | -------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Vercel CLI token is invalid; personal Vercel account may not exist yet | High (blocks T3)     | You run `vercel login` with the personal account (GitHub `jitin4389`); I verify with `vercel whoami` before linking |
-| `jitin-site.vercel.app` already taken                                  | Low                  | Fall back to `jitin-gupta.vercel.app` or let Vercel assign one                                                      |
-| Next 16 / Tailwind 4 / shadcn version mismatch                         | Medium               | Scaffold with official CLIs (`create-next-app`, `shadcn@latest`); pin exact versions in `package.json` once green   |
-| Theme flash on load                                                    | Medium (CLS, polish) | `next-themes` script in `<head>` + `suppressHydrationWarning`; e2e test reloads and checks the theme                |
-| Lighthouse perf < 95 (fonts, JS)                                       | Medium               | `next/font` self-hosting, Server Components by default, ⌘K loaded lazily on first open                              |
-| Pushing to the wrong GitHub account                                    | Medium               | Repo-local git identity is set; verify `gh api user` = `jitin4389` before `gh repo create`                          |
+| Risk                                                 | Impact             | Mitigation                                                                                           |
+| ---------------------------------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
+| Copy drifts from approved facts                      | High (credibility) | Facts-guard unit test; content copied only from `drafts/`; any new wording is "ask first"            |
+| PDF exceeds 2 pages                                  | Medium             | Print CSS (A4, tight spacing, CLOUDSUFI 7 bullets max); e2e asserts page count                       |
+| Glow/grid hurts contrast or performance              | Medium             | Pure CSS, decorative layer behind content; axe contrast check in both themes; Lighthouse after merge |
+| Generated PDF goes stale                             | Medium             | `npm run cv:pdf` documented; e2e checks the PDF contains the current headline text                   |
+| Anchor nav breaks the "every nav link resolves" test | Low                | `/#about` style links return 200; test also asserts the target section id exists                     |
 
 ## Open Questions
 
-1. **Personal Vercel account:** do you already have one (ideally signed in with GitHub `jitin4389`)? If not, create it at vercel.com/signup before T3.
+None blocking.
