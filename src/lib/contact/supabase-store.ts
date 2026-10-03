@@ -4,9 +4,18 @@ import { createClient } from "@supabase/supabase-js";
 
 import type { ContactStore } from "@/lib/contact/store";
 
+/**
+ * Accepts the project URL with or without a trailing slash or an API path
+ * (e.g. ".../rest/v1/" copied from the dashboard); the client adds paths itself.
+ */
+export function normalizeSupabaseUrl(raw: string): string {
+  const url = new URL(raw.trim());
+  return url.origin;
+}
+
 /** Supabase-backed store. Uses the secret key, so it must never run in the browser. */
 export function createSupabaseStore(): ContactStore {
-  const url = process.env.SUPABASE_URL;
+  const rawUrl = process.env.SUPABASE_URL;
   const secretKey = process.env.SUPABASE_SECRET_KEY;
   if (!url || !secretKey)
     throw new Error("SUPABASE_URL or SUPABASE_SECRET_KEY is not set");
