@@ -1,147 +1,132 @@
-# Tasks: profile
+# Tasks: leads
 
-Plan: [plan.md](plan.md) · Spec: [SPEC-profile.md](../SPEC-profile.md)
+Plan: [plan.md](plan.md) · Spec: [SPEC-leads.md](../SPEC-leads.md)
 Definition of done for every task: `npm run check` green with no warnings, `npm run test:e2e` green, committed on a branch.
 
 ---
 
-## Phase 1: Content
+## Phase 1: Logic
 
-### P1: Typed content file + facts guard ✅ done
+### L1: Validation
 
-**Description:** Create `src/content/profile.ts` with typed data for hero, about, experience, skills and certifications, copied from the approved drafts. Add a date-range formatting helper. Add the facts-guard unit test.
+**Description:** `validateContact(formData)` trims inputs and returns either clean data or per-field errors.
 
 **Acceptance criteria:**
 
-- [x] All content from `drafts/00-facts.md`, `02-about.txt`, `03-cloudsufi.md`, `04-older-roles.md` and CV capability groups is represented
-- [x] Facts test passes: required claims present; no phone number, "Woolf" or "Product & AI Lead"; roles in reverse-chronological order
-- [x] `formatRange("2025-07")` → "Jul 2025 – Present"; `formatRange("2024-10", "2025-06")` → "Oct 2024 – Jun 2025"
+- [ ] Name 1–100 chars; email valid format and ≤ 254; topic in the fixed list; message 10–4,000 chars
+- [ ] Returns all field errors at once, with human-readable messages
+- [ ] Unit tests cover each boundary (e.g. 100 vs 101 chars, 9 vs 10)
 
 **Verification:** `npm test`
 **Dependencies:** None
-**Files:** `src/content/profile.ts`, `src/lib/dates.ts`, `tests/unit/profile-content.test.ts`, `tests/unit/dates.test.ts`
-**Scope:** M
-
----
-
-## Phase 2: Home page sections
-
-### P2: Hero ✅ done
-
-**Description:** Replace the placeholder with the hero: name, role, value statement, _Email me_ and _LinkedIn_ buttons. Add the decorative indigo glow and faint grid (CSS, `aria-hidden`). Enable an "About" nav anchor once P3 lands (flag stays off here).
-
-**Acceptance criteria:**
-
-- [x] Hero shows name (h1), "Applied AI Architect" and the value statement in both themes
-- [x] Buttons link to `mailto:` and LinkedIn; glow/grid are hidden from assistive tech
-- [x] No horizontal scroll at 360 px; axe clean in both themes
-
-**Verification:** `npm run check`; `tests/e2e/profile.spec.ts` (hero block); screenshot review at 360/768/1280
-**Dependencies:** P1
-**Files:** `src/components/profile/hero.tsx`, `src/app/page.tsx`, `src/styles/globals.css`, `tests/e2e/profile.spec.ts`
-**Scope:** M
-
-### P3: About ✅ done
-
-**Description:** About section (`id="about"`) with intro, "What I do" bullets and "How I got here". Enable the "About" nav item (`/#about`).
-
-**Acceptance criteria:**
-
-- [x] Section heading "About" and all four "What I do" bullets render
-- [x] Nav "About" link scrolls to the section; ⌘K lists it
-
-**Verification:** `npm run check`; e2e about block
-**Dependencies:** P1
-**Files:** `src/components/profile/about.tsx`, `src/app/page.tsx`, `src/config/site.ts`, `tests/e2e/profile.spec.ts`
+**Files:** `src/lib/contact/validate.ts`, `tests/unit/contact-validate.test.ts`
 **Scope:** S
 
-### P4: Experience timeline ✅ done
+### L2: Store, rate limit, IP hashing
 
-**Description:** Experience section (`id="experience"`): timeline grouped by company; CLOUDSUFI shows both roles with a "Promoted" marker; Share India, Vidyamandir Data Scientist and Scaler in full; Curate and pre-2020 roles inside a native `<details>` "Earlier roles". Enable the "Experience" nav item.
-
-**Acceptance criteria:**
-
-- [x] Roles render in reverse-chronological order with correct date ranges
-- [x] "Earlier roles" is collapsed by default and opens with keyboard and mouse
-- [x] Nav "Experience" link works
-
-**Verification:** `npm run check`; e2e experience block (order, details toggle)
-**Dependencies:** P1
-**Files:** `src/components/profile/experience.tsx`, `src/app/page.tsx`, `src/config/site.ts`, `tests/e2e/profile.spec.ts`
-**Scope:** M
-
-### P5: Skills, certifications and contact ✅ done
-
-**Description:** Skills section with four capability groups as badges; certifications with Claude Certified Architect (current) and Databricks under "Past (2024–2026)". Contact section with email and LinkedIn.
+**Description:** `ContactStore` interface; in-memory implementation; `getContactStore()` selector; `hashIp(ip, salt)`; `isRateLimited(store, ipHash, now)` (more than 5 in the last hour).
 
 **Acceptance criteria:**
 
-- [x] Four skill groups render; Claude cert marked current; Databricks marked past
-- [x] Contact section links to email and LinkedIn
-- [x] Axe clean in both themes for the full page
+- [ ] 5 submissions in an hour pass; the 6th is limited; one older than an hour doesn't count
+- [ ] `hashIp` is deterministic per salt and never contains the raw IP
+- [ ] `CONTACT_STORE=memory` selects the in-memory store
 
-**Verification:** `npm run check`; e2e skills/contact blocks
-**Dependencies:** P1
-**Files:** `src/components/profile/skills.tsx`, `src/components/profile/contact.tsx`, `src/components/ui/badge.tsx`, `src/app/page.tsx`, `tests/e2e/profile.spec.ts`
+**Verification:** `npm test`
+**Dependencies:** None
+**Files:** `src/lib/contact/store.ts`, `src/lib/contact/rate-limit.ts`, `tests/unit/contact-store.test.ts`
 **Scope:** M
 
-### ✅ Checkpoint A: home page review
+### L3: Server action
 
-- [x] All tests green; axe clean in both themes
-- [x] Preview deployed; **you review hero and sections on phone + desktop, both themes**
+**Description:** `submitContact(prevState, formData)`: honeypot → validate → rate limit → insert with `source` from `VERCEL_ENV`. Returns `{ status: "success" | "invalid" | "limited" | "error", fieldErrors? }`. Logs errors server-side without personal data.
+
+**Acceptance criteria:**
+
+- [ ] Filled honeypot → "success", nothing stored
+- [ ] Invalid → field errors, nothing stored; limited → "limited", nothing stored
+- [ ] Store failure → "error" (no crash); success stores exactly the five fields plus `ip_hash` and `source`
+
+**Verification:** `npm test` (`tests/unit/contact-action.test.ts` with the in-memory store)
+**Dependencies:** L1, L2
+**Files:** `src/app/actions/contact.ts`, `tests/unit/contact-action.test.ts`
+**Scope:** M
 
 ---
 
-## Phase 3: CV
+## Phase 2: UI
 
-### P6: `/cv` print page ✅ done
+### L4: Contact form
 
-**Description:** Print-optimised CV page from `profile.ts`: light theme forced, A4 print CSS, compact layout, header with name, role, email and LinkedIn (no phone). Header/footer chrome hidden in print.
-
-**Acceptance criteria:**
-
-- [x] `/cv` renders all CV sections; axe clean
-- [x] Browser print preview fits ≤ 2 A4 pages
-- [x] Has its own metadata (title "CV")
-
-**Verification:** `npm run check`; `tests/e2e/cv.spec.ts` (render + axe); manual print preview
-**Dependencies:** P1
-**Files:** `src/app/cv/page.tsx`, `src/components/profile/cv-document.tsx`, `src/styles/globals.css` (print rules), `tests/e2e/cv.spec.ts`
-**Scope:** M
-
-### P7: PDF generation and Download CV ✅ done
-
-**Description:** `scripts/generate-cv-pdf.mts` (build, start, print `/cv` to `public/jitin-gupta-cv.pdf`) and `npm run cv:pdf`. Add _Download CV_ to the hero and contact; enable the "CV" nav item; generate and commit the PDF.
+**Description:** Client form using `useActionState`: name, email, topic select, message, hidden honeypot, privacy note, submit button with pending state. Success replaces the form with a thank-you message. Errors are shown per field and announced. Enable the "Contact" nav item (`/#contact`). Playwright web server runs with `CONTACT_STORE=memory`.
 
 **Acceptance criteria:**
 
-- [x] `npm run cv:pdf` writes the PDF; `/jitin-gupta-cv.pdf` returns `application/pdf`
-- [x] PDF has ≤ 2 pages, selectable text containing "Applied AI Architect", no phone number
-- [x] _Download CV_ buttons and CV nav link work
+- [ ] Valid submit → success message; empty submit → errors announced, focus moves to the first invalid field
+- [ ] Submitting with JavaScript disabled still works
+- [ ] Axe clean with errors visible, in both themes; no horizontal scroll at 360 px
 
-**Verification:** `npm run cv:pdf && npm run test:e2e` (cv.spec PDF checks)
-**Dependencies:** P2, P6
-**Files:** `scripts/generate-cv-pdf.mts`, `package.json`, `public/jitin-gupta-cv.pdf`, `src/components/profile/hero.tsx`, `src/config/site.ts`, `tests/e2e/cv.spec.ts`
+**Verification:** `npm run check`; `tests/e2e/contact.spec.ts`
+**Dependencies:** L3
+**Files:** `src/components/profile/contact-form.tsx`, `src/components/profile/contact.tsx`, `src/config/site.ts`, `playwright.config.ts`, `tests/e2e/contact.spec.ts`
 **Scope:** M
 
-### ✅ Checkpoint B: CV review
+### ✅ Checkpoint A
 
-- [x] **You review the PDF and `/cv` page**
+- [ ] All tests green; axe clean with errors shown, both themes
+
+---
+
+## Phase 3: Supabase
+
+### L5: Supabase store and environment ⚠️ needs your setup
+
+**Description:** Add `@supabase/supabase-js`; `supabase-store.ts` (guarded by `server-only`); migration file; you run the SQL and add env vars in Vercel (Production + Preview).
+
+**Acceptance criteria:**
+
+- [ ] Migration applied: table, enum, index, RLS on, no policies
+- [ ] Env vars set in Vercel; none are `NEXT_PUBLIC_`
+- [ ] Build output contains no `sb_secret` string
+
+**Verification:** `npm run check`; `grep -r sb_secret .next/static` returns nothing
+**Dependencies:** L3, your Supabase project
+**Files:** `supabase/migrations/0001_contact_messages.sql`, `src/lib/contact/supabase-store.ts`, `src/lib/contact/store.ts`, `package.json`, `.env.example`
+**Scope:** M
+
+### L6: Preview integration check ⚠️ with you
+
+**Description:** On the PR preview, submit one real message; confirm it appears in Supabase with `source = preview`; confirm the anon key cannot read the table; delete the test row.
+
+**Acceptance criteria:**
+
+- [ ] Row visible in the dashboard with correct fields and hashed IP
+- [ ] Anon REST read returns no rows or a permission error
+- [ ] Test row deleted
+
+**Verification:** Supabase dashboard; `curl` with the anon key
+**Dependencies:** L4, L5
+**Files:** none
+**Scope:** S
+
+### ✅ Checkpoint B
+
+- [ ] **You submit on the preview and see the message in your dashboard**
 
 ---
 
 ## Phase 4: Ship
 
-### P8: Production and Lighthouse ✅ done
+### L7: Production ⚠️ needs your go-ahead to merge
 
-**Description:** Merge to `main`; run e2e and Lighthouse (mobile, 3 runs) on production; record results; mark module complete.
+**Description:** Merge; verify the form renders in production (no test submission unless you want one); Lighthouse; record results; mark module complete.
 
 **Acceptance criteria:**
 
-- [x] Lighthouse ≥ 95 / 100 / ≥ 95 / 100 on production
-- [x] All SPEC-profile acceptance criteria checked
+- [ ] Lighthouse on `/` still ≥ 95 / 100 / ≥ 95 / 100
+- [ ] All SPEC-leads acceptance criteria checked
 
-**Verification:** `PLAYWRIGHT_BASE_URL=https://jitin-site.vercel.app npm run test:e2e`; Lighthouse
-**Dependencies:** P7
-**Files:** `README.md`, `SPEC-profile.md`, `CAPABILITY-MAP.md`, tasks files
+**Verification:** `PLAYWRIGHT_BASE_URL=https://jitin-site.vercel.app` read-only e2e subset; Lighthouse
+**Dependencies:** L6
+**Files:** `README.md`, `SPEC-leads.md`, `CAPABILITY-MAP.md`, tasks files
 **Scope:** S

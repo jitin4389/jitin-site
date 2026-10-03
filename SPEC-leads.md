@@ -142,7 +142,9 @@ export function getContactStore(): ContactStore {
 2. Paste the migration SQL into the SQL editor (I'll give you the exact file).
 3. Share the project URL and secret key with me privately, or add the three variables in Vercel yourself. I'll guide either way.
 
-## Open Questions
+## Decisions on open questions (2026-10-03)
 
-1. **Privacy note under the form:** OK with "Your details are only used to reply to you and are never shared"?
-2. **Retention:** keep messages indefinitely, or delete after 12 months? (Default: keep; you can archive.)
+| Question     | Decision                                                           |
+| ------------ | ------------------------------------------------------------------ |
+| Privacy note | "Your details are only used to reply to you and are never shared." |
+| Retention    | Keep messages indefinitely; archive via `status`                   |

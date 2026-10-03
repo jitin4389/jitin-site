@@ -1,76 +1,72 @@
-# Implementation Plan: profile
+# Implementation Plan: leads
 
-Spec: [SPEC-profile.md](../SPEC-profile.md) · Module map: [CAPABILITY-MAP.md](../CAPABILITY-MAP.md)
-Tasks tracked in [tasks/todo.md](todo.md). Previous module: [foundation-plan.md](foundation-plan.md) (complete).
+Spec: [SPEC-leads.md](../SPEC-leads.md) · Module map: [CAPABILITY-MAP.md](../CAPABILITY-MAP.md)
+Tasks tracked in [tasks/todo.md](todo.md). Previous modules: [foundation](foundation-plan.md), [profile](profile-plan.md) (complete).
 
 ## Overview
 
-Replace the placeholder home page with a one-page profile (Hero, About, Experience, Skills & certifications, Contact). Add a print-styled `/cv` page and a generated `/jitin-gupta-cv.pdf`. Everything reads from one typed content file, guarded by a facts test.
+Add a contact form to the Contact section. Submissions go through a Next.js Server Action that rejects spam (honeypot), validates, rate-limits per hashed IP, and inserts into a locked-down Supabase table. You read messages in the Supabase dashboard.
 
 ## Architecture Decisions
 
-- **Content first.** `src/content/profile.ts` and its facts-guard test land before any UI, so every later task renders data that has already been checked.
-- **Sections are Server Components.** Only the "Earlier roles" disclosure needs interaction, and it uses native `<details>`, which needs no JavaScript. This protects the Lighthouse score.
-- **Nav never links to something missing.** Section anchors switch on as each section ships; the CV link and _Download CV_ buttons switch on only when the PDF exists (P7).
-- **PDF via Playwright, not a PDF library.** `scripts/generate-cv-pdf.mts` builds the site, prints `/cv` with `page.pdf()` and commits the result. There is no runtime cost and no new dependency.
-- **Decorative visuals are CSS only.** The glow uses a radial gradient on the `--glow` token and the grid is a masked background; both are `aria-hidden`. No images, no motion beyond a ≤200 ms fade.
+- **Logic before UI, and before Supabase.** Validation, rate limiting and the action are built and unit-tested against an in-memory store first. The Supabase account is only needed from L5, so your setup can run in parallel with L1–L4.
+- **One `ContactStore` interface, two implementations.** In-memory (tests, e2e, local dev without secrets) and Supabase (preview and production). `CONTACT_STORE=memory` selects the in-memory store; e2e always sets it.
+- **Server Action with `useActionState`.** The form is a real `<form action>`, so it works without JavaScript; with JavaScript it shows inline errors without a page reload.
+- **Secret key on the server only.** `src/lib/contact/supabase-store.ts` imports `server-only`, so a client import fails the build.
+- **Spam handling stays quiet.** A filled honeypot returns the same success response as a real message, so bots learn nothing.
 
 ## Dependency Graph
 
 ```
-P1 Content + facts guard
-   ├──► P2 Hero (+ nav anchors)
-   ├──► P3 About
-   ├──► P4 Experience timeline
-   ├──► P5 Skills, certifications, contact
-   │         └── Checkpoint A (home page review)
-   └──► P6 /cv print page ──► P7 PDF script + Download CV + CV nav
-                                   └── Checkpoint B (CV review)
-                                         └──► P8 Merge, Lighthouse on production
+L1 Validation ──┐
+L2 Store + rate limit + IP hash ──┴──► L3 Server action ──► L4 Form UI + nav
+                                                              │
+   (you) Supabase account + SQL ──► L5 Supabase store + env ──┴──► L6 Preview integration check
+                                                                        │
+                                                                   Checkpoint
+                                                                        │
+                                                                   L7 Merge + Lighthouse
 ```
-
-P2–P5 depend only on P1 and touch separate files, so their order is flexible.
 
 ## Task List
 
-### Phase 1: Content
+### Phase 1: Logic (no network)
 
-- [x] P1: Typed content file + facts-guard unit test
+- [ ] L1: Validation module + tests
+- [ ] L2: Store interface, in-memory store, rate limiter, IP hashing + tests
+- [ ] L3: Server action (honeypot → validate → rate limit → insert → errors) + tests
 
-### Phase 2: Home page sections
+### Phase 2: UI
 
-- [x] P2: Hero with glow/grid, CTAs (Email, LinkedIn), nav anchor for About
-- [x] P3: About section
-- [x] P4: Experience timeline with "Earlier" disclosure
-- [x] P5: Skills & certifications + Contact section
+- [ ] L4: Contact form UI, Contact nav item, e2e against the in-memory store
 
-### Checkpoint A: home page review
+### Checkpoint A: logic and UI done
 
-- [x] All tests green; axe clean in both themes
-- [x] **You review the preview: hero, sections, both themes, phone + desktop**
+- [ ] All tests green; axe clean with errors shown, both themes
 
-### Phase 3: CV
+### Phase 3: Supabase (needs your setup)
 
-- [x] P6: `/cv` print-styled page
-- [x] P7: PDF generation script, _Download CV_ buttons, CV nav link
+- [ ] L5: Migration file, Supabase store, Vercel env vars
+- [ ] L6: Real submission on preview verified in Supabase, anon access denied, test row deleted
 
-### Checkpoint B: CV review
+### Checkpoint B: your review
 
-- [x] **You review the PDF (≤ 2 pages, content, no phone number)**
+- [ ] **You submit the form on the preview and see it in your Supabase dashboard**
 
 ### Phase 4: Ship
 
-- [x] P8: Merge to production; Lighthouse ≥ targets; mark module complete
+- [ ] L7: Merge to production; Lighthouse; mark module complete
 
 ## Risks and Mitigations
 
-| Risk                                                 | Impact             | Mitigation                                                                                           |
-| ---------------------------------------------------- | ------------------ | ---------------------------------------------------------------------------------------------------- |
-| Copy drifts from approved facts                      | High (credibility) | Facts-guard unit test; content copied only from `drafts/`; any new wording is "ask first"            |
-| PDF exceeds 2 pages                                  | Medium             | Print CSS (A4, tight spacing, CLOUDSUFI 7 bullets max); e2e asserts page count                       |
-| Glow/grid hurts contrast or performance              | Medium             | Pure CSS, decorative layer behind content; axe contrast check in both themes; Lighthouse after merge |
-| Generated PDF goes stale                             | Medium             | `npm run cv:pdf` documented; e2e checks the PDF contains the current headline text                   |
-| Anchor nav breaks the "every nav link resolves" test | Low                | `/#about` style links return 200; test also asserts the target section id exists                     |
+| Risk                                      | Impact | Mitigation                                                                                                       |
+| ----------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------- |
+| Secret key leaks to the browser           | High   | `server-only` import guard; no `NEXT_PUBLIC_` vars; build-output grep for `sb_secret` in L5                      |
+| Table readable by the public              | High   | RLS on with no policies; L6 tests an anon read is denied                                                         |
+| Missed messages (no email alert)          | Medium | Your choice; noted. Easy to add an email service later as its own task                                           |
+| Rate-limit IP spoofing via headers        | Low    | Use Vercel's `x-forwarded-for` first hop; limit is a spam brake, not security                                    |
+| Test data mixing with real messages       | Low    | `source` column (`preview` / `production` / `development`); e2e never touches Supabase                           |
+| Free-tier project pauses after inactivity | Medium | Supabase pauses free projects after ~1 week idle; form shows the email fallback on errors. Revisit if it happens |
 
 ## Open Questions
 
