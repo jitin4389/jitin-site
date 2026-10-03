@@ -3,6 +3,8 @@ export type NavItem = {
   href: string;
   /** Hidden until the module that owns the page ships. */
   enabled: boolean;
+  /** Shown in the header only from the `sm` breakpoint up (still in ⌘K). Keeps 360 px headers from overflowing. */
+  desktopOnly?: boolean;
 };
 
 export const siteConfig = {
@@ -17,9 +19,15 @@ export const siteConfig = {
   cvPdf: "/jitin-gupta-cv.pdf",
   /** Header + ⌘K links. The site name in the header always links home. */
   nav: [
-    { label: "About", href: "/#about", enabled: true },
-    { label: "Experience", href: "/#experience", enabled: true },
+    { label: "About", href: "/#about", enabled: true, desktopOnly: true },
+    {
+      label: "Experience",
+      href: "/#experience",
+      enabled: true,
+      desktopOnly: true,
+    },
     { label: "CV", href: "/cv", enabled: true },
+    { label: "Contact", href: "/#contact", enabled: true },
     { label: "Work", href: "/work", enabled: false },
     { label: "Writing", href: "/writing", enabled: false },
   ] satisfies NavItem[],

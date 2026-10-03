@@ -24,6 +24,8 @@ export default defineConfig({
         command: `npm run build && npm run start -- -p ${PORT}`,
         url: `http://localhost:${PORT}`,
         reuseExistingServer: !process.env.CI,
+        // e2e never touches the real database.
+        env: { CONTACT_STORE: "memory", CONTACT_IP_SALT: "e2e-salt" },
         timeout: 180_000,
       },
 });
