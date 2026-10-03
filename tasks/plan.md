@@ -32,17 +32,17 @@ L2 Store + rate limit + IP hash ──┴──► L3 Server action ──► L4
 
 ### Phase 1: Logic (no network)
 
-- [ ] L1: Validation module + tests
-- [ ] L2: Store interface, in-memory store, rate limiter, IP hashing + tests
-- [ ] L3: Server action (honeypot → validate → rate limit → insert → errors) + tests
+- [x] L1: Validation module + tests
+- [x] L2: Store interface, in-memory store, rate limiter, IP hashing + tests
+- [x] L3: Server action (honeypot → validate → rate limit → insert → errors) + tests
 
 ### Phase 2: UI
 
-- [ ] L4: Contact form UI, Contact nav item, e2e against the in-memory store
+- [x] L4: Contact form UI, Contact nav item, e2e against the in-memory store
 
 ### Checkpoint A: logic and UI done
 
-- [ ] All tests green; axe clean with errors shown, both themes
+- [x] All tests green; axe clean with errors shown, both themes
 
 ### Phase 3: Supabase (needs your setup)
 

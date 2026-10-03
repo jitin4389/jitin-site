@@ -7,45 +7,45 @@ Definition of done for every task: `npm run check` green with no warnings, `npm 
 
 ## Phase 1: Logic
 
-### L1: Validation
+### L1: Validation ✅ done
 
 **Description:** `validateContact(formData)` trims inputs and returns either clean data or per-field errors.
 
 **Acceptance criteria:**
 
-- [ ] Name 1–100 chars; email valid format and ≤ 254; topic in the fixed list; message 10–4,000 chars
-- [ ] Returns all field errors at once, with human-readable messages
-- [ ] Unit tests cover each boundary (e.g. 100 vs 101 chars, 9 vs 10)
+- [x] Name 1–100 chars; email valid format and ≤ 254; topic in the fixed list; message 10–4,000 chars
+- [x] Returns all field errors at once, with human-readable messages
+- [x] Unit tests cover each boundary (e.g. 100 vs 101 chars, 9 vs 10)
 
 **Verification:** `npm test`
 **Dependencies:** None
 **Files:** `src/lib/contact/validate.ts`, `tests/unit/contact-validate.test.ts`
 **Scope:** S
 
-### L2: Store, rate limit, IP hashing
+### L2: Store, rate limit, IP hashing ✅ done
 
 **Description:** `ContactStore` interface; in-memory implementation; `getContactStore()` selector; `hashIp(ip, salt)`; `isRateLimited(store, ipHash, now)` (more than 5 in the last hour).
 
 **Acceptance criteria:**
 
-- [ ] 5 submissions in an hour pass; the 6th is limited; one older than an hour doesn't count
-- [ ] `hashIp` is deterministic per salt and never contains the raw IP
-- [ ] `CONTACT_STORE=memory` selects the in-memory store
+- [x] 5 submissions in an hour pass; the 6th is limited; one older than an hour doesn't count
+- [x] `hashIp` is deterministic per salt and never contains the raw IP
+- [x] `CONTACT_STORE=memory` selects the in-memory store
 
 **Verification:** `npm test`
 **Dependencies:** None
 **Files:** `src/lib/contact/store.ts`, `src/lib/contact/rate-limit.ts`, `tests/unit/contact-store.test.ts`
 **Scope:** M
 
-### L3: Server action
+### L3: Server action ✅ done
 
 **Description:** `submitContact(prevState, formData)`: honeypot → validate → rate limit → insert with `source` from `VERCEL_ENV`. Returns `{ status: "success" | "invalid" | "limited" | "error", fieldErrors? }`. Logs errors server-side without personal data.
 
 **Acceptance criteria:**
 
-- [ ] Filled honeypot → "success", nothing stored
-- [ ] Invalid → field errors, nothing stored; limited → "limited", nothing stored
-- [ ] Store failure → "error" (no crash); success stores exactly the five fields plus `ip_hash` and `source`
+- [x] Filled honeypot → "success", nothing stored
+- [x] Invalid → field errors, nothing stored; limited → "limited", nothing stored
+- [x] Store failure → "error" (no crash); success stores exactly the five fields plus `ip_hash` and `source`
 
 **Verification:** `npm test` (`tests/unit/contact-action.test.ts` with the in-memory store)
 **Dependencies:** L1, L2
@@ -56,15 +56,15 @@ Definition of done for every task: `npm run check` green with no warnings, `npm 
 
 ## Phase 2: UI
 
-### L4: Contact form
+### L4: Contact form ✅ done
 
 **Description:** Client form using `useActionState`: name, email, topic select, message, hidden honeypot, privacy note, submit button with pending state. Success replaces the form with a thank-you message. Errors are shown per field and announced. Enable the "Contact" nav item (`/#contact`). Playwright web server runs with `CONTACT_STORE=memory`.
 
 **Acceptance criteria:**
 
-- [ ] Valid submit → success message; empty submit → errors announced, focus moves to the first invalid field
-- [ ] Submitting with JavaScript disabled still works
-- [ ] Axe clean with errors visible, in both themes; no horizontal scroll at 360 px
+- [x] Valid submit → success message; empty submit → errors announced, focus moves to the first invalid field
+- [x] Submitting with JavaScript disabled still works
+- [x] Axe clean with errors visible, in both themes; no horizontal scroll at 360 px
 
 **Verification:** `npm run check`; `tests/e2e/contact.spec.ts`
 **Dependencies:** L3
@@ -73,7 +73,7 @@ Definition of done for every task: `npm run check` green with no warnings, `npm 
 
 ### ✅ Checkpoint A
 
-- [ ] All tests green; axe clean with errors shown, both themes
+- [x] All tests green; axe clean with errors shown, both themes
 
 ---
 

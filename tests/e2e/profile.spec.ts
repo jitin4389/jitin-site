@@ -43,13 +43,14 @@ test.describe("home page profile", () => {
 
   test("nav links jump to their sections", async ({ page }) => {
     await page.goto("/");
+    // "Contact" is in the header at every width; "About" and "Experience" are desktop-only.
     await page
       .getByRole("navigation", { name: "Main" })
-      .getByRole("link", { name: "Experience" })
+      .getByRole("link", { name: "Contact" })
       .click();
-    await expect(page).toHaveURL(/#experience$/);
+    await expect(page).toHaveURL(/#contact$/);
     await expect(
-      page.getByRole("heading", { level: 2, name: "Where I've worked" }),
+      page.getByRole("heading", { level: 2, name: "Get in touch" }),
     ).toBeInViewport();
   });
 

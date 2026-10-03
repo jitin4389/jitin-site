@@ -16,9 +16,12 @@ export function SiteHeader() {
         <Link href="/" className="font-medium tracking-tight">
           {siteConfig.name}
         </Link>
-        <ul className="ml-auto flex items-center gap-4 text-sm text-muted-foreground">
+        <ul className="ml-auto flex items-center gap-3 text-sm text-muted-foreground sm:gap-4">
           {items.map((item) => (
-            <li key={item.href}>
+            <li
+              key={item.href}
+              className={item.desktopOnly ? "hidden sm:block" : undefined}
+            >
               <Link
                 href={item.href}
                 className="transition-colors hover:text-foreground focus-visible:text-foreground"
