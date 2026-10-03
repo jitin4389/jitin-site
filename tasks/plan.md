@@ -55,7 +55,7 @@ L2 Store + rate limit + IP hash ──┴──► L3 Server action ──► L4
 
 ### Phase 4: Ship
 
-- [ ] L7: Merge to production; Lighthouse; mark module complete
+- [x] L7: Merge to production; Lighthouse; mark module complete
 
 ## Risks and Mitigations
 
