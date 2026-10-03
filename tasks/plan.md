@@ -42,8 +42,8 @@ T7 and T8 are independent and can run in either order.
 
 ### Phase 1: Pipeline (fail fast)
 
-- [ ] T1: Scaffold Next.js 16 + TypeScript strict + Tailwind 4 + lint/format
-- [ ] T2: Test harness (Vitest, Playwright, axe) + `npm run check`
+- [x] T1: Scaffold Next.js 16 + TypeScript strict + Tailwind 4 + lint/format
+- [x] T2: Test harness (Vitest, Playwright, axe) + `npm run check`
 - [ ] T3: Create public GitHub repo + Vercel project; first preview and production deploy of placeholder
 
 ### Checkpoint A: pipeline proven

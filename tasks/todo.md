@@ -7,30 +7,30 @@ Definition of done for every task: `npm run check` green, no new lint warnings, 
 
 ## Phase 1: Pipeline
 
-### T1: Scaffold Next.js app
+### T1: Scaffold Next.js app ✅ done
 
 **Description:** Create the Next.js 16 app (App Router, TypeScript strict, Tailwind 4, ESLint, `src/` dir, `@/*` alias) with a placeholder home page. Add Prettier and the scripts listed in the spec.
 
 **Acceptance criteria:**
 
-- [ ] `npm run dev` serves a placeholder home page ("Jitin Gupta, coming soon")
-- [ ] `npm run lint`, `npm run typecheck` and `npm run build` pass
-- [ ] `tsconfig.json` has `"strict": true`; `.gitignore` covers `.env*`, `.next`, `node_modules`
+- [x] `npm run dev` serves a placeholder home page ("Jitin Gupta, coming soon")
+- [x] `npm run lint`, `npm run typecheck` and `npm run build` pass
+- [x] `tsconfig.json` has `"strict": true`; `.gitignore` covers `.env*`, `.next`, `node_modules`
 
 **Verification:** `npm run lint && npm run typecheck && npm run build`; open http://localhost:3000
 **Dependencies:** None
 **Files:** `package.json`, `tsconfig.json`, `next.config.ts`, `src/app/layout.tsx`, `src/app/page.tsx`, `src/styles/globals.css`, `.prettierrc` (plus generated config)
 **Scope:** M
 
-### T2: Test harness and `check` script
+### T2: Test harness and `check` script ✅ done
 
 **Description:** Add Vitest + Testing Library for unit tests and Playwright + `@axe-core/playwright` for e2e. Write one smoke test at each level. Add `npm test`, `npm run test:e2e` and `npm run check`.
 
 **Acceptance criteria:**
 
-- [ ] Unit smoke test passes under `npm test`
-- [ ] E2E: home returns 200 and has zero axe violations (mobile + desktop viewports)
-- [ ] `npm run check` runs lint → typecheck → test → build and fails if any step fails
+- [x] Unit smoke test passes under `npm test`
+- [x] E2E: home returns 200 and has zero axe violations (mobile + desktop viewports)
+- [x] `npm run check` runs lint → typecheck → test → build and fails if any step fails
 
 **Verification:** `npm run check && npm run test:e2e`
 **Dependencies:** T1
