@@ -44,12 +44,12 @@ T7 and T8 are independent and can run in either order.
 
 - [x] T1: Scaffold Next.js 16 + TypeScript strict + Tailwind 4 + lint/format
 - [x] T2: Test harness (Vitest, Playwright, axe) + `npm run check`
-- [ ] T3: Create public GitHub repo + Vercel project; first preview and production deploy of placeholder
+- [x] T3: Create public GitHub repo + Vercel project; first preview and production deploy of placeholder
 
 ### Checkpoint A: pipeline proven
 
-- [ ] `npm run check` and `npm run test:e2e` green locally
-- [ ] Placeholder live on `*.vercel.app`; a pull request gets a preview URL
+- [x] `npm run check` and `npm run test:e2e` green locally
+- [x] Placeholder live on `*.vercel.app`; a pull request gets a preview URL
 
 ### Phase 2: Shell and design system
 

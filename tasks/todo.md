@@ -37,15 +37,15 @@ Definition of done for every task: `npm run check` green, no new lint warnings, 
 **Files:** `vitest.config.ts`, `playwright.config.ts`, `tests/unit/smoke.test.ts`, `tests/e2e/smoke.spec.ts`, `package.json`
 **Scope:** M
 
-### T3: GitHub repo and Vercel deploy ⚠️ needs you
+### T3: GitHub repo and Vercel deploy ✅ done
 
 **Description:** Create the public repo `jitin4389/jitin-site`, push `main`, and create a Vercel project under your personal account linked to it. Confirm production and preview deploys work.
 
 **Acceptance criteria:**
 
-- [ ] `gh api user` returns `jitin4389` before the repo is created; repo is public
-- [ ] Production URL (`*.vercel.app`) serves the placeholder
-- [ ] A test pull request gets a Vercel preview URL
+- [x] `gh api user` returns `jitin4389` before the repo is created; repo is public
+- [x] Production URL (`*.vercel.app`) serves the placeholder
+- [x] A test pull request gets a Vercel preview URL
 
 **Verification:** open the production URL; open the PR's preview link
 **Dependencies:** T2; you logged in with `vercel login` on the personal account
@@ -54,8 +54,8 @@ Definition of done for every task: `npm run check` green, no new lint warnings, 
 
 ### ✅ Checkpoint A: pipeline proven
 
-- [ ] `npm run check` + `npm run test:e2e` green
-- [ ] Placeholder live; previews working
+- [x] `npm run check` + `npm run test:e2e` green
+- [x] Placeholder live; previews working
 - [ ] Quick review with you before design work
 
 ---
