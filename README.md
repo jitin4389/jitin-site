@@ -75,3 +75,7 @@ Automated: 90 unit tests (incl. confidentiality guard over all content and `docs
 1. Run the editorial workflow (researcher → writer → editor → evaluator) or write `src/content/writing/<slug>.md` in plain Markdown (no JSX).
 2. Add its entry (summary, key terms, key points, video outline) to `src/content/writing/index.ts`; keep the editorial notes in `docs/editorial/`.
 3. `npm run check && npm run test:e2e`, then open a PR; merge only after the owner says "publish".
+
+### Series complete (2026-10-04)
+
+All 10 parts live. Lighthouse (mobile, production, 3 runs): `/writing` and `/writing/evaluating-agent-output` 99 · 100 · 100 · 100, LCP 2.0–2.1 s, CLS 0. 130 read-only e2e tests pass against production. Batch 2 used 39 agents (research, writing, editing, evaluation, revision, fixes).
