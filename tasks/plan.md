@@ -9,8 +9,8 @@ Previous: [case-studies](case-studies-plan.md) (live with case study 1; case stu
 - [x] W2: Extend confidentiality guard to all content (writing, case studies, profile)
 - [x] W3: Editorial workflow: researcher → writer → editor → evaluator for parts 1, 4, 6 (one revision loop)
 - [x] W4: Integrate articles, evaluator reports in `docs/editorial/`, checks, preview
-- [ ] Gate: owner says "publish"
-- [ ] W5: Merge, Lighthouse, record results
+- [x] Gate: owner says "publish" (2026-10-04)
+- [x] W5: Merge, Lighthouse, record results
 
 ## Risks
 
