@@ -11,7 +11,7 @@ Approved: 2026-10-03 (repo `~/projects/jitin-site`, personal name brand, `*.verc
 | profile      | Hero, About, experience timeline, skills & certifications, CV PDF download                                         | foundation        | [SPEC-profile.md](SPEC-profile.md) ✅           |
 | leads        | Contact form → Supabase, honeypot + rate-limit spam protection                                                     | foundation        | [SPEC-leads.md](SPEC-leads.md) ✅               |
 | case-studies | Featured work pages (MDX), starting with one public-safe forecasting-platform write-up                             | foundation        | [SPEC-case-studies.md](SPEC-case-studies.md) 🟡 |
-| writing      | Blog (MDX), tags, RSS, newsletter signup                                                                           | foundation        | —                                               |
+| writing      | Blog (MDX), tags, RSS, newsletter signup                                                                           | foundation        | [SPEC-writing.md](SPEC-writing.md) 🟡           |
 | offerings    | Services / products pages with CTAs into leads                                                                     | foundation, leads | —                                               |
 
 **Build order:** foundation → profile → leads → case-studies, writing (parallel) → offerings
