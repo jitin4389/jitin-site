@@ -68,6 +68,31 @@ const components: MDXComponents = {
       {...props}
     />
   ),
+  // Scrollable regions must be keyboard-focusable (tabIndex 0) for accessibility.
+  pre: (props) => (
+    <pre
+      tabIndex={0}
+      className="mt-6 overflow-x-auto rounded-xl border border-border bg-muted/50 p-4 font-mono text-sm leading-relaxed [&_code]:bg-transparent [&_code]:p-0 [&_code]:text-[0.95em]"
+      {...props}
+    />
+  ),
+  table: (props) => (
+    <div
+      tabIndex={0}
+      className="mt-6 overflow-x-auto rounded-xl border border-border"
+    >
+      <table className="w-full text-left text-sm" {...props} />
+    </div>
+  ),
+  th: (props) => (
+    <th
+      className="border-b border-border bg-muted/50 px-3 py-2 font-medium"
+      {...props}
+    />
+  ),
+  td: (props) => (
+    <td className="border-b border-border/60 px-3 py-2 align-top" {...props} />
+  ),
   hr: () => <hr className="my-12 border-border" />,
 };
 

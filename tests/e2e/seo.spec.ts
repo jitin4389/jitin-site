@@ -29,7 +29,8 @@ test("sitemap lists only live routes", async ({ request }) => {
   const xml = await response.text();
   expect(xml).toContain("<loc>https://jitin-site.vercel.app/</loc>");
   expect(xml).toContain("<loc>https://jitin-site.vercel.app/work</loc>");
-  expect(xml).not.toContain("/writing");
+  expect(xml).toContain("<loc>https://jitin-site.vercel.app/writing</loc>");
+  expect(xml).not.toContain("/offerings");
   expect(xml).not.toContain("#");
 });
 
