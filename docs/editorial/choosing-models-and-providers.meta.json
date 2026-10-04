@@ -1,0 +1,55 @@
+{
+  "slug": "choosing-models-and-providers",
+  "title": "Choosing models and providers: cloud, gateways and local models",
+  "description": "Treat model choice as an engineering decision: route Claude Code work by task, separate it from the provider, and change it only on eval evidence.",
+  "tags": ["claude-code", "models", "llm-gateway", "evals", "agentic-coding"],
+  "summary": "An AI coding tool can use different models. Some are fast and cheap. Others are slower and more expensive, but better at hard problems. Teams often pick one because it feels good, then use it for everything. A better way: match each kind of task to a suitable model, write that choice down where the team can see it, and only change it after testing the new option on the same set of example questions. Local or alternative models get the same test, not a free pass.",
+  "keyTerms": [
+    {
+      "term": "Model alias",
+      "definition": "A short name such as haiku, sonnet or opus that points to a model family. What it points to changes over time and can differ by provider."
+    },
+    {
+      "term": "Subagent",
+      "definition": "A helper agent defined in a Markdown file, with its own instructions, tools and model, that the main Claude Code session can hand work to."
+    },
+    {
+      "term": "LLM gateway",
+      "definition": "A proxy an organisation runs between developers and the model provider. It holds credentials, tracks usage and can switch providers centrally."
+    },
+    {
+      "term": "Prompt caching",
+      "definition": "The provider reuses the unchanged start of a request instead of processing it again, which cuts cost. Each model has its own cache."
+    },
+    {
+      "term": "Eval suite",
+      "definition": "A small, fixed set of test cases with expected answers, run against each model or set-up so changes are judged on evidence."
+    }
+  ],
+  "keyPoints": [
+    "Separate three decisions: which kind of model a task needs, where models come from, and how you prove a change is safe.",
+    "Put the team default in project settings and give each subagent its own model; switching models mid-session starts a cold cache, so the next turn costs more.",
+    "On cloud providers and gateways, pin every alias you use so upgrades become reviewed changes.",
+    "A gateway must forward caching markers and headers unchanged, or every turn bills as uncached with no error.",
+    "Easy eval cases flatter cheap models; the real differences show in tool use and citation discipline.",
+    "Local and non-Claude models are unsupported by Anthropic, so treat them as experiments that must pass the same suite."
+  ],
+  "videoOutline": [
+    "Hook (Short): your team picked its AI model because it felt smart. Here is a short routing table and one script that turn that feeling into evidence.",
+    "The problem: one model for everything, a surprising bill, and no way to say whether a change helped.",
+    "The mental model: menu, supplier and tasting. Which model per task, where models come from, and how you prove a change.",
+    "Routing in Claude Code: aliases, the session model, per-subagent models, opusplan and effort, and why switching mid-session breaks the cache.",
+    "Providers and gateways: pinning aliases, keeping credentials out of the repo, and the gateway that silently breaks caching.",
+    "Demo: project settings plus summariser and reviewer subagents, and checking which models actually ran.",
+    "Demo: the comparison script running the same cases against a fast and a strong configuration, and why easy cases mislead.",
+    "Local and open models: what Anthropic supports, and why they go through the same eval suite.",
+    "Lessons from production: route by task, configuration not code, stable prompt first, no change without evals.",
+    "Close: pitfalls recap and the same-day checklist."
+  ],
+  "date": "2026-10-04",
+  "series": {
+    "name": "Agentic coding with Claude Code",
+    "part": 9,
+    "of": 10
+  }
+}

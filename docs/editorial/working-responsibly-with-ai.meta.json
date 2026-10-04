@@ -1,0 +1,61 @@
+{
+  "slug": "working-responsibly-with-ai",
+  "title": "Working responsibly with AI, and explaining it to others",
+  "description": "Responsible AI coding is habits and gates, not a disclaimer. A one-page team agreement, enforced Claude Code settings, and how to explain it all.",
+  "tags": [
+    "claude-code",
+    "responsible-ai",
+    "permissions",
+    "security",
+    "agentic-coding"
+  ],
+  "summary": "Many teams write down a promise to use AI carefully, but nothing in their tools makes them keep it. This article turns that promise into three things: a one-page team agreement, a few settings that stop the AI assistant from opening secret files or pushing code without a person saying yes, and a small check that catches private names before they go public. It also shows how to explain an AI coding assistant to someone who does not write code, using the picture of a fast new colleague with a limited key card.",
+  "keyTerms": [
+    {
+      "term": "Promise vs control",
+      "definition": "A promise is a rule written in prose that people and the model must remember. A control is a rule the tool, git host or CI enforces whatever anyone remembers."
+    },
+    {
+      "term": "Permission mode",
+      "definition": "The Claude Code setting that decides which actions run without asking you, such as Manual, plan, auto or bypass. On recent versions, interactive sessions start in auto mode."
+    },
+    {
+      "term": "Deny and ask rules",
+      "definition": "Permission rules in settings. Deny blocks an action in every mode; ask is never auto-approved, prompts a person even in auto mode, and is refused where nobody can answer."
+    },
+    {
+      "term": "Sandbox",
+      "definition": "An operating-system boundary around the shell commands Claude runs, limiting which files and network hosts they can reach. It is off by default."
+    },
+    {
+      "term": "Prompt injection",
+      "definition": "Hostile text in a web page, issue or file that tries to steer the agent into doing something you did not ask for."
+    }
+  ],
+  "keyPoints": [
+    "Prompts and CLAUDE.md shape what Claude tries to do; settings decide what Claude Code allows.",
+    "Label every rule in your team agreement as enforced or by review, and move the important ones into controls.",
+    "On recent versions, interactive sessions start in auto mode, so 'it always asks first' is an outdated assumption.",
+    "Deny rules are not a wall on their own; combine them with the sandbox, branch protection and CI checks.",
+    "Guardrails must not become leaks: a confidentiality check should report counts, never the terms.",
+    "If you cannot explain what your agent may and may not do to a non-developer, tighten your setup."
+  ],
+  "videoOutline": [
+    "Hook (Short): your team's responsible AI policy is a paragraph nobody reads before starting a session. Here is how to turn it into three files that actually stop mistakes.",
+    "The problem: printed tokens, unexplained pull requests and leaked client names happen in the gap between policy and terminal.",
+    "The mental model: promises versus controls, and why permission rules are enforced by the tool, not the model.",
+    "What changed recently: auto mode as the starting mode, ask rules that are never auto-approved, and the limits of deny rules and checkpoints.",
+    "Demo part 1: a one-page AI working agreement with every rule labelled enforced or by review.",
+    "Demo part 2: a committed .claude/settings.json with deny rules, ask rules and bypass mode switched off.",
+    "Demo part 3: a confidentiality check that fails on blocked terms and prints counts only.",
+    "Explaining it: the new-colleague-with-a-key-card analogy, the three-sentence version and a day-one list for new hires.",
+    "Lessons from production and pitfalls: one human publish, rotate leaked secrets, approval fatigue, keeping attribution on.",
+    "Close: the same-day checklist and the official docs to read next."
+  ],
+  "date": "2026-10-04",
+  "series": {
+    "name": "Agentic coding with Claude Code",
+    "part": 10,
+    "of": 10
+  }
+}

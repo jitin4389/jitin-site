@@ -1,0 +1,55 @@
+{
+  "slug": "slash-commands-repeatable-workflows",
+  "title": "Slash commands: turning repeated prompts into team workflows",
+  "description": "A Claude Code slash command is a contract, not a saved prompt: it gathers its own context, limits its tools and returns the same shape every time.",
+  "tags": ["claude-code", "slash-commands", "workflows", "agentic-coding"],
+  "summary": "Most teams type the same few instructions into their AI coding assistant again and again. Claude Code lets you save each one as a small file and run it with a short name, such as /release-notes. The trick is to write that file like a clear job description: it collects the facts it needs, does only what it is allowed to do, gives back results in the same layout every time, and stops so a person can check anything important.",
+  "keyTerms": [
+    {
+      "term": "Custom slash command",
+      "definition": "A Markdown file whose name becomes a command you type, such as /release-notes. Its body is the prompt Claude Code hands to Claude."
+    },
+    {
+      "term": "Frontmatter",
+      "definition": "A short YAML block between two --- lines at the top of the file that sets options such as description, arguments and allowed-tools."
+    },
+    {
+      "term": "Context injection (!)",
+      "definition": "A line like !`git log` that Claude Code runs before Claude reads the prompt, replacing the line with the command's output."
+    },
+    {
+      "term": "allowed-tools",
+      "definition": "A frontmatter field that pre-approves specific tools for the turn that runs the command. It does not block other tools."
+    },
+    {
+      "term": "disable-model-invocation",
+      "definition": "A frontmatter setting that makes a command manual-only, so Claude cannot decide to run it on its own."
+    }
+  ],
+  "keyPoints": [
+    "Treat a slash command as a contract for a repeatable task, not a saved prompt.",
+    "Fetch facts with ! lines and @ references at the start instead of trusting the model's memory.",
+    "allowed-tools pre-approves for one turn; it is not a sandbox, so restrict with deny rules or disallowed-tools.",
+    "Make side-effect commands manual-only and end sensitive ones with a review gate.",
+    "Commit commands the team relies on in .claude/commands/; keep personal habits in ~/.claude/commands/.",
+    "A command is a prompt, so the model still makes judgement calls; rules that must always hold belong in hooks."
+  ],
+  "videoOutline": [
+    "Hook (Short): your best prompt works for you and drifts for everyone else. Here is how to turn it into a /command your whole team can trust.",
+    "The problem: saved prompts carry hidden assumptions about context, scope and when to stop.",
+    "The mental model: a command is a contract. It gathers context, constrains tools and returns a fixed shape.",
+    "Where commands live: project vs personal vs plugin, and the recent merge of commands into skills.",
+    "Demo: building /release-notes with named arguments, ! git lines, an @ file reference and allowed-tools.",
+    "Demo: running it normally, with no argument and with a bad tag, and why a clean stop is a feature.",
+    "A personal /brief command, and the test for when it should move into the repo.",
+    "Lessons from production: staged chores with stop conditions, commands that hand off through files, review gates.",
+    "Pitfalls: silent frontmatter typos, zero-based arguments, failing ! lines, allowed-tools is not a sandbox.",
+    "Close: the same-day checklist, and how hooks and skills pick up where commands stop."
+  ],
+  "date": "2026-10-04",
+  "series": {
+    "name": "Agentic coding with Claude Code",
+    "part": 2,
+    "of": 10
+  }
+}
