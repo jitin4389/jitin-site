@@ -26,13 +26,13 @@ export const siteConfig = {
       enabled: true,
       desktopOnly: true,
     },
+    { label: "Work", href: "/work", enabled: true },
     { label: "CV", href: "/cv", enabled: true },
     { label: "Contact", href: "/#contact", enabled: true },
-    { label: "Work", href: "/work", enabled: false },
     { label: "Writing", href: "/writing", enabled: false },
   ] satisfies NavItem[],
   /** Indexable pages, for the sitemap. Section anchors are not pages. */
-  routes: ["/", "/cv"],
+  routes: ["/", "/cv", "/work"],
 };
 
 export function getEnabledNav(items: NavItem[] = siteConfig.nav): NavItem[] {

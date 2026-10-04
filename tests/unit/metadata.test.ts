@@ -3,6 +3,7 @@ import { describe, expect, it } from "vitest";
 import robots from "@/app/robots";
 import sitemap from "@/app/sitemap";
 import { siteConfig } from "@/config/site";
+import { caseStudies } from "@/content/case-studies";
 import { buildMetadata } from "@/lib/metadata";
 
 describe("buildMetadata", () => {
@@ -33,11 +34,11 @@ describe("buildMetadata", () => {
 describe("sitemap and robots", () => {
   it("lists the configured routes as absolute URLs, without section anchors", () => {
     const urls = sitemap().map((entry) => entry.url);
-    expect(urls).toEqual(
-      siteConfig.routes.map((route) =>
-        new URL(route, siteConfig.url).toString(),
-      ),
-    );
+    const expected = [
+      ...siteConfig.routes,
+      ...caseStudies.map((study) => `/work/${study.slug}`),
+    ].map((route) => new URL(route, siteConfig.url).toString());
+    expect(urls).toEqual(expected);
     expect(urls.some((url) => url.includes("#"))).toBe(false);
   });
 

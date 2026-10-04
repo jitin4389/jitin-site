@@ -28,7 +28,9 @@ test("sitemap lists only live routes", async ({ request }) => {
   expect(response.status()).toBe(200);
   const xml = await response.text();
   expect(xml).toContain("<loc>https://jitin-site.vercel.app/</loc>");
-  expect(xml).not.toContain("/work");
+  expect(xml).toContain("<loc>https://jitin-site.vercel.app/work</loc>");
+  expect(xml).not.toContain("/writing");
+  expect(xml).not.toContain("#");
 });
 
 test("robots.txt allows indexing and points to the sitemap", async ({

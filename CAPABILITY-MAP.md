@@ -5,14 +5,14 @@ Next.js + Tailwind + shadcn/ui on Vercel; Supabase only for dynamic data. Design
 
 Approved: 2026-10-03 (repo `~/projects/jitin-site`, personal name brand, `*.vercel.app` domain for now)
 
-| Module id    | Responsibility                                                                                                     | Depends on        | Spec                                        |
-| ------------ | ------------------------------------------------------------------------------------------------------------------ | ----------------- | ------------------------------------------- |
-| foundation   | App shell, layout, navigation, design system (Linear-style tokens, dark/light), SEO base, Vercel deploy, CI checks | —                 | [SPEC-foundation.md](SPEC-foundation.md) ✅ |
-| profile      | Hero, About, experience timeline, skills & certifications, CV PDF download                                         | foundation        | [SPEC-profile.md](SPEC-profile.md) ✅       |
-| leads        | Contact form → Supabase, honeypot + rate-limit spam protection                                                     | foundation        | [SPEC-leads.md](SPEC-leads.md) ✅           |
-| case-studies | Featured work pages (MDX), starting with one public-safe forecasting-platform write-up                             | foundation        | —                                           |
-| writing      | Blog (MDX), tags, RSS, newsletter signup                                                                           | foundation        | —                                           |
-| offerings    | Services / products pages with CTAs into leads                                                                     | foundation, leads | —                                           |
+| Module id    | Responsibility                                                                                                     | Depends on        | Spec                                         |
+| ------------ | ------------------------------------------------------------------------------------------------------------------ | ----------------- | -------------------------------------------- |
+| foundation   | App shell, layout, navigation, design system (Linear-style tokens, dark/light), SEO base, Vercel deploy, CI checks | —                 | [SPEC-foundation.md](SPEC-foundation.md) ✅  |
+| profile      | Hero, About, experience timeline, skills & certifications, CV PDF download                                         | foundation        | [SPEC-profile.md](SPEC-profile.md) ✅        |
+| leads        | Contact form → Supabase, honeypot + rate-limit spam protection                                                     | foundation        | [SPEC-leads.md](SPEC-leads.md) ✅            |
+| case-studies | Featured work pages (MDX), starting with one public-safe forecasting-platform write-up                             | foundation        | [SPEC-case-studies.md](SPEC-case-studies.md) |
+| writing      | Blog (MDX), tags, RSS, newsletter signup                                                                           | foundation        | —                                            |
+| offerings    | Services / products pages with CTAs into leads                                                                     | foundation, leads | —                                            |
 
 **Build order:** foundation → profile → leads → case-studies, writing (parallel) → offerings
 
