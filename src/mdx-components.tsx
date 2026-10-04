@@ -24,9 +24,13 @@ const components: MDXComponents = {
   p: (props) => (
     <p className="mt-4 leading-relaxed text-foreground/90" {...props} />
   ),
-  ul: (props) => (
+  ul: ({ className, ...props }) => (
     <ul
-      className="mt-4 list-disc space-y-2 pl-5 leading-relaxed marker:text-muted-foreground"
+      className={
+        className?.includes("contains-task-list")
+          ? "mt-4 list-none space-y-2 pl-0 leading-relaxed"
+          : "mt-4 list-disc space-y-2 pl-5 leading-relaxed marker:text-muted-foreground"
+      }
       {...props}
     />
   ),
@@ -68,6 +72,40 @@ const components: MDXComponents = {
       {...props}
     />
   ),
+  // Scrollable regions must be keyboard-focusable (tabIndex 0) for accessibility.
+  pre: (props) => (
+    <pre
+      tabIndex={0}
+      className="mt-6 overflow-x-auto rounded-xl border border-border bg-muted/50 p-4 font-mono text-sm leading-relaxed [&_code]:bg-transparent [&_code]:p-0 [&_code]:text-[0.95em]"
+      {...props}
+    />
+  ),
+  table: (props) => (
+    <div
+      tabIndex={0}
+      className="mt-6 overflow-x-auto rounded-xl border border-border"
+    >
+      <table className="w-full text-left text-sm" {...props} />
+    </div>
+  ),
+  th: (props) => (
+    <th
+      className="border-b border-border bg-muted/50 px-3 py-2 font-medium"
+      {...props}
+    />
+  ),
+  td: (props) => (
+    <td className="border-b border-border/60 px-3 py-2 align-top" {...props} />
+  ),
+  // GFM task lists ("- [ ]") render as decorative boxes: readers can't tick them on the page,
+  // and unlabelled disabled checkboxes fail accessibility checks.
+  input: ({ type, checked }) =>
+    type === "checkbox" ? (
+      <span
+        aria-hidden="true"
+        className={`mr-2 inline-block size-3.5 translate-y-0.5 rounded-[3px] border border-muted-foreground/60 ${checked ? "bg-primary" : ""}`}
+      />
+    ) : null,
   hr: () => <hr className="my-12 border-border" />,
 };
 

@@ -21,7 +21,11 @@ export function buildMetadata({
   return {
     title: title ?? { absolute: siteConfig.name },
     description: pageDescription,
-    alternates: { canonical: path },
+    // Page-level alternates replace the layout's, so the RSS link is repeated here.
+    alternates: {
+      canonical: path,
+      types: { "application/rss+xml": "/rss.xml" },
+    },
     openGraph: {
       type: "website",
       locale: "en_GB",

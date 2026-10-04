@@ -1,0 +1,54 @@
+{
+  "slug": "mcp-servers-governed-data-access",
+  "title": "MCP servers: giving agents governed access to data",
+  "description": "Treat MCP servers as where governance lives: read-only tools by construction, rules enforced in servers and hooks, and tool descriptions as contracts.",
+  "tags": ["claude-code", "mcp", "governance", "agentic-coding"],
+  "summary": "AI coding assistants can now connect to outside systems, such as a database, through small connector programs called MCP servers. That is useful, but the assistant can then do whatever the connection allows, including changing or deleting data. This article shows how to build a small connector that can only read, however it is asked, and how to add a check that stops the wrong helper agent from using sensitive data. The main idea: put the rules in the software itself, not in written instructions the assistant may not follow.",
+  "keyTerms": [
+    {
+      "term": "MCP (Model Context Protocol)",
+      "definition": "An open standard for connecting AI applications such as Claude Code to outside tools and data through small programs called MCP servers."
+    },
+    {
+      "term": "MCP tool",
+      "definition": "An action an MCP server offers, such as run_select. In Claude Code it is named mcp__<server>__<tool>, and that name is used in permission rules and hooks."
+    },
+    {
+      "term": "Read-only by construction",
+      "definition": "A tool designed so it cannot write even if called badly, for example through a read-only connection and a database authorizer, rather than by asking the agent to behave."
+    },
+    {
+      "term": "Tool description",
+      "definition": "The text and input schema that tell Claude what a tool does. Claude believes it, so it must be accurate and honest about limits."
+    },
+    {
+      "term": "PreToolUse hook",
+      "definition": "A script Claude Code runs before a tool call. Exiting with code 2, or returning a deny decision, blocks the call."
+    }
+  ],
+  "keyPoints": [
+    "An MCP server is where you decide what an agent may do with your data, so design it as a policy boundary, not a pipe.",
+    "Make dangerous actions impossible in the server; prompts and annotations do not enforce anything.",
+    "Let the database engine decide what a query touches; a 'starts with SELECT' check misses WITH ... DELETE.",
+    "Cap rows and report truncation, and enforce timeouts inside the server.",
+    "Use PreToolUse hooks with matchers ending in .* to restrict sensitive servers to one sub-agent.",
+    "Tool descriptions are contracts the agent believes; test them so they never promise more than the code does."
+  ],
+  "videoOutline": [
+    "Hook (Short): this query starts with WITH, passes a 'read-only' check, and deletes your table. Here is the one-line fix that stops it at the database.",
+    "What MCP is, and how Claude Code names MCP tools (mcp__server__tool).",
+    "The three layers: server, Claude Code configuration, hooks. Why prompts are not on the list.",
+    "Tool descriptions as contracts, and why tool search makes server names and instructions matter.",
+    "Live build: the read-only SQLite server with the Python SDK v2 (MCPServer, not FastMCP).",
+    "Register at project scope: the --env ordering trap, the -- separator and CLAUDE_PROJECT_DIR.",
+    "Try to break it: DELETE, WITH ... DELETE, two statements, internal tables, 500 rows.",
+    "Production lessons: one governed service, plan-checked SQL, optional tool families, session isolation, one-agent-only hooks, testing descriptions in CI.",
+    "Pitfalls recap and the same-day checklist."
+  ],
+  "date": "2026-10-04",
+  "series": {
+    "name": "Agentic coding with Claude Code",
+    "part": 4,
+    "of": 10
+  }
+}

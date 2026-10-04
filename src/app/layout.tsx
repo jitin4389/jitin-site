@@ -21,6 +21,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: { default: siteConfig.name, template: `%s · ${siteConfig.name}` },
   description: siteConfig.description,
+  alternates: { types: { "application/rss+xml": "/rss.xml" } },
 };
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
