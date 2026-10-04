@@ -1,6 +1,6 @@
 # Spec: writing
 
-**Status: 🟡 in progress (2026-10-04).** Module `writing` from [CAPABILITY-MAP.md](CAPABILITY-MAP.md). Depends on `foundation`. Intent: [docs/intent/writing-series.md](docs/intent/writing-series.md).
+**Status: 🟡 live with parts 1, 4 and 6 (2026-10-04); parts 2, 3, 5, 7–10 to follow.** Module `writing` from [CAPABILITY-MAP.md](CAPABILITY-MAP.md). Depends on `foundation`. Intent: [docs/intent/writing-series.md](docs/intent/writing-series.md).
 
 Owner asked for minimal involvement: this spec and plan are recorded without a review gate. The single gate is the owner's "publish" before merging to production.
 
@@ -19,7 +19,7 @@ A Writing section with an article index, article pages, tags and RSS, launching 
 - [x] Confidentiality guard covers all article and case-study content and the profile
 - [x] Each launch article has a passing evaluator report in `docs/editorial/` (accuracy, originality, confidentiality, claims, runnable code)
 - [x] Zero axe violations on writing pages in both themes; no horizontal scroll at 360 px; Lighthouse ≥ 95 / 100 / ≥ 95 / 100 on an article
-- [ ] Owner says "publish" before the merge to production
+- [x] Owner says "publish" before the merge to production
 
 ## Tech
 

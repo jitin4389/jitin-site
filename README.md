@@ -63,3 +63,15 @@ Automated: 63 unit tests (incl. confidentiality and claims guards), 110 e2e test
 1. Write `src/content/case-studies/<slug>.mdx` and add its entry to `src/content/case-studies/index.ts`.
 2. Keep the private, git-ignored `.confidential-terms` blocklist up to date; `npm test` fails on any match.
 3. New numbers must be approved in `profile_builder/drafts/00-facts.md` and added to the claims guard.
+
+## Quality (writing, 2026-10-04)
+
+Lighthouse, mobile, production, 3 runs per page: `/writing` 99 · 100 · 100 · 100 (LCP 2.0 s); `/writing/hooks-as-guardrails` 99 · 100 · 100 · 100 (LCP 2.1–2.2 s); CLS 0.
+
+Automated: 90 unit tests (incl. confidentiality guard over all content and `docs/`), 130 e2e tests locally (116 read-only against production).
+
+### Adding an article
+
+1. Run the editorial workflow (researcher → writer → editor → evaluator) or write `src/content/writing/<slug>.md` in plain Markdown (no JSX).
+2. Add its entry (summary, key terms, key points, video outline) to `src/content/writing/index.ts`; keep the editorial notes in `docs/editorial/`.
+3. `npm run check && npm run test:e2e`, then open a PR; merge only after the owner says "publish".
