@@ -1,0 +1,55 @@
+{
+  "slug": "sub-agents-delegation",
+  "title": "Sub-agents: delegation without losing the plot",
+  "description": "Sub-agents are about context isolation and clear contracts, not more AI. How to brief, restrict and check Claude Code sub-agents, with a working example.",
+  "tags": ["claude-code", "sub-agents", "delegation", "agentic-coding"],
+  "summary": "An AI coding assistant can hand a side task to a helper that works separately and reports back. The helper starts fresh, without your earlier conversation, so the main session stays focused. But the helper only knows what you tell it, and the main assistant may shorten its report before you see it. This article shows how to write a clear task for each helper, limit what it can do, insist on a fixed report format, and make sure the important parts reach you unchanged.",
+  "keyTerms": [
+    {
+      "term": "Sub-agent",
+      "definition": "A specialised assistant that Claude Code runs in its own context window, with its own instructions and tools, which returns one final message."
+    },
+    {
+      "term": "Orchestrator",
+      "definition": "The main agent that hands out work to sub-agents and stays responsible for the final answer."
+    },
+    {
+      "term": "Brief",
+      "definition": "The task message the orchestrator writes when it delegates. Apart from CLAUDE.md, it is the only context a sub-agent receives about the work."
+    },
+    {
+      "term": "Hand-back",
+      "definition": "The sub-agent's final message. The orchestrator sees only this, not the searches or steps behind it, and may summarise it."
+    },
+    {
+      "term": "SubagentStop hook",
+      "definition": "A script that runs when a sub-agent finishes. Exiting with code 2 sends the sub-agent back to work with the script's message as its next instruction."
+    }
+  ],
+  "keyPoints": [
+    "Delegate a task only when you could brief it by email and check it from its output.",
+    "A sub-agent sees its brief and CLAUDE.md, not your conversation, so put paths and decisions in the brief.",
+    "The orchestrator sees only the final message and may summarise it; ask for verbatim output or hand off through files.",
+    "Give each sub-agent the fewest tools and a fixed report shape, and enforce the shape with a SubagentStop hook.",
+    "Tools lists cannot restrict paths, and Agent allowlists are ignored inside sub-agent definitions; use hooks for access rules.",
+    "Keep the pipeline and failure handling in ordinary code; let the model do the work inside each step."
+  ],
+  "videoOutline": [
+    "Hook (Short): your sub-agent found exactly the right answer, and your main agent quietly threw it away. Here is why, and the one line that fixes it.",
+    "The problem: long sessions fill the context window with logs and searches, and 'more agents' is the wrong instinct.",
+    "The mental model: a contract with two edges, the brief going in and the hand-back coming out.",
+    "When to delegate: the 'could you brief it by email?' test, and when to keep work in the main conversation.",
+    "Demo part 1: the investigator, test-writer and reviewer files, and why each has different tools.",
+    "Demo part 2: a SubagentStop hook that sends a badly shaped report back once.",
+    "Demo part 3: the run, and how the report's shape survived only when the prompt asked for it verbatim.",
+    "Lessons from production: decide what survives the hand-back, hand off through files, one methodology per specialist, budgets, access hooks.",
+    "Pitfalls: vague descriptions, assumed context, silent frontmatter typos, tools that cannot restrict paths, outdated tutorials.",
+    "Close: the same-day checklist and the official docs to read next."
+  ],
+  "date": "2026-10-04",
+  "series": {
+    "name": "Agentic coding with Claude Code",
+    "part": 3,
+    "of": 10
+  }
+}

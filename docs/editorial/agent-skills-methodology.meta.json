@@ -1,0 +1,55 @@
+{
+  "slug": "agent-skills-methodology",
+  "title": "Agent Skills: methodology the agent carries with it",
+  "description": "Stop relying on the model's memory for your methods. How to design Claude Code skills with a sharp description, rules first and detail loaded on demand.",
+  "date": "2026-10-04",
+  "series": {
+    "name": "Agentic coding with Claude Code",
+    "part": 5,
+    "of": 10
+  },
+  "tags": ["claude-code", "agent-skills", "methodology", "agentic-coding"],
+  "summary": "Teams have ways of doing things that usually live in people's heads. A skill writes one of those methods down as a small folder that your AI coding assistant opens only when a task needs it. A short description tells the assistant when to use it. The first page lists the rules it must never break. The rest, such as reference notes and small checking scripts, is read only when a question calls for it. The result: the assistant follows your method instead of making it up as it goes.",
+  "keyTerms": [
+    {
+      "term": "Skill",
+      "definition": "A folder with a SKILL.md file of instructions, plus optional reference files and scripts, that Claude loads when a task needs it or when you type /skill-name."
+    },
+    {
+      "term": "Description",
+      "definition": "The short frontmatter text Claude always sees and matches your request against. It decides whether the skill is used at all."
+    },
+    {
+      "term": "Progressive disclosure",
+      "definition": "Loading information in stages: names and descriptions always, the SKILL.md body when the skill is used, reference files and script output only when a step needs them."
+    },
+    {
+      "term": "Routing table",
+      "definition": "A table in SKILL.md that sends each kind of question or finding to the one reference file that answers it."
+    },
+    {
+      "term": "allowed-tools",
+      "definition": "A frontmatter field that pre-approves listed tools for the turn that invokes the skill. It does not restrict other tools."
+    }
+  ],
+  "keyPoints": [
+    "A skill moves your methodology out of the model's memory and into a folder it loads on demand.",
+    "The description is the trigger: third person, what and when, in the words people type.",
+    "Put non-negotiable rules first; after compaction only the start of a skill is kept.",
+    "Route each case to one reference file, one level deep, so the agent reads only what it needs.",
+    "Put deterministic checks in scripts; only their output costs context.",
+    "Treat skills as software: version them, review them and gate releases on evidence."
+  ],
+  "videoOutline": [
+    "Hook (Short): your agent had your method in its context and still did the maths in its head. Here is how a skill fixes that.",
+    "The problem: methodology pasted into chat and CLAUDE.md grows, costs context every session, and still gets improvised.",
+    "The idea: a skill is a folder with SKILL.md, personal or project, and how it relates to slash commands.",
+    "Progressive disclosure: description always, instructions on use, references and script output on demand.",
+    "The field-manual model: a sharp cover, rules on page one, an index to the rest, and why rules go first.",
+    "Demo part 1: building the database-migration-review skill and testing the scanner on its own.",
+    "Demo part 2: invoking it with /database-migration-review and by plain question, and what happens with permissions.",
+    "Lessons from production: one domain per folder, parameter files with reasons, run only what the question needs, release gates.",
+    "Pitfalls: vague descriptions, silent frontmatter typos, buried rules, side effects, allowed-tools is not a fence.",
+    "Close: the same-day checklist and the official docs to read next."
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "slug": "claude-code-in-ci",
+  "title": "Claude Code in CI: GitHub Actions and automated changes you can trust",
+  "description": "Putting an agent in CI puts it in your release path. Narrow permissions, a fixed output shape, a budget and a human approval gate for Claude Code.",
+  "tags": ["claude-code", "ci", "github-actions", "agentic-coding"],
+  "summary": "You can set up an AI coding assistant to run on its own: every time someone opens a pull request, or every night. That saves time, but anything that runs there can affect what you ship. This article shows five safety habits: let the assistant read code but not change it, make it answer in a fixed format, limit how long and how much it can run, let a plain script do any writing, and have a person approve before anything is posted. It includes two GitHub workflows you can adapt.",
+  "keyTerms": [
+    {
+      "term": "CI (continuous integration)",
+      "definition": "Automated jobs that run on every push or pull request, such as builds and tests, before changes are merged and shipped."
+    },
+    {
+      "term": "Headless mode (claude -p)",
+      "definition": "Running Claude Code non-interactively from a script: it takes a prompt, does the work, prints a result and exits."
+    },
+    {
+      "term": "Structured output",
+      "definition": "An answer returned as JSON that matches a schema you supply with --json-schema, so later steps read data instead of prose."
+    },
+    {
+      "term": "Required reviewers",
+      "definition": "A GitHub environment setting that pauses a job until a named person approves it."
+    },
+    {
+      "term": "Bare mode (--bare)",
+      "definition": "A headless option that skips the repository's hooks, MCP servers, skills and CLAUDE.md, so code you did not write cannot run in your job."
+    }
+  ],
+  "keyPoints": [
+    "An agent in CI is in your release path; treat its output like any untrusted contribution.",
+    "Trust comes from the pipeline's shape, not the prompt: read-only, schema, budget, deterministic writes, human gate.",
+    "--allowedTools auto-approves tools; pair it with --disallowedTools or dontAsk to actually restrict them.",
+    "A denied action does not fail a headless run; check permission_denials if it matters.",
+    "Use --bare when claude -p runs on code you did not write, and never give pull_request_target secrets to untrusted checkouts.",
+    "Green is not working: keep failing builds red and make silent failures loud."
+  ],
+  "videoOutline": [
+    "Hook (Short): I gave an AI reviewer write access, a secret and no turn limit. Nothing went wrong, but nothing would have stopped it. Here are the five controls I use now.",
+    "Why an agent in CI is an agent in your release path, and the contractor mental model.",
+    "Three ways to run Claude Code in automation: the GitHub Action, headless claude -p and the Agent SDK.",
+    "The five controls: read-only, fixed output shape, budget, deterministic writes, human gate.",
+    "Walkthrough: the checklist review workflow, from permissions {} to the JSON schema.",
+    "The approval gate: a GitHub environment with required reviewers in front of the only write.",
+    "Walkthrough: the nightly failing-test summary with --bare, dontAsk and spending caps.",
+    "Production lessons: least privilege, green is not working, descriptions are code, watch the watcher.",
+    "Pitfalls: allowedTools does not restrict, denials do not fail runs, pull_request_target secrets.",
+    "Same-day checklist and where to read more."
+  ],
+  "date": "2026-10-04",
+  "series": {
+    "name": "Agentic coding with Claude Code",
+    "part": 7,
+    "of": 10
+  }
+}

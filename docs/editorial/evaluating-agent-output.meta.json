@@ -1,0 +1,55 @@
+{
+  "slug": "evaluating-agent-output",
+  "title": "Evaluating agent output: from vibes to evidence",
+  "description": "If you can't measure an agent, you can't change it safely. Build a small Claude Code eval suite: code checks first, a judge only where needed.",
+  "tags": ["claude-code", "evals", "testing", "agentic-coding"],
+  "summary": "Most people decide whether their AI coding assistant is working by gut feeling. That stops working when several people change its instructions or a new model arrives. A better way is a small set of repeatable tests, called evals, built from real mistakes the assistant has made. Simple automatic checks come first: did the project's tests pass, and did it leave protected files alone? Only then is a second AI model asked one yes-or-no question about the few things code cannot check. When a test fails, you work out which part caused it, such as the instructions or a tool, before you change anything.",
+  "keyTerms": [
+    {
+      "term": "Eval",
+      "definition": "A repeatable test of an agent's behaviour: a realistic prompt, a known starting state and checks on what came out."
+    },
+    {
+      "term": "Deterministic check",
+      "definition": "A check written in code that gives the same answer every time, such as running the tests, comparing file hashes or matching a pattern."
+    },
+    {
+      "term": "LLM judge",
+      "definition": "A second model asked one short PASS/FAIL question about an answer, used only where a code check cannot decide."
+    },
+    {
+      "term": "Headless mode",
+      "definition": "Running Claude Code without the interactive interface, with claude -p, so a script can drive it and read the result."
+    },
+    {
+      "term": "Bare mode",
+      "definition": "The --bare flag, which stops a headless run loading local hooks, CLAUDE.md, plugins and MCP servers, so results are the same on every machine."
+    }
+  ],
+  "keyPoints": [
+    "If you cannot measure an agent, you cannot change its prompts, skills or model safely.",
+    "Build eval cases from real failures, with fabrication and false-premise cases first.",
+    "Check the run, the behaviour and the result in code before asking a judge anything.",
+    "Check outcomes, not one exact path; agents reach correct answers by different routes.",
+    "Pin the model, use --bare in CI and run each case several times before trusting it.",
+    "Attribute each failure to a component, and report judge failures rather than auto-retrying."
+  ],
+  "videoOutline": [
+    "Hook (Short): you changed one line in CLAUDE.md. Is your agent better or worse? If you cannot answer in a minute, this is for you.",
+    "The problem: judging agents by feel, and why it breaks with shared instructions and new models.",
+    "The mental model: an eval is a smoke alarm built from past incidents, not an exam. Grading order: code, then judge, then humans.",
+    "The three layers every case checks: the run, the behaviour (tools and files) and the result.",
+    "Demo part 1: the invoice fixture and three cases, including the false-premise case.",
+    "Demo part 2: the runner, stream-json for tool calls, file hashes and a typed verdict from a cheap judge.",
+    "The first-run failure: grading the path instead of the outcome, and the fix.",
+    "Running it in CI with bare mode and a pinned model, and when to run it again.",
+    "Lessons from production: replay real sessions, attribute failures to a component, report rather than retry.",
+    "Pitfalls and the same-day checklist."
+  ],
+  "date": "2026-10-04",
+  "series": {
+    "name": "Agentic coding with Claude Code",
+    "part": 8,
+    "of": 10
+  }
+}
