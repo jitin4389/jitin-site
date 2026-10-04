@@ -133,6 +133,11 @@ export const meta = {
 2. **Backtesting notes:** a few lines on what made the framework work (data frequency, instruments, tools, how costs/slippage were modelled, how strategies moved to live). Rough is fine; I'll shape it.
 3. **Agentic platform:** OK for me to read your STDF / agent repos on this Mac to get the architecture right? I'll only describe patterns in generic terms; nothing is copied.
 
+## Approvals (2026-10-04)
+
+- Spec approved.
+- Permission granted to read the STDF / agent repos on this Mac for the platform case study (patterns described generically; nothing copied).
+
 ## Open Questions
 
 1. **Vercel team name:** your preview URLs include `stellar-works`. If that resembles an internal product name, rename the team slug (Vercel → Team Settings → General) before more previews are shared. Production uses `jitin-site.vercel.app`, so it's unaffected.

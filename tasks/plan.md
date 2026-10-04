@@ -1,73 +1,64 @@
-# Implementation Plan: leads
+# Implementation Plan: case-studies
 
-Spec: [SPEC-leads.md](../SPEC-leads.md) · Module map: [CAPABILITY-MAP.md](../CAPABILITY-MAP.md)
-Tasks tracked in [tasks/todo.md](todo.md). Previous modules: [foundation](foundation-plan.md), [profile](profile-plan.md) (complete).
+Spec: [SPEC-case-studies.md](../SPEC-case-studies.md) · Module map: [CAPABILITY-MAP.md](../CAPABILITY-MAP.md)
+Tasks tracked in [tasks/todo.md](todo.md). Previous modules: [foundation](foundation-plan.md), [profile](profile-plan.md), [leads](leads-plan.md) (complete).
 
 ## Overview
 
-Add a contact form to the Contact section. Submissions go through a Next.js Server Action that rejects spam (honeypot), validates, rate-limits per hashed IP, and inserts into a locked-down Supabase table. You read messages in the Supabase dashboard.
+Add a Work section: `/work` index and `/work/[slug]` pages rendered from MDX, two anonymised case studies with SVG diagrams, and automated guards for confidentiality and claims. Text is drafted by me and approved by you before merge.
 
 ## Architecture Decisions
 
-- **Logic before UI, and before Supabase.** Validation, rate limiting and the action are built and unit-tested against an in-memory store first. The Supabase account is only needed from L5, so your setup can run in parallel with L1–L4.
-- **One `ContactStore` interface, two implementations.** In-memory (tests, e2e, local dev without secrets) and Supabase (preview and production). `CONTACT_STORE=memory` selects the in-memory store; e2e always sets it.
-- **Server Action with `useActionState`.** The form is a real `<form action>`, so it works without JavaScript; with JavaScript it shows inline errors without a page reload.
-- **Secret key on the server only.** `src/lib/contact/supabase-store.ts` imports `server-only`, so a client import fails the build.
-- **Spam handling stays quiet.** A filled honeypot returns the same success response as a real message, so bots learn nothing.
+- **Infrastructure and guards before words.** The MDX pipeline, routes and both guards land first, so every draft is checked from the moment it exists.
+- **Official `@next/mdx`, metadata via `export const meta`.** No frontmatter plugin; a typed registry (`index.ts`) lists slugs in display order and lazy-imports each MDX file.
+- **Static only.** `generateStaticParams` + `dynamicParams = false`: unknown slugs 404, no runtime work, Lighthouse-friendly.
+- **Blocklist stays private.** `.confidential-terms` is git-ignored; the guard fails locally if it's missing and skips only in CI, so the sensitive names never enter the public repo.
+- **The Work nav stays off until text is approved.** Pages can exist on the branch and preview without being linked from the site.
 
 ## Dependency Graph
 
 ```
-L1 Validation ──┐
-L2 Store + rate limit + IP hash ──┴──► L3 Server action ──► L4 Form UI + nav
-                                                              │
-   (you) Supabase account + SQL ──► L5 Supabase store + env ──┴──► L6 Preview integration check
-                                                                        │
-                                                                   Checkpoint
-                                                                        │
-                                                                   L7 Merge + Lighthouse
+C1 MDX pipeline + routes ──► C2 Guards ──► C4 Draft: agentic platform ──┐
+          │                                                              ├──► C6 Enable Work nav + e2e ──► Checkpoint ──► C7 Ship
+          └────────────────► C3 Diagrams ──► C5 Draft: backtesting ──────┘
+                                              (needs your notes)
 ```
 
 ## Task List
 
-### Phase 1: Logic (no network)
+### Phase 1: Infrastructure
 
-- [x] L1: Validation module + tests
-- [x] L2: Store interface, in-memory store, rate limiter, IP hashing + tests
-- [x] L3: Server action (honeypot → validate → rate limit → insert → errors) + tests
+- [ ] C1: MDX pipeline, registry, `/work` and `/work/[slug]` routes, MDX typography
+- [ ] C2: Confidentiality guard, claims guard, registry test
+- [ ] C3: Diagram components (figure wrapper, agent workflow, backtest pipeline)
 
-### Phase 2: UI
+### Phase 2: Content (your review gates)
 
-- [x] L4: Contact form UI, Contact nav item, e2e against the in-memory store
+- [ ] C4: Draft case study 1, Agentic research platform → **you edit / approve**
+- [ ] C5: Draft case study 2, Backtesting framework (from your notes) → **you edit / approve**
 
-### Checkpoint A: logic and UI done
+### Phase 3: Wire up
 
-- [x] All tests green; axe clean with errors shown, both themes
+- [ ] C6: Enable Work nav, ⌘K and sitemap; e2e + axe; screenshots
 
-### Phase 3: Supabase (needs your setup)
+### Checkpoint: your review on the preview
 
-- [x] L5: Migration file, Supabase store, Vercel env vars
-- [x] L6: Real submission on preview verified in Supabase, anon access denied, test row deleted
-
-### Checkpoint B: your review
-
-- [x] **You submit the form on the preview and see it in your Supabase dashboard**
+- [ ] **Both case studies approved as they appear on the preview, both themes, phone + desktop**
 
 ### Phase 4: Ship
 
-- [x] L7: Merge to production; Lighthouse; mark module complete
+- [ ] C7: Merge; Lighthouse on a case-study page; mark module complete
 
 ## Risks and Mitigations
 
-| Risk                                      | Impact | Mitigation                                                                                                       |
-| ----------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------- |
-| Secret key leaks to the browser           | High   | `server-only` import guard; no `NEXT_PUBLIC_` vars; build-output grep for `sb_secret` in L5                      |
-| Table readable by the public              | High   | RLS on with no policies; L6 tests an anon read is denied                                                         |
-| Missed messages (no email alert)          | Medium | Your choice; noted. Easy to add an email service later as its own task                                           |
-| Rate-limit IP spoofing via headers        | Low    | Use Vercel's `x-forwarded-for` first hop; limit is a spam brake, not security                                    |
-| Test data mixing with real messages       | Low    | `source` column (`preview` / `production` / `development`); e2e never touches Supabase                           |
-| Free-tier project pauses after inactivity | Medium | Supabase pauses free projects after ~1 week idle; form shows the email fallback on errors. Revisit if it happens |
+| Risk                                                 | Impact | Mitigation                                                                                                                   |
+| ---------------------------------------------------- | ------ | ---------------------------------------------------------------------------------------------------------------------------- |
+| A confidential name or detail slips into public text | High   | Private blocklist guard; methodology-only rule; your approval gate; research summaries flag sensitive terms to avoid         |
+| Claims beyond the approved facts (numbers, outcomes) | High   | Claims guard limits CLOUDSUFI numbers to 12+ / 15+ / ~$1B; backtesting blocks returns language; "ask first" for anything new |
+| Backtesting draft stalls without your notes          | Medium | C5 is independent; C4 and C6 proceed; the Work index can launch with one case study if you prefer                            |
+| MDX setup friction with Next 16 / Turbopack          | Medium | Follow the bundled Next 16 MDX guide; C1 proves it with a stub page before content                                           |
+| Diagrams unreadable on phones or in dark mode        | Low    | Responsive SVG with `viewBox`; `currentColor`/tokens; screenshot check at 360 px in both themes                              |
 
 ## Open Questions
 
-None blocking.
+- Your `.confidential-terms` file and backtesting notes (requested in the spec).

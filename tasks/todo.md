@@ -1,132 +1,125 @@
-# Tasks: leads
+# Tasks: case-studies
 
-Plan: [plan.md](plan.md) · Spec: [SPEC-leads.md](../SPEC-leads.md)
+Plan: [plan.md](plan.md) · Spec: [SPEC-case-studies.md](../SPEC-case-studies.md)
 Definition of done for every task: `npm run check` green with no warnings, `npm run test:e2e` green, committed on a branch.
 
 ---
 
-## Phase 1: Logic
+## Phase 1: Infrastructure
 
-### L1: Validation ✅ done
+### C1: MDX pipeline and routes
 
-**Description:** `validateContact(formData)` trims inputs and returns either clean data or per-field errors.
-
-**Acceptance criteria:**
-
-- [x] Name 1–100 chars; email valid format and ≤ 254; topic in the fixed list; message 10–4,000 chars
-- [x] Returns all field errors at once, with human-readable messages
-- [x] Unit tests cover each boundary (e.g. 100 vs 101 chars, 9 vs 10)
-
-**Verification:** `npm test`
-**Dependencies:** None
-**Files:** `src/lib/contact/validate.ts`, `tests/unit/contact-validate.test.ts`
-**Scope:** S
-
-### L2: Store, rate limit, IP hashing ✅ done
-
-**Description:** `ContactStore` interface; in-memory implementation; `getContactStore()` selector; `hashIp(ip, salt)`; `isRateLimited(store, ipHash, now)` (more than 5 in the last hour).
+**Description:** Install `@next/mdx`, `@mdx-js/loader`, `@mdx-js/react`, `@types/mdx`; configure `next.config.ts`; add `src/mdx-components.tsx` mapping headings, paragraphs, lists, links and code to site styles; registry `src/content/case-studies/index.ts`; `/work` index and `/work/[slug]` (static params, `dynamicParams = false`, per-page metadata). Prove it with a stub MDX file.
 
 **Acceptance criteria:**
 
-- [x] 5 submissions in an hour pass; the 6th is limited; one older than an hour doesn't count
-- [x] `hashIp` is deterministic per salt and never contains the raw IP
-- [x] `CONTACT_STORE=memory` selects the in-memory store
+- [ ] `/work` lists registry entries; `/work/<slug>` renders the MDX with site typography in both themes
+- [ ] Unknown slug returns 404; each page has its own title, description and canonical URL
+- [ ] Build output marks the routes as static
 
-**Verification:** `npm test`
+**Verification:** `npm run check`; `tests/e2e/work.spec.ts` (index, page, 404)
 **Dependencies:** None
-**Files:** `src/lib/contact/store.ts`, `src/lib/contact/rate-limit.ts`, `tests/unit/contact-store.test.ts`
+**Files:** `next.config.ts`, `package.json`, `src/mdx-components.tsx`, `src/content/case-studies/index.ts`, `src/app/work/page.tsx`, `src/app/work/[slug]/page.tsx`, `src/components/case-study/header.tsx`
 **Scope:** M
 
-### L3: Server action ✅ done
+### C2: Guards
 
-**Description:** `submitContact(prevState, formData)`: honeypot → validate → rate limit → insert with `source` from `VERCEL_ENV`. Returns `{ status: "success" | "invalid" | "limited" | "error", fieldErrors? }`. Logs errors server-side without personal data.
+**Description:** Unit tests that read every case-study MDX file: (1) confidentiality guard against `.confidential-terms` (git-ignored; fails locally if missing, skipped in CI); (2) claims guard (backtesting: no returns/alpha/Sharpe/profit/outperform; CLOUDSUFI: only approved numbers); (3) registry integrity.
 
 **Acceptance criteria:**
 
-- [x] Filled honeypot → "success", nothing stored
-- [x] Invalid → field errors, nothing stored; limited → "limited", nothing stored
-- [x] Store failure → "error" (no crash); success stores exactly the five fields plus `ip_hash` and `source`
+- [ ] Planting a blocklisted term or a forbidden claim in an MDX file makes `npm test` fail
+- [ ] Missing `.confidential-terms` fails locally with a clear instruction
+- [ ] Every registry slug has an MDX file and complete `meta`
 
-**Verification:** `npm test` (`tests/unit/contact-action.test.ts` with the in-memory store)
-**Dependencies:** L1, L2
-**Files:** `src/app/actions/contact.ts`, `tests/unit/contact-action.test.ts`
+**Verification:** `npm test` plus a deliberate plant-and-revert check
+**Dependencies:** C1
+**Files:** `tests/unit/case-study-guard.test.ts`, `tests/unit/case-study-registry.test.ts`
+**Scope:** S
+
+### C3: Diagrams
+
+**Description:** `Figure` wrapper (caption + accessible description) and two SVG components: agent workflow (question → plan → retrieve context → call models/tools → verify → synthesize, with a provenance lane) and backtest pipeline (data → signals → costs/slippage → sizing → evaluation → execution).
+
+**Acceptance criteria:**
+
+- [ ] `role="img"` with `<title>`/`<desc>`; caption visible
+- [ ] Legible at 360 px and in both themes (tokens / `currentColor`)
+- [ ] No horizontal scroll introduced
+
+**Verification:** `npm run check`; e2e accessible-name check; screenshots at 360 / 1280 in both themes
+**Dependencies:** C1
+**Files:** `src/components/diagrams/figure.tsx`, `agent-workflow.tsx`, `backtest-pipeline.tsx`
 **Scope:** M
 
 ---
 
-## Phase 2: UI
+## Phase 2: Content
 
-### L4: Contact form ✅ done
+### C4: Case study 1, Agentic research platform ⚠️ your review
 
-**Description:** Client form using `useActionState`: name, email, topic select, message, hidden honeypot, privacy note, submit button with pending state. Success replaces the form with a thank-you message. Errors are shown per field and announced. Enable the "Contact" nav item (`/#contact`). Playwright web server runs with `CONTACT_STORE=memory`.
+**Description:** Draft from the facts file, the live profile content and generic architecture patterns from your repos. Eight sections per the spec, with the agent-workflow diagram.
 
 **Acceptance criteria:**
 
-- [x] Valid submit → success message; empty submit → errors announced, focus moves to the first invalid field
-- [x] Submitting with JavaScript disabled still works
-- [x] Axe clean with errors visible, in both themes; no horizontal scroll at 360 px
+- [ ] Guards pass; only approved numbers; no client/fund/expert/codenames
+- [ ] **You approve the text** (edits applied)
 
-**Verification:** `npm run check`; `tests/e2e/contact.spec.ts`
-**Dependencies:** L3
-**Files:** `src/components/profile/contact-form.tsx`, `src/components/profile/contact.tsx`, `src/config/site.ts`, `playwright.config.ts`, `tests/e2e/contact.spec.ts`
-**Scope:** M
+**Verification:** `npm test`; your review of the draft and preview
+**Dependencies:** C2, C3
+**Files:** `src/content/case-studies/agentic-research-platform.mdx`, registry
+**Scope:** S
 
-### ✅ Checkpoint A
+### C5: Case study 2, Backtesting framework ⚠️ needs your notes + review
 
-- [x] All tests green; axe clean with errors shown, both themes
+**Description:** Draft from your notes and the approved Share India bullets. No performance claims.
+
+**Acceptance criteria:**
+
+- [ ] Guards pass (no returns language)
+- [ ] **You approve the text**
+
+**Verification:** `npm test`; your review
+**Dependencies:** C2, C3, your notes
+**Files:** `src/content/case-studies/backtesting-framework.mdx`, registry
+**Scope:** S
 
 ---
 
-## Phase 3: Supabase
+## Phase 3: Wire up
 
-### L5: Supabase store and environment ✅ done
+### C6: Work nav, sitemap, end-to-end checks
 
-**Description:** Add `@supabase/supabase-js`; `supabase-store.ts` (guarded by `server-only`); migration file; you run the SQL and add env vars in Vercel (Production + Preview).
-
-**Acceptance criteria:**
-
-- [x] Migration applied: table, enum, index, RLS on, no policies
-- [x] Env vars set in Vercel; none are `NEXT_PUBLIC_`
-- [x] Build output contains no `sb_secret` string
-
-**Verification:** `npm run check`; `grep -r sb_secret .next/static` returns nothing
-**Dependencies:** L3, your Supabase project
-**Files:** `supabase/migrations/0001_contact_messages.sql`, `src/lib/contact/supabase-store.ts`, `src/lib/contact/store.ts`, `package.json`, `.env.example`
-**Scope:** M
-
-### L6: Preview integration check ✅ done
-
-**Description:** On the PR preview, submit one real message; confirm it appears in Supabase with `source = preview`; confirm the anon key cannot read the table; delete the test row.
+**Description:** Enable "Work" in nav and ⌘K, add `/work` and case-study routes to the sitemap, remove the stub, complete e2e (eight section headings, diagram names, axe both themes, 360 px).
 
 **Acceptance criteria:**
 
-- [x] Row visible in the dashboard with correct fields and hashed IP
-- [x] Anon REST read returns no rows or a permission error
-- [x] Test row deleted
+- [ ] Nav "Work" → `/work`; sitemap lists `/work` and both case studies
+- [ ] All e2e and axe checks pass; screenshots reviewed
 
-**Verification:** Supabase dashboard; `curl` with the anon key
-**Dependencies:** L4, L5
-**Files:** none
+**Verification:** `npm run check && npm run test:e2e`
+**Dependencies:** C4, C5
+**Files:** `src/config/site.ts`, `src/app/sitemap.ts`, `tests/e2e/work.spec.ts`, `tests/unit/metadata.test.ts`
 **Scope:** S
 
-### ✅ Checkpoint B
+### ✅ Checkpoint
 
-- [x] **You submit on the preview and see the message in your dashboard**
+- [ ] **You approve both case studies on the preview**
 
 ---
 
 ## Phase 4: Ship
 
-### L7: Production ✅ done
+### C7: Production ⚠️ needs your go-ahead to merge
 
-**Description:** Merge; verify the form renders in production (no test submission unless you want one); Lighthouse; record results; mark module complete.
+**Description:** Merge; read-only e2e and Lighthouse (mobile, 3 runs) on a case-study page; record results; mark module complete.
 
 **Acceptance criteria:**
 
-- [x] Lighthouse on `/` still ≥ 95 / 100 / ≥ 95 / 100
-- [x] All SPEC-leads acceptance criteria checked
+- [ ] Lighthouse ≥ 95 / 100 / ≥ 95 / 100
+- [ ] All SPEC-case-studies acceptance criteria checked
 
-**Verification:** `PLAYWRIGHT_BASE_URL=https://jitin-site.vercel.app` read-only e2e subset; Lighthouse
-**Dependencies:** L6
-**Files:** `README.md`, `SPEC-leads.md`, `CAPABILITY-MAP.md`, tasks files
+**Verification:** `PLAYWRIGHT_BASE_URL=https://jitin-site.vercel.app npm run test:e2e`; Lighthouse
+**Dependencies:** Checkpoint
+**Files:** `README.md`, `SPEC-case-studies.md`, `CAPABILITY-MAP.md`, tasks files
 **Scope:** S
