@@ -5,10 +5,10 @@ Previous: [case-studies](case-studies-plan.md) (live with case study 1; case stu
 
 ## Tasks
 
-- [ ] W1: Writing infrastructure: `.md` + remark-gfm, registry, `/writing`, `/writing/[slug]`, tags, RSS, nav; tests
-- [ ] W2: Extend confidentiality guard to all content (writing, case studies, profile)
-- [ ] W3: Editorial workflow: researcher → writer → editor → evaluator for parts 1, 4, 6 (one revision loop)
-- [ ] W4: Integrate articles, evaluator reports in `docs/editorial/`, checks, preview
+- [x] W1: Writing infrastructure: `.md` + remark-gfm, registry, `/writing`, `/writing/[slug]`, tags, RSS, nav; tests
+- [x] W2: Extend confidentiality guard to all content (writing, case studies, profile)
+- [x] W3: Editorial workflow: researcher → writer → editor → evaluator for parts 1, 4, 6 (one revision loop)
+- [x] W4: Integrate articles, evaluator reports in `docs/editorial/`, checks, preview
 - [ ] Gate: owner says "publish"
 - [ ] W5: Merge, Lighthouse, record results
 

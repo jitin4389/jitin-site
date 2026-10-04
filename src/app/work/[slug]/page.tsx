@@ -42,7 +42,7 @@ export default async function CaseStudyPage({ params }: Props) {
       </Link>
       <article className="mt-8">
         <CaseStudyHeader study={study} />
-        <div className="mt-12">
+        <div className="mt-12 [overflow-wrap:anywhere]">
           <Content />
         </div>
       </article>

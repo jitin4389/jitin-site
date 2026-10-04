@@ -1,0 +1,54 @@
+{
+  "slug": "context-engineering-claude-md",
+  "title": "Context engineering: CLAUDE.md, docs and the context window",
+  "description": "Design what your coding agent always knows, loads on demand and never sees. A practical guide to CLAUDE.md, imports, rules and compaction in Claude Code.",
+  "tags": ["claude-code", "context-engineering", "claude-md", "agentic-coding"],
+  "summary": "An AI coding assistant starts every session with no memory of your project. It only knows what you give it. Most of its mistakes come from instructions that are missing, out of date or lost among too much text, not from a weak model. This article shows how to write a short project notes file that the assistant reads every time, how to keep extra detail out of the way until it is needed, and how to check that the assistant actually picked up what you wrote.",
+  "keyTerms": [
+    {
+      "term": "Context window",
+      "definition": "The model's working memory for a session: everything it can see at once, including your messages, files it has read and your project instructions."
+    },
+    {
+      "term": "CLAUDE.md",
+      "definition": "A Markdown file of project instructions that Claude Code loads at the start of every session. It guides behaviour but does not enforce it."
+    },
+    {
+      "term": "Import (@path)",
+      "definition": "A line in CLAUDE.md such as @docs/architecture.md that pulls another file into context at launch. It organises content but does not save space."
+    },
+    {
+      "term": "Path-scoped rule",
+      "definition": "A file in .claude/rules/ with a paths list that loads only when Claude reads or edits a matching file."
+    },
+    {
+      "term": "Compaction",
+      "definition": "Claude Code summarising a long conversation to free space. Project-root CLAUDE.md is re-read afterwards; instructions given only in chat may be lost."
+    }
+  ],
+  "keyPoints": [
+    "Agents fail more often from missing or stale context than from weak models.",
+    "Sort context into three buckets: always know, load when needed, keep out.",
+    "CLAUDE.md is advice, not enforcement; use hooks or permissions for hard rules.",
+    "Imports keep files tidy but still cost context; path-scoped rules and skills load on demand.",
+    "Write down an instruction hierarchy, because Claude Code stacks files without ranking them.",
+    "Confirm what loaded with /context and audit for drift with /doctor prompt-audit."
+  ],
+  "videoOutline": [
+    "Hook (Short): the agent ran the wrong test command and wrote confident time-zone bugs. The model was fine; its context was not. One file fixes most of it.",
+    "What the context window is, and why every session starts empty.",
+    "The three buckets: always know, load when needed, keep out.",
+    "How Claude Code stacks CLAUDE.md files and why conflicts get resolved arbitrarily.",
+    "Live demo: build the reminders-service CLAUDE.md with two imports and confirm with /context.",
+    "The backtick trap and why imports do not save context.",
+    "Step two: move testing rules into a path-scoped rule and explain the compaction trade-off.",
+    "Production lessons: written hierarchy, stable cached prefix, reading orders for sub-agents, handover.",
+    "Pitfalls recap and the same-day checklist."
+  ],
+  "date": "2026-10-04",
+  "series": {
+    "name": "Agentic coding with Claude Code",
+    "part": 1,
+    "of": 10
+  }
+}

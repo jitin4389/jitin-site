@@ -24,9 +24,13 @@ const components: MDXComponents = {
   p: (props) => (
     <p className="mt-4 leading-relaxed text-foreground/90" {...props} />
   ),
-  ul: (props) => (
+  ul: ({ className, ...props }) => (
     <ul
-      className="mt-4 list-disc space-y-2 pl-5 leading-relaxed marker:text-muted-foreground"
+      className={
+        className?.includes("contains-task-list")
+          ? "mt-4 list-none space-y-2 pl-0 leading-relaxed"
+          : "mt-4 list-disc space-y-2 pl-5 leading-relaxed marker:text-muted-foreground"
+      }
       {...props}
     />
   ),
@@ -93,6 +97,15 @@ const components: MDXComponents = {
   td: (props) => (
     <td className="border-b border-border/60 px-3 py-2 align-top" {...props} />
   ),
+  // GFM task lists ("- [ ]") render as decorative boxes: readers can't tick them on the page,
+  // and unlabelled disabled checkboxes fail accessibility checks.
+  input: ({ type, checked }) =>
+    type === "checkbox" ? (
+      <span
+        aria-hidden="true"
+        className={`mr-2 inline-block size-3.5 translate-y-0.5 rounded-[3px] border border-muted-foreground/60 ${checked ? "bg-primary" : ""}`}
+      />
+    ) : null,
   hr: () => <hr className="my-12 border-border" />,
 };
 

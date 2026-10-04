@@ -4,14 +4,14 @@ import path from "node:path";
 import { describe, expect, it } from "vitest";
 
 const BLOCKLIST = ".confidential-terms";
-const CONTENT_DIR = "src/content";
+const CONTENT_DIRS = ["src/content", "docs"];
 
-/** Every public content file: articles, case studies, profile and their registries. */
-function contentFiles(dir = CONTENT_DIR): string[] {
+/** Every public content file: articles, case studies, profile, registries and editorial notes. */
+function contentFiles(dir: string): string[] {
   return readdirSync(dir, { withFileTypes: true }).flatMap((entry) => {
     const full = path.join(dir, entry.name);
     if (entry.isDirectory()) return contentFiles(full);
-    return /\.(md|mdx|ts)$/.test(entry.name) ? [full] : [];
+    return /\.(md|mdx|ts|json)$/.test(entry.name) ? [full] : [];
   });
 }
 
@@ -23,7 +23,7 @@ function blocklist(): string[] {
 }
 
 describe("confidentiality guard: all public content", () => {
-  const files = contentFiles();
+  const files = CONTENT_DIRS.flatMap((dir) => contentFiles(dir));
 
   it("finds the content files", () => {
     expect(files.length).toBeGreaterThan(3);

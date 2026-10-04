@@ -27,9 +27,9 @@ export const siteConfig = {
       desktopOnly: true,
     },
     { label: "Work", href: "/work", enabled: true },
+    { label: "Writing", href: "/writing", enabled: true, desktopOnly: true },
     { label: "CV", href: "/cv", enabled: true },
     { label: "Contact", href: "/#contact", enabled: true },
-    { label: "Writing", href: "/writing", enabled: true, desktopOnly: true },
   ] satisfies NavItem[],
   /** Indexable pages, for the sitemap. Section anchors are not pages. */
   routes: ["/", "/cv", "/work", "/writing"],

@@ -64,7 +64,7 @@ export default async function ArticlePage({ params }: Props) {
           </div>
         </header>
         <InOneMinute article={article} />
-        <div className="mt-12">
+        <div className="mt-12 [overflow-wrap:anywhere]">
           <Body />
         </div>
         {article.keyPoints.length > 0 && (

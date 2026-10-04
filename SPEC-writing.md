@@ -10,15 +10,15 @@ A Writing section with an article index, article pages, tags and RSS, launching 
 
 **Acceptance criteria**
 
-- [ ] `/writing` lists published articles (newest first) with title, description, date, reading time, series part and tags; a "Writing" nav item and ⌘K entry
-- [ ] `/writing/[slug]` renders the article with an "In one minute" box and key points, series navigation (previous/next part), per-page metadata and canonical URL
-- [ ] `/writing/tags/[tag]` lists articles by tag
-- [ ] `/rss.xml` is a valid RSS 2.0 feed of published articles, linked from the page `<head>`
-- [ ] Article bodies are plain Markdown (`.md`, GFM tables allowed, no JSX), so the same file can go to Medium/LinkedIn/Discord unchanged
-- [ ] Each article's registry entry stores summary, key points and a video-script outline (for future YouTube lectures and Shorts)
-- [ ] Confidentiality guard covers all article and case-study content and the profile
-- [ ] Each launch article has a passing evaluator report in `docs/editorial/` (accuracy, originality, confidentiality, claims, runnable code)
-- [ ] Zero axe violations on writing pages in both themes; no horizontal scroll at 360 px; Lighthouse ≥ 95 / 100 / ≥ 95 / 100 on an article
+- [x] `/writing` lists published articles (newest first) with title, description, date, reading time, series part and tags; a "Writing" nav item and ⌘K entry
+- [x] `/writing/[slug]` renders the article with an "In one minute" box and key points, series navigation (previous/next part), per-page metadata and canonical URL
+- [x] `/writing/tags/[tag]` lists articles by tag
+- [x] `/rss.xml` is a valid RSS 2.0 feed of published articles, linked from the page `<head>`
+- [x] Article bodies are plain Markdown (`.md`, GFM tables allowed, no JSX), so the same file can go to Medium/LinkedIn/Discord unchanged
+- [x] Each article's registry entry stores summary, key points and a video-script outline (for future YouTube lectures and Shorts)
+- [x] Confidentiality guard covers all article and case-study content and the profile
+- [x] Each launch article has a passing evaluator report in `docs/editorial/` (accuracy, originality, confidentiality, claims, runnable code)
+- [x] Zero axe violations on writing pages in both themes; no horizontal scroll at 360 px; Lighthouse ≥ 95 / 100 / ≥ 95 / 100 on an article
 - [ ] Owner says "publish" before the merge to production
 
 ## Tech
