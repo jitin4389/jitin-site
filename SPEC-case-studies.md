@@ -139,6 +139,10 @@ export const meta = {
 - The platform case study is a long-form version of the eight-part structure: Context, Problem and an architecture overview, then five themed chapters (tools & MCP, skills as context, structured handoffs, evaluations, automation), then Outcome, What I'd do differently and Stack. Requested by the owner after the first draft was too shallow.
 - Diagrams are responsive HTML ordered lists (`FlowDiagram`) rather than SVG: steps reflow on phones, follow theme tokens, and screen readers read them as a numbered list with a visible caption.
 
+## Scope change (2026-10-04)
+
+Launch with case study 1 only, at the owner's request. Case study 2 (backtesting) follows when the owner's notes arrive; acceptance criteria mentioning both apply once it ships.
+
 ## Approvals (2026-10-04)
 
 - Spec approved.

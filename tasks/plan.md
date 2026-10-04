@@ -35,11 +35,11 @@ C1 MDX pipeline + routes ──► C2 Guards ──► C4 Draft: agentic platfor
 ### Phase 2: Content (your review gates)
 
 - [x] C4: Draft case study 1, Agentic research platform → **you edit / approve**
-- [ ] C5: Draft case study 2, Backtesting framework (from your notes) → **you edit / approve**
+- [ ] C5 (deferred): Draft case study 2, Backtesting framework (from your notes) → **you edit / approve**
 
 ### Phase 3: Wire up
 
-- [ ] C6: Enable Work nav, ⌘K and sitemap; e2e + axe; screenshots
+- [x] C6: Enable Work nav, ⌘K and sitemap; e2e + axe; screenshots
 
 ### Checkpoint: your review on the preview
 

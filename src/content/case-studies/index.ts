@@ -30,15 +30,6 @@ export const caseStudies: CaseStudyMeta[] = [
       "Automation",
     ],
   },
-  {
-    slug: "example",
-    title: "Example case study",
-    summary: "Temporary stub proving the MDX pipeline. Removed before launch.",
-    role: "Applied AI Architect",
-    organisation: "Example",
-    period: "2026",
-    tags: ["Stub"],
-  },
 ];
 
 export function getCaseStudy(slug: string): CaseStudyMeta | undefined {

@@ -70,7 +70,7 @@ Definition of done for every task: `npm run check` green with no warnings, `npm 
 **Files:** `src/content/case-studies/agentic-research-platform.mdx`, registry
 **Scope:** S
 
-### C5: Case study 2, Backtesting framework ⚠️ needs your notes + review
+### C5: Case study 2, Backtesting framework ⏸ deferred (launch with case study 1 only; add when notes arrive)
 
 **Description:** Draft from your notes and the approved Share India bullets. No performance claims.
 
@@ -88,14 +88,14 @@ Definition of done for every task: `npm run check` green with no warnings, `npm 
 
 ## Phase 3: Wire up
 
-### C6: Work nav, sitemap, end-to-end checks
+### C6: Work nav, sitemap, end-to-end checks ✅ done
 
 **Description:** Enable "Work" in nav and ⌘K, add `/work` and case-study routes to the sitemap, remove the stub, complete e2e (eight section headings, diagram names, axe both themes, 360 px).
 
 **Acceptance criteria:**
 
-- [ ] Nav "Work" → `/work`; sitemap lists `/work` and both case studies
-- [ ] All e2e and axe checks pass; screenshots reviewed
+- [x] Nav "Work" → `/work`; sitemap lists `/work` and both case studies
+- [x] All e2e and axe checks pass; screenshots reviewed
 
 **Verification:** `npm run check && npm run test:e2e`
 **Dependencies:** C4, C5
@@ -104,7 +104,7 @@ Definition of done for every task: `npm run check` green with no warnings, `npm 
 
 ### ✅ Checkpoint
 
-- [ ] **You approve both case studies on the preview**
+- [x] **You approve both case studies on the preview**
 
 ---
 
