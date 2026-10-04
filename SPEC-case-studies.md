@@ -136,6 +136,7 @@ export const meta = {
 ## Implementation notes (2026-10-04)
 
 - Metadata lives in the typed registry `src/content/case-studies/index.ts` (not `export const meta` in MDX), so unit tests can check it without compiling MDX.
+- The platform case study is a long-form version of the eight-part structure: Context, Problem and an architecture overview, then five themed chapters (tools & MCP, skills as context, structured handoffs, evaluations, automation), then Outcome, What I'd do differently and Stack. Requested by the owner after the first draft was too shallow.
 - Diagrams are responsive HTML ordered lists (`FlowDiagram`) rather than SVG: steps reflow on phones, follow theme tokens, and screen readers read them as a numbered list with a visible caption.
 
 ## Approvals (2026-10-04)

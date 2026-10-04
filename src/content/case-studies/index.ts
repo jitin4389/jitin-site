@@ -18,11 +18,17 @@ export const caseStudies: CaseStudyMeta[] = [
     slug: "agentic-research-platform",
     title: "Agentic research platform",
     summary:
-      "An AI research system that turns investment questions into traceable, model-backed answers.",
+      "How we built an AI research system that turns investment questions into traceable, model-backed answers: MCP tools, skills as context, typed handoffs, evaluations and automation.",
     role: "Senior Software Engineer → Applied AI Architect",
     organisation: "CLOUDSUFI",
     period: "2024 – present",
-    tags: ["Agentic AI", "Forecasting", "Architecture", "Evaluation"],
+    tags: [
+      "Agentic AI",
+      "MCP",
+      "Context engineering",
+      "Evaluations",
+      "Automation",
+    ],
   },
   {
     slug: "example",

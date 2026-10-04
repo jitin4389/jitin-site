@@ -67,7 +67,11 @@ describe("case-study claims guard", () => {
   it.skipIf(!existsSync(platform))(
     "platform case study only uses approved numbers",
     () => {
-      const text = publicText("agentic-research-platform");
+      // Heading and list ordinals ("## 1. Tools", "1. First") are structure, not claims.
+      const text = publicText("agentic-research-platform").replace(
+        /^(#{1,6}\s+)?\d+\.\s/gm,
+        "$1",
+      );
       const numbers = text.match(/[~$]*\d[\d,.]*\s*(?:\+|%|[BMK]\b)?/g) ?? [];
       const approved = /^(?:12\+|15\+|~\$1B|(?:19|20)\d{2})$/;
       const unapproved = numbers

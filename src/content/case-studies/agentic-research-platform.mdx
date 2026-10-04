@@ -2,59 +2,155 @@
 
 At CLOUDSUFI I lead the architecture of an AI-assisted research and forecasting platform built for a global hedge fund with ~$1B AUM. Its researchers study how new technologies (batteries, electric vehicles, solar, AI infrastructure, automation) displace incumbent industries, and where markets may be underestimating the speed of that shift.
 
-The platform lets an analyst ask a question in plain English, such as how quickly a technology could take over a market or what it means for demand for a commodity, and get an answer grounded in the team's own models and data.
+An analyst asks a question in plain English, such as how quickly a technology could take over a market or what that means for demand for a commodity, and gets an answer grounded in the team's own models and data. The platform was built by a 15+ person team; I own the architecture, the agent design and the product direction.
 
 ## The problem
 
-General-purpose AI assistants are confident forecasters, and that is exactly the problem. When we reviewed real research sessions, we found answers with numbers that had no source, straight-line extrapolation where adoption actually follows S-curves, and citations that pointed nowhere. For an investment team, an answer you can't trace is worse than no answer.
+General-purpose AI assistants are confident forecasters, and that is exactly the problem. When we reviewed real research sessions we found numbers with no source, straight-line extrapolation where adoption actually follows S-curves, and citation markers that pointed nowhere. For an investment team, an answer you can't trace is worse than no answer.
 
-That gave us three requirements:
+That set the requirements for everything below:
 
 - **Numbers come from models and data**, never from the language model's memory.
-- **Every figure is traceable** to its source, model or assumption, so an analyst can challenge it.
-- **Answers follow the team's research framework**, and that can be checked automatically rather than by eye.
+- **Every figure is traceable** to a source, a model run or a stated assumption.
+- **Rules are enforced in code wherever possible**, because rules that live only in prompts are followed inconsistently.
+- **Quality is measured**, on real sessions, every day.
 
-## Approach
+## Architecture at a glance
 
-The system is a supervisor agent that plans the work and delegates to specialists. Each stage has one job, and the output of every stage is visible to the next.
+A supervisor agent plans the work and delegates to specialists. Each stage has one job and hands a typed result to the next.
 
 <AgentWorkflow />
 
-- **Understand and route.** The question is rewritten into a precise form, the sectors involved are detected, and the system asks for clarification when the question is ambiguous instead of guessing.
-- **Plan.** A planner decides which data, pre-computed research and models the answer needs, within a budget of tool calls.
-- **Retrieve context.** A knowledge graph, curated datasets and pre-computed sector research supply the facts.
-- **Run models.** Each sector forecasting model is packaged as a self-contained skill with its own data, parameters and code, and runs in a sandbox. Specialist agents call these skills; the language model never does the maths itself.
-- **Evaluate.** A reviewer agent grades the draft as pass, minor issue or major issue. Major issues send the answer back for another pass, with a cap on retries.
-- **Answer with citations.** Every number carries a citation marker that resolves to its source, and a deterministic validator rejects citations that don't resolve.
+The rest of this case study covers the five pieces that made the difference: tools and MCP, skills as context, structured handoffs, evaluations, and automation.
 
-## Key decisions
+## 1. Tools and MCP: governed access to data
 
-### The models are the source of truth, not the language model
+Agents are only as good as the data they can reach, and only as safe as the limits on that access. We exposed data through the Model Context Protocol (MCP), so every agent uses the same governed tools instead of ad-hoc connectors.
 
-The language model orchestrates and explains; sandboxed code computes. This makes each new sector slower to add, because it needs a real model, but every number is reproducible and the same question gives the same figures.
+### A self-hosted MCP data server
 
-### One packaged skill per sector model, loaded only where it's needed
+One authenticated MCP service gives analyst agents access to internal databases, a dataset catalog, deterministic finance maths, market data and web search.
 
-Each model ships with its data and parameters, is validated and versioned before release, and is loaded only by the specialist agent that uses it. There are more packages to maintain, but a change to one model can't silently change another's answers.
+- **Authentication per request.** Every call carries a signed token with a user and tenant, checked by middleware before any tool runs.
+- **Read-only SQL that is safe by construction.** Only a single SELECT statement is accepted, it runs in a read-only transaction with a timeout and a row cap, and the server inspects the query plan to reject any table outside the schema that tool is allowed to touch. Truncated results are flagged so the agent knows it didn't see everything.
+- **Optional tool families.** Integrations that need a credential only register when that credential is present, so a missing vendor key removes a few tools instead of taking the server down.
+- **The right transport.** We moved from in-process tool servers to HTTP after concurrent sessions started contending for shared state. Each session is now isolated, and a flag still allows rolling back.
 
-### Provenance is part of the answer
+### Vendor data behind a single librarian
 
-Figures are tagged as observed or model-derived and linked to their sources. Answers get longer, but analysts can verify any claim in seconds instead of re-deriving it.
+A third-party financial-data provider is consumed as a remote MCP server. Its short-lived machine-to-machine tokens are refreshed in the background, and setup degrades gracefully when credentials are absent. Only one dedicated "librarian" sub-agent may call the vendor's tools. That rule is enforced by a hook that runs before every tool call, not by asking the model nicely.
 
-### Evaluation from the start
+### Web search with a contract
 
-We replay real multi-turn sessions through an automated judge, run adversarial tests (for example, pressure to agree with a wrong premise) and keep test queries for every model. This lets the team change prompts, models and data without guessing whether quality went up or down.
+The web is useful for completed historical figures and dated news, and dangerous for everything else. We replaced the built-in web tools with our own and wrapped them in a contract:
+
+- Separate sub-agents for **historical figures** and for **dated news**, each with a narrow brief.
+- A pre-call hook refuses requests for figures from periods that haven't finished yet.
+- A validator checks results against a list of violation types, such as future observations and forecast content.
+- Every web citation carries a **signed evidence marker** tied to a specific tool call in that turn, so a citation can't be invented after the fact.
+
+We moved this into code because the same rules, written only in prompts, were followed inconsistently, and most breaches came from one agent asking another to break them.
+
+### A dataset catalog agents can query
+
+Datasets are described in a version-controlled catalog that an MCP server exposes to agents: search, describe, query, chart, and list gaps such as stale or missing coverage. Catalog edits apply without a restart, each entry shows whether it is current or superseded, and a CI check blocks a release if two copies of the server drift apart (which had happened once, silently).
+
+## 2. Skills as context: methodology the agent carries with it
+
+Each forecasting domain is packaged as a **skill**: a folder with instructions, parameters, reference methodology, data and code. Instead of hoping the model remembers how to forecast, the method travels with the agent.
+
+### Progressive disclosure
+
+Only a short, keyword-rich description is always visible. When a question matches, the agent opens the skill's instructions, which start with non-negotiable rules (no fabrication, no mental maths, use the parameters, load the data) and an intent-routing table that points each kind of question to a single methodology section. A dependency map says which sections a question actually needs, so a narrow question runs one step instead of the whole model. Parameters live in configuration with defaults, allowed ranges and an explanation for each.
+
+### Isolation and reuse
+
+- Each sector specialist runs in its own sandbox with **exactly one skill** loaded, so models can't bleed into each other.
+- Before running a model, a **report-first lookup** checks pre-computed sector research. If it fully answers the question, the model run is skipped; if it partly does, the model fills only the gaps. Either way the report is cited.
+- A **machine-readable index** of every skill's parameters, functions and datasets lets other agents look up and cite exactly where a value came from.
+
+### Layered prompts, cached
+
+System prompts are composed in layers: the agent's own prompt, shared terminology rules and an explicit instruction hierarchy where the skill outranks general guidance. The large static part of the prompt is cached and the small, time-sensitive part is not, which keeps long sessions fast and affordable.
+
+### The model never does the maths
+
+"Skills are the source of truth" is enforced three times: in the planner's and main agent's prompts, by a reviewer agent that rejects invented numbers, and by a deterministic hook that blocks an agent from writing output containing banned vocabulary or forecast language.
+
+## 3. Structured handoffs between agents
+
+Most multi-agent failures we saw were handoff failures: the right context was found, then lost or distorted on the way to the answer.
+
+### Typed contracts between stages
+
+Every stage returns a validated schema rather than free text. A plan must contain steps, and each step names its retrieval type, its fallback and its quality gate. The reviewer must return one of a fixed set of verdicts, and the orchestrator acts on it mechanically:
+
+- **Pass:** the answer is accepted.
+- **Minor issues:** the reviewer's corrected text is used, and any chart data that may no longer match is dropped.
+- **Major issues:** the main agent re-runs with the reviewer's feedback on both the answer and the plan, up to a capped number of attempts. After that, the user sees an explicit quality-validation failure instead of a weak answer.
+
+A deterministic citation validator, with no model involved, then requires a citation on every sentence that contains a number or a future year.
+
+### Pipelines that know what is critical
+
+For deep analyses, a pipeline of specialist agents is assembled per run from a registry where each agent declares the file it produces, the files it needs and how critical it is. Presets pick the goal; the dependency graph follows. A critical failure stops the run; a non-critical one continues with a recorded confidence penalty, so the final synthesis states how much to trust it. Agents hand off through structured files with a standard header, never through each other's chat history.
+
+### Humans at the right gates
+
+For high-stakes research, a harness runs the work in phases with human approval gates in between, and records provenance for every data item: whether it was acquired, estimated or unavailable, how reputable the source is, how confident we are and whether an analyst approved it.
+
+### A lesson worth sharing
+
+A sub-agent once selected exactly the right context, and the orchestrator dropped it while rewriting the answer, because it only kept what its own brief had asked for. How context is handed over matters as much as which context is retrieved.
+
+## 4. Evaluations: measuring instead of guessing
+
+### Replaying real sessions
+
+An offline evaluation tool replays real multi-turn conversations against the current system. A simulated user answers clarifying questions the way the real user did. Deterministic checks run first (were the expected tools called, the expected datasets found, required phrases present), and their results feed a low-cost judge model that scores general quality and domain-specific criteria such as tool selection, dataset accuracy and financial accuracy.
+
+### Finding the cause, not just the failure
+
+When a session fails, separate screeners ask whether the system prompt, a skill or a tool caused it, each returning a typed verdict with confidence and evidence. That turns "the answer was wrong" into a ticket for the right owner.
+
+### A compliance scorer for the research framework
+
+Every response is scored against the team's research framework: criteria grouped by category and severity, with criteria switched off when they don't apply. Any critical failure, or several high-severity ones, marks the answer non-compliant. It reports rather than retries, by design: a false failure that triggers a rewrite does more damage than a false pass.
+
+### Tests that come from real problems
+
+- We mined real sessions into a prioritised evaluation backlog. Fabrication was the top priority.
+- Adversarial tests push the system with leading, flattering or falsely certain phrasing and check that it doesn't simply agree.
+- Each forecasting model has its own test questions with numeric tolerance ranges. In one case these tests caught a single wrong operator in a cost calculation that had quietly broken most of that model's answers; the fix took the model from mostly failing to mostly passing.
+
+### Stopping bad answers before they ship
+
+A stop-gate inspects the final answer for numbers without citations and sends it back once, within the same turn, to fix them. It replaced an earlier retry-from-scratch approach that, in practice, made answers worse.
+
+## 5. Automation: keeping it fresh, safe and observable
+
+- **Continuous delivery.** Only the services that changed are built and deployed. Cloud access uses short-lived identity rather than stored keys, secrets are encrypted at rest, and deploys roll back automatically if they fail. A post-deploy smoke test was added after a broken data pipeline once stayed green for days until its first scheduled run.
+- **Tool descriptions are tested.** CI checks that no MCP tool description promises something the server can't actually do, because agents act on those descriptions.
+- **Scheduled data refreshes.** A weekly flow refreshes the inventory of cost and adoption curves the models depend on. It updates facts idempotently, never overwrites columns that hold human decisions, has a preflight check and alerts on failure.
+- **Nightly evaluations.** The day's real sessions are exported, evaluated and summarised in a report every night.
+- **Monitoring the monitor.** A watchdog checks that the health monitor itself is alive and alerts through a separate channel, because "the backend is down" can't be reported by the backend.
+- **Skill releases.** Skills are validated, versioned and uploaded by a CLI that skips anything whose content hash hasn't changed.
+- **Data with contracts.** Data updates must agree across independent sources within a tolerance, are append-only, and never fill a gap with a guess.
+- **Observability.** Every model call is traced with user, session and request identifiers, and prompts are managed centrally with a local fallback if that service is unavailable.
 
 ## Outcome
 
 - A portfolio of 12+ sector forecasting models across energy, transport, batteries, commodities, AI infrastructure and labor, reachable from one conversational interface.
-- Answers that carry their own evidence, so analysts can challenge any figure.
-- A 15+ person team of engineers, research analysts and project management working from shared specifications and evaluation results rather than intuition.
+- Answers that carry their own evidence: every figure links to a source, a model run or an assumption, and analysts can challenge any of it.
+- Rules that used to depend on the model's good behaviour (no invented numbers, no forecasting from the web, cite everything) are enforced by tools, hooks and validators.
+- A 15+ person team of engineers, research analysts and project management working from shared specifications and daily evaluation results rather than intuition.
 
 ## What I'd do differently
 
-I would build the evaluation harness even earlier. The hardest problems, such as unsourced numbers and inconsistent answers to the same question, only became visible once we replayed real sessions at scale. I would also express the research framework as machine-checkable rules from day one, instead of first encoding it in prompts and later turning it into checks.
+I would build the evaluation harness before the second agent, not after the fifth. The hardest problems, unsourced numbers and inconsistent answers to the same question, only became visible once we replayed real sessions at scale.
+
+I would also move rules into code sooner. Almost every guardrail here started as a sentence in a prompt and ended as a hook or a validator. Starting from "how will this be enforced?" would have saved several iterations.
 
 ## Stack
 
-Anthropic Claude models and Agent SDK · skills with sandboxed code execution · Python · FastAPI and WebSockets · PostgreSQL · graph database for retrieval (GraphRAG) · Redis · LLM tracing · Kubernetes
+Anthropic Claude models, Agent SDK and Skills · Model Context Protocol servers (self-hosted and third-party) · sandboxed code execution · Python and TypeScript · FastAPI and WebSockets · PostgreSQL, a graph database and a vector store · workflow orchestration for scheduled flows · LLM tracing and prompt management · Kubernetes with Helm · CI/CD with automatic rollback
