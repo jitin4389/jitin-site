@@ -56,14 +56,14 @@ Definition of done for every task: `npm run check` green with no warnings, `npm 
 
 ## Phase 2: Content
 
-### C4: Case study 1, Agentic research platform ⚠️ your review
+### C4: Case study 1, Agentic research platform ✅ accepted for now (2026-10-04)
 
 **Description:** Draft from the facts file, the live profile content and generic architecture patterns from your repos. Eight sections per the spec, with the agent-workflow diagram.
 
 **Acceptance criteria:**
 
-- [ ] Guards pass; only approved numbers; no client/fund/expert/codenames
-- [ ] **You approve the text** (edits applied)
+- [x] Guards pass; only approved numbers; no client/fund/expert/codenames
+- [x] **You approve the text** (edits applied)
 
 **Verification:** `npm test`; your review of the draft and preview
 **Dependencies:** C2, C3
