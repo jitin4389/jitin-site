@@ -110,13 +110,13 @@ Definition of done for every task: `npm run check` green with no warnings, `npm 
 
 ## Phase 4: Ship
 
-### C7: Production ⚠️ needs your go-ahead to merge
+### C7: Production ✅ done for case study 1 (2026-10-04)
 
 **Description:** Merge; read-only e2e and Lighthouse (mobile, 3 runs) on a case-study page; record results; mark module complete.
 
 **Acceptance criteria:**
 
-- [ ] Lighthouse ≥ 95 / 100 / ≥ 95 / 100
+- [x] Lighthouse ≥ 95 / 100 / ≥ 95 / 100
 - [ ] All SPEC-case-studies acceptance criteria checked
 
 **Verification:** `PLAYWRIGHT_BASE_URL=https://jitin-site.vercel.app npm run test:e2e`; Lighthouse

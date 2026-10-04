@@ -47,7 +47,7 @@ C1 MDX pipeline + routes ──► C2 Guards ──► C4 Draft: agentic platfor
 
 ### Phase 4: Ship
 
-- [ ] C7: Merge; Lighthouse on a case-study page; mark module complete
+- [x] C7 (case study 1): Merge; Lighthouse on a case-study page; mark module complete
 
 ## Risks and Mitigations
 

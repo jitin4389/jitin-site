@@ -1,6 +1,6 @@
 # Spec: case-studies
 
-Module `case-studies` from [CAPABILITY-MAP.md](CAPABILITY-MAP.md). Depends on `foundation` (complete).
+**Status: 🟡 live with case study 1 (2026-10-04); case study 2 pending.** Module `case-studies` from [CAPABILITY-MAP.md](CAPABILITY-MAP.md). Depends on `foundation` (complete).
 
 ## Objective
 

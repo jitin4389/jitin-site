@@ -46,3 +46,20 @@ Automated: 56 unit tests, 94 e2e tests locally (80 read-only against production;
 ### Contact messages
 
 Stored in Supabase table `contact_messages` (Table Editor; filter `status = new`). Schema: [supabase/migrations/0001_contact_messages.sql](supabase/migrations/0001_contact_messages.sql). Vercel env: `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `CONTACT_IP_SALT` (Production + Preview). See [.env.example](.env.example).
+
+## Quality (case studies, 2026-10-04)
+
+Lighthouse, mobile, production, 3 runs per page:
+
+| Page                              | Performance | Accessibility | Best Practices | SEO | LCP       | CLS |
+| --------------------------------- | ----------- | ------------- | -------------- | --- | --------- | --- |
+| `/work`                           | 99          | 100           | 100            | 100 | 2.0 s     | 0   |
+| `/work/agentic-research-platform` | 98–99       | 100           | 100            | 100 | 2.1–2.3 s | 0   |
+
+Automated: 63 unit tests (incl. confidentiality and claims guards), 110 e2e tests locally (96 read-only against production).
+
+### Adding a case study
+
+1. Write `src/content/case-studies/<slug>.mdx` and add its entry to `src/content/case-studies/index.ts`.
+2. Keep the private, git-ignored `.confidential-terms` blocklist up to date; `npm test` fails on any match.
+3. New numbers must be approved in `profile_builder/drafts/00-facts.md` and added to the claims guard.
