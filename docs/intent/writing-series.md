@@ -10,15 +10,15 @@
 
 ## Series map
 
-| #   | Part                                                        | Status |
-| --- | ----------------------------------------------------------- | ------ |
-| 1   | Context engineering: CLAUDE.md, docs and the context window | launch |
-| 2   | Slash commands: personal vs project workflows               | later  |
-| 3   | Sub-agents: delegation without losing the plot              | later  |
-| 4   | MCP servers: giving agents governed access to data          | launch |
-| 5   | Agent Skills: methodology the agent carries with it         | later  |
-| 6   | Hooks as guardrails: enforcing rules in code, not prompts   | launch |
-| 7   | Claude Code in CI: GitHub Actions and automated fixes       | later  |
-| 8   | Evaluating agent output: from vibes to evidence             | later  |
-| 9   | Local and open models: when and how                         | later  |
-| 10  | Working responsibly with AI, and explaining it to others    | later  |
+| #   | Part                                                        | Status             |
+| --- | ----------------------------------------------------------- | ------------------ |
+| 1   | Context engineering: CLAUDE.md, docs and the context window | ✅ live 2026-10-04 |
+| 2   | Slash commands: personal vs project workflows               | later              |
+| 3   | Sub-agents: delegation without losing the plot              | later              |
+| 4   | MCP servers: giving agents governed access to data          | ✅ live 2026-10-04 |
+| 5   | Agent Skills: methodology the agent carries with it         | later              |
+| 6   | Hooks as guardrails: enforcing rules in code, not prompts   | ✅ live 2026-10-04 |
+| 7   | Claude Code in CI: GitHub Actions and automated fixes       | later              |
+| 8   | Evaluating agent output: from vibes to evidence             | later              |
+| 9   | Local and open models: when and how                         | later              |
+| 10  | Working responsibly with AI, and explaining it to others    | later              |
