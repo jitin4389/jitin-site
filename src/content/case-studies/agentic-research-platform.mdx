@@ -1,0 +1,60 @@
+## Context
+
+At CLOUDSUFI I lead the architecture of an AI-assisted research and forecasting platform built for a global hedge fund with ~$1B AUM. Its researchers study how new technologies (batteries, electric vehicles, solar, AI infrastructure, automation) displace incumbent industries, and where markets may be underestimating the speed of that shift.
+
+The platform lets an analyst ask a question in plain English, such as how quickly a technology could take over a market or what it means for demand for a commodity, and get an answer grounded in the team's own models and data.
+
+## The problem
+
+General-purpose AI assistants are confident forecasters, and that is exactly the problem. When we reviewed real research sessions, we found answers with numbers that had no source, straight-line extrapolation where adoption actually follows S-curves, and citations that pointed nowhere. For an investment team, an answer you can't trace is worse than no answer.
+
+That gave us three requirements:
+
+- **Numbers come from models and data**, never from the language model's memory.
+- **Every figure is traceable** to its source, model or assumption, so an analyst can challenge it.
+- **Answers follow the team's research framework**, and that can be checked automatically rather than by eye.
+
+## Approach
+
+The system is a supervisor agent that plans the work and delegates to specialists. Each stage has one job, and the output of every stage is visible to the next.
+
+<AgentWorkflow />
+
+- **Understand and route.** The question is rewritten into a precise form, the sectors involved are detected, and the system asks for clarification when the question is ambiguous instead of guessing.
+- **Plan.** A planner decides which data, pre-computed research and models the answer needs, within a budget of tool calls.
+- **Retrieve context.** A knowledge graph, curated datasets and pre-computed sector research supply the facts.
+- **Run models.** Each sector forecasting model is packaged as a self-contained skill with its own data, parameters and code, and runs in a sandbox. Specialist agents call these skills; the language model never does the maths itself.
+- **Evaluate.** A reviewer agent grades the draft as pass, minor issue or major issue. Major issues send the answer back for another pass, with a cap on retries.
+- **Answer with citations.** Every number carries a citation marker that resolves to its source, and a deterministic validator rejects citations that don't resolve.
+
+## Key decisions
+
+### The models are the source of truth, not the language model
+
+The language model orchestrates and explains; sandboxed code computes. This makes each new sector slower to add, because it needs a real model, but every number is reproducible and the same question gives the same figures.
+
+### One packaged skill per sector model, loaded only where it's needed
+
+Each model ships with its data and parameters, is validated and versioned before release, and is loaded only by the specialist agent that uses it. There are more packages to maintain, but a change to one model can't silently change another's answers.
+
+### Provenance is part of the answer
+
+Figures are tagged as observed or model-derived and linked to their sources. Answers get longer, but analysts can verify any claim in seconds instead of re-deriving it.
+
+### Evaluation from the start
+
+We replay real multi-turn sessions through an automated judge, run adversarial tests (for example, pressure to agree with a wrong premise) and keep test queries for every model. This lets the team change prompts, models and data without guessing whether quality went up or down.
+
+## Outcome
+
+- A portfolio of 12+ sector forecasting models across energy, transport, batteries, commodities, AI infrastructure and labor, reachable from one conversational interface.
+- Answers that carry their own evidence, so analysts can challenge any figure.
+- A 15+ person team of engineers, research analysts and project management working from shared specifications and evaluation results rather than intuition.
+
+## What I'd do differently
+
+I would build the evaluation harness even earlier. The hardest problems, such as unsourced numbers and inconsistent answers to the same question, only became visible once we replayed real sessions at scale. I would also express the research framework as machine-checkable rules from day one, instead of first encoding it in prompts and later turning it into checks.
+
+## Stack
+
+Anthropic Claude models and Agent SDK · skills with sandboxed code execution · Python · FastAPI and WebSockets · PostgreSQL · graph database for retrieval (GraphRAG) · Redis · LLM tracing · Kubernetes

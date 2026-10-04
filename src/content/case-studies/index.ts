@@ -15,6 +15,16 @@ export type CaseStudyMeta = {
 
 export const caseStudies: CaseStudyMeta[] = [
   {
+    slug: "agentic-research-platform",
+    title: "Agentic research platform",
+    summary:
+      "An AI research system that turns investment questions into traceable, model-backed answers.",
+    role: "Senior Software Engineer → Applied AI Architect",
+    organisation: "CLOUDSUFI",
+    period: "2024 – present",
+    tags: ["Agentic AI", "Forecasting", "Architecture", "Evaluation"],
+  },
+  {
     slug: "example",
     title: "Example case study",
     summary: "Temporary stub proving the MDX pipeline. Removed before launch.",
