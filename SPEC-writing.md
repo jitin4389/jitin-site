@@ -1,6 +1,6 @@
 # Spec: writing
 
-**Status: 🟡 live with parts 1, 4 and 6 (2026-10-04); parts 2, 3, 5, 7–10 to follow.** Module `writing` from [CAPABILITY-MAP.md](CAPABILITY-MAP.md). Depends on `foundation`. Intent: [docs/intent/writing-series.md](docs/intent/writing-series.md).
+**Status: ✅ complete (2026-10-04): all 10 parts of the agentic coding series live.** Module `writing` from [CAPABILITY-MAP.md](CAPABILITY-MAP.md). Depends on `foundation`. Intent: [docs/intent/writing-series.md](docs/intent/writing-series.md).
 
 Owner asked for minimal involvement: this spec and plan are recorded without a review gate. The single gate is the owner's "publish" before merging to production.
 

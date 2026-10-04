@@ -13,12 +13,12 @@
 | #   | Part                                                                  | Status             |
 | --- | --------------------------------------------------------------------- | ------------------ |
 | 1   | Context engineering: CLAUDE.md, docs and the context window           | ✅ live 2026-10-04 |
-| 2   | Slash commands: turning repeated prompts into team workflows          | 🟡 in preview      |
-| 3   | Sub-agents: delegation without losing the plot                        | 🟡 in preview      |
+| 2   | Slash commands: turning repeated prompts into team workflows          | ✅ live 2026-10-04 |
+| 3   | Sub-agents: delegation without losing the plot                        | ✅ live 2026-10-04 |
 | 4   | MCP servers: giving agents governed access to data                    | ✅ live 2026-10-04 |
-| 5   | Agent Skills: methodology the agent carries with it                   | 🟡 in preview      |
+| 5   | Agent Skills: methodology the agent carries with it                   | ✅ live 2026-10-04 |
 | 6   | Hooks as guardrails: enforcing rules in code, not prompts             | ✅ live 2026-10-04 |
-| 7   | Claude Code in CI: GitHub Actions and automated changes you can trust | 🟡 in preview      |
-| 8   | Evaluating agent output: from vibes to evidence                       | 🟡 in preview      |
-| 9   | Choosing models and providers: cloud, gateways and local models       | 🟡 in preview      |
-| 10  | Working responsibly with AI, and explaining it to others              | 🟡 in preview      |
+| 7   | Claude Code in CI: GitHub Actions and automated changes you can trust | ✅ live 2026-10-04 |
+| 8   | Evaluating agent output: from vibes to evidence                       | ✅ live 2026-10-04 |
+| 9   | Choosing models and providers: cloud, gateways and local models       | ✅ live 2026-10-04 |
+| 10  | Working responsibly with AI, and explaining it to others              | ✅ live 2026-10-04 |
