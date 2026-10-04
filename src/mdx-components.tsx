@@ -1,8 +1,13 @@
 import type { MDXComponents } from "mdx/types";
 import Link from "next/link";
 
+import { AgentWorkflow } from "@/components/diagrams/agent-workflow";
+import { BacktestPipeline } from "@/components/diagrams/backtest-pipeline";
+
 /** Maps Markdown elements in case studies to the site's typography. */
 const components: MDXComponents = {
+  AgentWorkflow,
+  BacktestPipeline,
   h2: ({ children, ...props }) => (
     <h2
       className="mt-14 scroll-mt-20 text-2xl font-semibold tracking-tight first:mt-0"

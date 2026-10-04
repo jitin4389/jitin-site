@@ -28,9 +28,9 @@ C1 MDX pipeline + routes ──► C2 Guards ──► C4 Draft: agentic platfor
 
 ### Phase 1: Infrastructure
 
-- [ ] C1: MDX pipeline, registry, `/work` and `/work/[slug]` routes, MDX typography
-- [ ] C2: Confidentiality guard, claims guard, registry test
-- [ ] C3: Diagram components (figure wrapper, agent workflow, backtest pipeline)
+- [x] C1: MDX pipeline, registry, `/work` and `/work/[slug]` routes, MDX typography
+- [x] C2: Confidentiality guard, claims guard, registry test
+- [x] C3: Diagram components (figure wrapper, agent workflow, backtest pipeline)
 
 ### Phase 2: Content (your review gates)
 

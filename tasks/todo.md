@@ -7,45 +7,45 @@ Definition of done for every task: `npm run check` green with no warnings, `npm 
 
 ## Phase 1: Infrastructure
 
-### C1: MDX pipeline and routes
+### C1: MDX pipeline and routes ✅ done
 
 **Description:** Install `@next/mdx`, `@mdx-js/loader`, `@mdx-js/react`, `@types/mdx`; configure `next.config.ts`; add `src/mdx-components.tsx` mapping headings, paragraphs, lists, links and code to site styles; registry `src/content/case-studies/index.ts`; `/work` index and `/work/[slug]` (static params, `dynamicParams = false`, per-page metadata). Prove it with a stub MDX file.
 
 **Acceptance criteria:**
 
-- [ ] `/work` lists registry entries; `/work/<slug>` renders the MDX with site typography in both themes
-- [ ] Unknown slug returns 404; each page has its own title, description and canonical URL
-- [ ] Build output marks the routes as static
+- [x] `/work` lists registry entries; `/work/<slug>` renders the MDX with site typography in both themes
+- [x] Unknown slug returns 404; each page has its own title, description and canonical URL
+- [x] Build output marks the routes as static
 
 **Verification:** `npm run check`; `tests/e2e/work.spec.ts` (index, page, 404)
 **Dependencies:** None
 **Files:** `next.config.ts`, `package.json`, `src/mdx-components.tsx`, `src/content/case-studies/index.ts`, `src/app/work/page.tsx`, `src/app/work/[slug]/page.tsx`, `src/components/case-study/header.tsx`
 **Scope:** M
 
-### C2: Guards
+### C2: Guards ✅ done
 
 **Description:** Unit tests that read every case-study MDX file: (1) confidentiality guard against `.confidential-terms` (git-ignored; fails locally if missing, skipped in CI); (2) claims guard (backtesting: no returns/alpha/Sharpe/profit/outperform; CLOUDSUFI: only approved numbers); (3) registry integrity.
 
 **Acceptance criteria:**
 
-- [ ] Planting a blocklisted term or a forbidden claim in an MDX file makes `npm test` fail
-- [ ] Missing `.confidential-terms` fails locally with a clear instruction
-- [ ] Every registry slug has an MDX file and complete `meta`
+- [x] Planting a blocklisted term or a forbidden claim in an MDX file makes `npm test` fail
+- [x] Missing `.confidential-terms` fails locally with a clear instruction
+- [x] Every registry slug has an MDX file and complete `meta`
 
 **Verification:** `npm test` plus a deliberate plant-and-revert check
 **Dependencies:** C1
 **Files:** `tests/unit/case-study-guard.test.ts`, `tests/unit/case-study-registry.test.ts`
 **Scope:** S
 
-### C3: Diagrams
+### C3: Diagrams ✅ done
 
 **Description:** `Figure` wrapper (caption + accessible description) and two SVG components: agent workflow (question → plan → retrieve context → call models/tools → verify → synthesize, with a provenance lane) and backtest pipeline (data → signals → costs/slippage → sizing → evaluation → execution).
 
 **Acceptance criteria:**
 
-- [ ] `role="img"` with `<title>`/`<desc>`; caption visible
-- [ ] Legible at 360 px and in both themes (tokens / `currentColor`)
-- [ ] No horizontal scroll introduced
+- [x] `role="img"` with `<title>`/`<desc>`; caption visible
+- [x] Legible at 360 px and in both themes (tokens / `currentColor`)
+- [x] No horizontal scroll introduced
 
 **Verification:** `npm run check`; e2e accessible-name check; screenshots at 360 / 1280 in both themes
 **Dependencies:** C1

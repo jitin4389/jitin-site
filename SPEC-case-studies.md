@@ -133,6 +133,11 @@ export const meta = {
 2. **Backtesting notes:** a few lines on what made the framework work (data frequency, instruments, tools, how costs/slippage were modelled, how strategies moved to live). Rough is fine; I'll shape it.
 3. **Agentic platform:** OK for me to read your STDF / agent repos on this Mac to get the architecture right? I'll only describe patterns in generic terms; nothing is copied.
 
+## Implementation notes (2026-10-04)
+
+- Metadata lives in the typed registry `src/content/case-studies/index.ts` (not `export const meta` in MDX), so unit tests can check it without compiling MDX.
+- Diagrams are responsive HTML ordered lists (`FlowDiagram`) rather than SVG: steps reflow on phones, follow theme tokens, and screen readers read them as a numbered list with a visible caption.
+
 ## Approvals (2026-10-04)
 
 - Spec approved.
