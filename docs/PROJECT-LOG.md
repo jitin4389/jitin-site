@@ -11,12 +11,12 @@
 
 ## 2. Accounts (personal only; never the work accounts)
 
-| Service         | Account                                                                  | Notes                                                                                                         |
-| --------------- | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------- |
-| GitHub          | `jitin4389` (jitin4389@gmail.com)                                        | `gh auth switch --user jitin4389` before pushing; repo uses HTTPS with gh credentials (repo-local git config) |
-| Vercel          | `jitin4389` (jitin4389@gmail.com), team "StellarWorks" (`stellar-works`) | Git-connected; every PR gets a private preview, `main` deploys to production                                  |
-| Supabase        | project `jitin-site`, Mumbai, account jitin4389                          | Table `contact_messages` (contact form). Free tier pauses after ~1 week idle                                  |
-| Vercel env vars | `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `CONTACT_IP_SALT`                 | Production + Preview, all sensitive. Never `NEXT_PUBLIC_`                                                     |
+| Service         | Account                                                                                 | Notes                                                                                                         |
+| --------------- | --------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| GitHub          | `jitin4389` (jitin4389@gmail.com)                                                       | `gh auth switch --user jitin4389` before pushing; repo uses HTTPS with gh credentials (repo-local git config) |
+| Vercel          | `jitin4389` (jitin4389@gmail.com), personal default team (name in the Vercel dashboard) | Git-connected; every PR gets a private preview, `main` deploys to production                                  |
+| Supabase        | project `jitin-site`, Mumbai, account jitin4389                                         | Table `contact_messages` (contact form). Free tier pauses after ~1 week idle                                  |
+| Vercel env vars | `SUPABASE_URL`, `SUPABASE_SECRET_KEY`, `CONTACT_IP_SALT`                                | Production + Preview, all sensitive. Never `NEXT_PUBLIC_`                                                     |
 
 Work accounts (`jitinguptaCS` on GitHub, the CLOUDSUFI Vercel account) must not be used for this project.
 
