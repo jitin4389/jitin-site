@@ -1,0 +1,61 @@
+{
+  "slug": "learning-loop-for-ai-agents",
+  "title": "\"It doesn't learn\": an architecture for a learning loop in AI agents",
+  "description": "Why 'store the corrections and inject them' fails, and a seven-stage learning loop with provenance, a taxonomy, budgets, replay evaluation and human gates.",
+  "tags": [
+    "ai-agents",
+    "learning-loop",
+    "memory",
+    "evaluation",
+    "architecture"
+  ],
+  "summary": "Users say their AI assistant does not learn: they correct it, and the next day it makes the same mistake. The model is not the problem. The system around it never records what the user said in a checkable way, never sorts those notes into kinds, and never tests whether they help. This article lays out a loop that does all three: record, enrich, group, extract, serve, evaluate, approve. It also shares what went wrong in production, and a small runnable example.",
+  "keyTerms": [
+    {
+      "term": "Learning loop",
+      "definition": "A pipeline that turns past interactions into checked, typed notes, serves a small set of them to future sessions, and measures whether answers improved before anything goes live."
+    },
+    {
+      "term": "Interaction record",
+      "definition": "One immutable entry per user turn holding the question, the answer the user actually saw, the feedback, and provenance such as ids and timestamps. Every later file is derived from it."
+    },
+    {
+      "term": "Learning item",
+      "definition": "A single extracted note with a kind (world fact, method rule, answer shape, profile or watch), a scope, a verbatim quote from the user and a pointer to the record it came from."
+    },
+    {
+      "term": "Context package",
+      "definition": "The budgeted, layered text served to a new session: rules first, world facts in 'verify then apply' form, and a list of anything cut for space."
+    },
+    {
+      "term": "Replay evaluation",
+      "definition": "Answering old questions again with and without the package, then scoring the two answers with a blind judge, code guards and the user's own later corrections."
+    },
+    {
+      "term": "Pre-registration",
+      "definition": "Writing the hypothesis, pass line, sample and judge prompt before a run, and pinning code and prompt hashes so results cannot quietly reshape the test."
+    }
+  ],
+  "keyPoints": [
+    "\"It doesn't learn\" is a design problem in the system around the model, not a model problem.",
+    "Storing corrections and injecting them fails because kinds get mixed, facts go stale, text leaks, lists grow and nothing is measured.",
+    "Parse each interaction once into an immutable record with provenance; everything else is a rebuildable view.",
+    "Give every learning a kind, a scope and an owner; serve world facts as dated claims to verify, never as statements.",
+    "Every served item must quote the user's own words, checked by code against the record.",
+    "Budget the package, render it in layers, and list what was cut instead of dropping it silently.",
+    "Evaluate by replay against what the user later corrected, pre-register the pass line, and keep one human gate per stage."
+  ],
+  "videoOutline": [
+    "Hook (Short): your users corrected the assistant yesterday and it made the same mistake today. The model is not the problem. Here is the loop that fixes it.",
+    "The obvious fix: store corrections, inject them next time, and the five ways it breaks within a month.",
+    "The mental model: seven stages, record to approve, drawn as a loop, and why approval is a step rather than a hope.",
+    "Record first: one immutable record per turn with the answer the user actually saw, and why enrichment lives in versioned sidecars.",
+    "The taxonomy: world facts, method rules, answer shape, profile, standing watches, and the precedence rules that keep them sane.",
+    "Humans freeze vocabularies, machines do the volume: letting a model draft labels and then turning the frozen set into a schema.",
+    "Serving: verbatim quotes, 'verify then apply' for world facts, budgets, layers and listed cuts.",
+    "Evaluation: replay with and without the package, a blind judge in seeded order, a leak scan, and scoring against later corrections.",
+    "Pre-registration and the human gate: write the pass line first, pin hashes, record deviations, one approval per stage.",
+    "Close: the production lessons that held up and the one-week checklist."
+  ],
+  "date": "2026-10-10"
+}
