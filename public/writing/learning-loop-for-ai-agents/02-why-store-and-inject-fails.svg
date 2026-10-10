@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="t d">
+<title id="t">Why “store the corrections and inject them” fails</title>
+<desc id="d">A corrections file pasted into every prompt, then five numbered failures: kinds get mixed, facts go stale, text leaks, the list grows, nothing is measured.</desc>
+<defs>
+<marker id="ah-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#4F46E5"/></marker>
+<marker id="ah-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#8A8F9C"/></marker>
+<marker id="ah-human" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#B45309"/></marker>
+</defs>
+<rect width="1600" height="900" fill="#FBFAF7"/>
+<g font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<text x="96" y="118" font-size="44" font-weight="600" fill="#14151A" text-anchor="start" letter-spacing="-0.6">Why “store the corrections and inject them” fails</text>
+<text x="96" y="162" font-size="22" font-weight="400" fill="#5B5F6B" text-anchor="start">The obvious first design breaks within a month, for five structural reasons.</text>
+<rect x="96" y="220" width="300" height="128" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="120" y="254" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">corrections.txt</text>
+<text x="120" y="282" font-size="15" font-weight="400" fill="#5B5F6B" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- never say skyrocket</text>
+<text x="120" y="302" font-size="15" font-weight="400" fill="#5B5F6B" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- prices rose 8%</text>
+<text x="120" y="322" font-size="15" font-weight="400" fill="#5B5F6B" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- watch the new mill</text>
+<text x="120" y="342" font-size="15" font-weight="400" fill="#5B5F6B" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- …and 200 more</text>
+<line x1="412" y1="284" x2="640" y2="284" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<text x="526" y="271" font-size="17" font-weight="400" fill="#5B5F6B" text-anchor="middle" paint-order="stroke" stroke="#FBFAF7" stroke-width="8" stroke-linejoin="round">pasted in, every turn</text>
+<rect x="656" y="220" width="300" height="128" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="680" y="254" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">every prompt</text>
+<text x="680" y="282" font-size="15" font-weight="400" fill="#5B5F6B" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">system text</text>
+<text x="680" y="302" font-size="15" font-weight="400" fill="#5B5F6B" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ all corrections</text>
+<text x="680" y="322" font-size="15" font-weight="400" fill="#5B5F6B" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">+ the question</text>
+<rect x="96" y="396" width="256" height="256" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="120" y="444" font-size="34" font-weight="600" fill="#B45309" text-anchor="start">1</text>
+<text x="120" y="492" font-size="21" font-weight="600" fill="#14151A" text-anchor="start">Kinds get mixed</text>
+<text x="120" y="530" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">A style rule, a stale claim and</text>
+<text x="120" y="554" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">a standing request sit in one</text>
+<text x="120" y="578" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">flat list; all applied alike.</text>
+<rect x="384" y="396" width="256" height="256" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="408" y="444" font-size="34" font-weight="600" fill="#B45309" text-anchor="start">2</text>
+<text x="408" y="492" font-size="21" font-weight="600" fill="#14151A" text-anchor="start">Facts go stale</text>
+<text x="408" y="530" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">A number repeated as fact,</text>
+<text x="408" y="554" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">undated and unsourced,</text>
+<text x="408" y="578" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">months after it changed.</text>
+<rect x="672" y="396" width="256" height="256" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="696" y="444" font-size="34" font-weight="600" fill="#B45309" text-anchor="start">3</text>
+<text x="696" y="492" font-size="21" font-weight="600" fill="#14151A" text-anchor="start">Text leaks</text>
+<text x="696" y="530" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">Notes echo back in answers:</text>
+<text x="696" y="554" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">the user’s own words, or</text>
+<text x="696" y="578" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">“as per my rules…”.</text>
+<rect x="960" y="396" width="256" height="256" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="984" y="444" font-size="34" font-weight="600" fill="#B45309" text-anchor="start">4</text>
+<text x="984" y="492" font-size="21" font-weight="600" fill="#14151A" text-anchor="start">The list grows</text>
+<text x="984" y="530" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">Every correction is one more</text>
+<text x="984" y="554" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">line in every prompt. Cost</text>
+<text x="984" y="578" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">rises; recall falls.</text>
+<rect x="1248" y="396" width="256" height="256" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="1272" y="444" font-size="34" font-weight="600" fill="#B45309" text-anchor="start">5</text>
+<text x="1272" y="492" font-size="21" font-weight="600" fill="#14151A" text-anchor="start">Nothing is measured</text>
+<text x="1272" y="530" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">Answers change. Nobody</text>
+<text x="1272" y="554" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">can say whether they</text>
+<text x="1272" y="578" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">improved.</text>
+
+<text x="96" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="start">Jitin Gupta  ·  “It doesn’t learn”: a learning loop for AI agents</text>
+<text x="1504" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="end">2 / 11</text>
+</g></svg>

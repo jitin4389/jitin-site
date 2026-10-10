@@ -1,0 +1,59 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="t d">
+<title id="t">Kinds of learning, and how each one is handled</title>
+<desc id="d">A table of five kinds of learning: world fact, method rule, answer shape, profile and standing watch, each with an example in the user's words, how it is served, whether it goes stale and its layer. Below: scope, owner and precedence rules.</desc>
+<defs>
+<marker id="ah-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#4F46E5"/></marker>
+<marker id="ah-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#8A8F9C"/></marker>
+<marker id="ah-human" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#B45309"/></marker>
+</defs>
+<rect width="1600" height="900" fill="#FBFAF7"/>
+<g font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<text x="96" y="118" font-size="44" font-weight="600" fill="#14151A" text-anchor="start" letter-spacing="-0.6">Kinds of learning, and how each one is handled</text>
+<text x="96" y="162" font-size="22" font-weight="400" fill="#5B5F6B" text-anchor="start">The taxonomy decides the serving rule. Without it the serving layer cannot tell a fact from a preference.</text>
+<rect x="96" y="216" width="1408" height="372" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<rect x="96" y="216" width="1408" height="62" rx="12" fill="#F1EFEA"/>
+<rect x="96" y="266" width="1408" height="12" fill="#F1EFEA"/>
+<text x="116" y="253" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.2">KIND</text>
+<text x="346" y="253" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.2">THE USER’S WORDS</text>
+<text x="786" y="253" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.2">SERVED AS</text>
+<text x="1126" y="253" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.2">GOES STALE?</text>
+<text x="1306" y="253" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.2">LAYER</text>
+<text x="116" y="315" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">World fact</text>
+<text x="346" y="315" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">“prices rose about 8% last quarter”</text>
+<text x="786" y="315" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">a dated claim: verify, then apply</text>
+<text x="1126" y="315" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">yes, by date</text>
+<text x="1306" y="315" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">third</text>
+<line x1="112" y1="340" x2="1488" y2="340" stroke="#DCDBD5" stroke-width="1"/>
+<text x="116" y="377" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">Method rule</text>
+<text x="346" y="377" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">“cite a source for every number”</text>
+<text x="786" y="377" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">an instruction: apply directly</text>
+<text x="1126" y="377" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">rarely</text>
+<text x="1306" y="377" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">first</text>
+<line x1="112" y1="402" x2="1488" y2="402" stroke="#DCDBD5" stroke-width="1"/>
+<text x="116" y="439" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">Answer shape</text>
+<text x="346" y="439" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">“label every figure with its year and unit”</text>
+<text x="786" y="439" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">an instruction: apply directly</text>
+<text x="1126" y="439" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">rarely</text>
+<text x="1306" y="439" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">second</text>
+<line x1="112" y1="464" x2="1488" y2="464" stroke="#DCDBD5" stroke-width="1"/>
+<text x="116" y="501" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">Profile</text>
+<text x="346" y="501" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">“I work on a two-year horizon”</text>
+<text x="786" y="501" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">context: apply directly</text>
+<text x="1126" y="501" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">slowly</text>
+<text x="1306" y="501" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">first</text>
+<line x1="112" y1="526" x2="1488" y2="526" stroke="#DCDBD5" stroke-width="1"/>
+<text x="116" y="563" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">Standing watch</text>
+<text x="346" y="563" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">“keep an eye on news about the new mill”</text>
+<text x="786" y="563" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">conditional: mention only if relevant</text>
+<text x="1126" y="563" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">yes, by event</text>
+<text x="1306" y="563" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">last</text>
+<text x="116" y="658" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.4">SCOPE</text>
+<text x="246" y="658" font-size="19" font-weight="400" fill="#14151A" text-anchor="start">general, or specific to one subject</text>
+<text x="116" y="698" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.4">OWNER</text>
+<text x="246" y="698" font-size="19" font-weight="400" fill="#14151A" text-anchor="start">one user, or shared after its own review</text>
+<text x="116" y="738" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.4">PRECEDENCE</text>
+<text x="246" y="738" font-size="19" font-weight="400" fill="#14151A" text-anchor="start">per-user beats shared · specific beats general · newer beats older</text>
+
+<text x="96" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="start">Jitin Gupta  ·  “It doesn’t learn”: a learning loop for AI agents</text>
+<text x="1504" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="end">4 / 11</text>
+</g></svg>

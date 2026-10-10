@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="t d">
+<title id="t">When this loop is the wrong tool</title>
+<desc id="d">A comparison table of notes in the prompt, a vendor memory tool, retrieval over transcripts, fine-tuning and this loop, across per-user, provenance, staleness, withdrawal, measurement and build cost. Below, when each simpler option is enough.</desc>
+<defs>
+<marker id="ah-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#4F46E5"/></marker>
+<marker id="ah-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#8A8F9C"/></marker>
+<marker id="ah-human" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#B45309"/></marker>
+</defs>
+<rect width="1600" height="900" fill="#FBFAF7"/>
+<g font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<text x="96" y="118" font-size="44" font-weight="600" fill="#14151A" text-anchor="start" letter-spacing="-0.6">When this loop is the wrong tool</text>
+<text x="96" y="162" font-size="22" font-weight="400" fill="#5B5F6B" text-anchor="start">Build it when corrections are per-user, recur across sessions, and a wrong answer has a cost.</text>
+<rect x="96" y="216" width="1408" height="360" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<rect x="96" y="216" width="1408" height="60" rx="12" fill="#F1EFEA"/>
+<rect x="96" y="264" width="1408" height="12" fill="#F1EFEA"/>
+<text x="116" y="252" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.2">APPROACH</text>
+<text x="511" y="252" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.2">PER-USER</text>
+<text x="691" y="252" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.2">PROVENANCE</text>
+<text x="881" y="252" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.2">STALENESS</text>
+<text x="1071" y="252" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.2">WITHDRAWAL</text>
+<text x="1251" y="252" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.2">MEASURED</text>
+<text x="1420" y="252" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.2">BUILD COST</text>
+<text x="116" y="312" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">Notes in the prompt</text>
+<text x="511" y="312" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">yes</text>
+<text x="691" y="312" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">no</text>
+<text x="881" y="312" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">no</text>
+<text x="1071" y="312" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">edit by hand</text>
+<text x="1251" y="312" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">no</text>
+<text x="1420" y="312" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">hours</text>
+<line x1="112" y1="336" x2="1488" y2="336" stroke="#DCDBD5" stroke-width="1"/>
+<text x="116" y="372" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">Vendor memory tool</text>
+<text x="511" y="372" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">yes</text>
+<text x="691" y="372" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">partial</text>
+<text x="881" y="372" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">no</text>
+<text x="1071" y="372" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">delete entries</text>
+<text x="1251" y="372" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">no</text>
+<text x="1420" y="372" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">hours</text>
+<line x1="112" y1="396" x2="1488" y2="396" stroke="#DCDBD5" stroke-width="1"/>
+<text x="116" y="432" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">RAG over transcripts</text>
+<text x="511" y="432" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">yes</text>
+<text x="691" y="432" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">yes, by hit</text>
+<text x="881" y="432" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">no</text>
+<text x="1071" y="432" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">delete source</text>
+<text x="1251" y="432" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">rarely</text>
+<text x="1420" y="432" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">days</text>
+<line x1="112" y1="456" x2="1488" y2="456" stroke="#DCDBD5" stroke-width="1"/>
+<text x="116" y="492" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">Fine-tuning on preferences</text>
+<text x="511" y="492" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">no</text>
+<text x="691" y="492" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">no</text>
+<text x="881" y="492" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">no</text>
+<text x="1071" y="492" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">retrain</text>
+<text x="1251" y="492" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">offline evals</text>
+<text x="1420" y="492" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">weeks</text>
+<line x1="112" y1="516" x2="1488" y2="516" stroke="#DCDBD5" stroke-width="1"/>
+<text x="116" y="552" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">This loop</text>
+<text x="511" y="552" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">yes</text>
+<text x="691" y="552" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">verbatim quote</text>
+<text x="881" y="552" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">dated, verify</text>
+<text x="1071" y="552" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">appended event</text>
+<text x="1251" y="552" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">replay, blind</text>
+<text x="1420" y="552" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="middle">weeks</text>
+<text x="96" y="640" font-size="20" font-weight="600" fill="#14151A" text-anchor="start">Good enough without the loop</text>
+<text x="96" y="672" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">One user, low stakes, no audit need: a vendor memory tool.</text>
+<text x="96" y="700" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">Recall-shaped questions (“what did I say about X?”): retrieval over transcripts.</text>
+<text x="856" y="640" font-size="20" font-weight="600" fill="#14151A" text-anchor="start">Build the loop when</text>
+<text x="856" y="672" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">corrections are per-user and recur across sessions,</text>
+<text x="856" y="700" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">and someone is accountable for a wrong answer.</text>
+
+<text x="96" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="start">Jitin Gupta  ·  “It doesn’t learn”: a learning loop for AI agents</text>
+<text x="1504" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="end">10 / 11</text>
+</g></svg>

@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="t d">
+<title id="t">A package has a budget and layers</title>
+<desc id="d">A context package drawn as four stacked layers with a budget line cutting through the last layer and a not-included list below. Four notes: position matters, order is a design decision, cuts are listed, stable bytes cache well.</desc>
+<defs>
+<marker id="ah-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#4F46E5"/></marker>
+<marker id="ah-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#8A8F9C"/></marker>
+<marker id="ah-human" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#B45309"/></marker>
+</defs>
+<rect width="1600" height="900" fill="#FBFAF7"/>
+<g font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<text x="96" y="118" font-size="44" font-weight="600" fill="#14151A" text-anchor="start" letter-spacing="-0.6">A package has a budget and layers</text>
+<text x="96" y="162" font-size="22" font-weight="400" fill="#5B5F6B" text-anchor="start">How-to-work first, watches last. Anything cut is listed, never silently dropped.</text>
+<text x="96" y="240" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.4">CONTEXT PACKAGE v3 · one user · one subject</text>
+<rect x="96" y="260" width="740" height="92" rx="10" fill="#EEEDFC" stroke="#EEEDFC" stroke-width="1.5"/>
+<text x="120" y="294" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.4">1 · HOW TO WORK</text>
+<text x="120" y="320" font-size="17" font-weight="400" fill="#14151A" text-anchor="start">apply directly · method rules</text>
+<rect x="96" y="362" width="740" height="76" rx="10" fill="#EEEDFC" stroke="#EEEDFC" stroke-width="1.5"/>
+<text x="120" y="396" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.4">2 · HOW TO SHAPE ANSWERS</text>
+<text x="120" y="422" font-size="17" font-weight="400" fill="#14151A" text-anchor="start">apply directly · answer shape, profile</text>
+<rect x="96" y="448" width="740" height="92" rx="10" fill="#FBF0E3" stroke="#FBF0E3" stroke-width="1.5"/>
+<text x="120" y="482" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.4">3 · WHAT THE USER SAID ABOUT THE WORLD</text>
+<text x="120" y="508" font-size="17" font-weight="400" fill="#14151A" text-anchor="start">verify, then apply · dated claims</text>
+<rect x="96" y="550" width="740" height="76" rx="10" fill="#F1EFEA" stroke="#F1EFEA" stroke-width="1.5"/>
+<text x="120" y="584" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.4">4 · STANDING WATCHES</text>
+<text x="120" y="610" font-size="17" font-weight="400" fill="#8A8F9C" text-anchor="start">mention only if relevant</text>
+<line x1="80" y1="536" x2="852" y2="536" stroke="#B91C1C" stroke-width="2" stroke-dasharray="8 6"/>
+<text x="860" y="542" font-size="15" font-weight="600" fill="#B91C1C" text-anchor="start">budget</text>
+<rect x="96" y="642" width="740" height="70" rx="12" fill="#FBFAF7" stroke="#DCDBD5" stroke-width="1.5" stroke-dasharray="6 6"/>
+<text x="120" y="670" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.2">NOT INCLUDED (OVER BUDGET) · OUTSIDE THE BUDGET, SO NEVER ITSELF CUT</text>
+<text x="120" y="696" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">li-005 · watch · subject</text>
+<text x="956" y="250" font-size="20" font-weight="600" fill="#14151A" text-anchor="start">Position matters</text>
+<text x="956" y="282" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">Models read the start and the end of a</text>
+<text x="956" y="306" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">long context best; the middle gets lost.</text>
+<text x="956" y="378" font-size="20" font-weight="600" fill="#14151A" text-anchor="start">Order is a design decision</text>
+<text x="956" y="410" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">How-to-work rules first; conditional</text>
+<text x="956" y="434" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">watches last. Not alphabetical, not by date.</text>
+<text x="956" y="506" font-size="20" font-weight="600" fill="#14151A" text-anchor="start">Cuts are listed, never silent</text>
+<text x="956" y="538" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">The reader and the model both see</text>
+<text x="956" y="562" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">what was left out, and can ask for it.</text>
+<text x="956" y="634" font-size="20" font-weight="600" fill="#14151A" text-anchor="start">Stable bytes, cheaper prompts</text>
+<text x="956" y="666" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">A byte-stable package placed before</text>
+<text x="956" y="690" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="start">the user turn is cacheable within a session.</text>
+
+<text x="96" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="start">Jitin Gupta  ·  “It doesn’t learn”: a learning loop for AI agents</text>
+<text x="1504" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="end">7 / 11</text>
+</g></svg>

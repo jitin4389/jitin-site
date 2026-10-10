@@ -22,15 +22,15 @@ Work accounts (`jitinguptaCS` on GitHub, the CLOUDSUFI Vercel account) must not 
 
 ## 3. Status (2026-10-10)
 
-| Module                                     | Status                                                                       | Spec                                                                      |
-| ------------------------------------------ | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| LinkedIn overhaul                          | ✅ done 2026-10-03                                                           | `profile_builder/LINKEDIN_UPDATE_PLAN.md`                                 |
-| foundation (shell, design system, ⌘K, SEO) | ✅ live                                                                      | [SPEC-foundation.md](../SPEC-foundation.md)                               |
-| profile (home page, `/cv`, CV PDF)         | ✅ live                                                                      | [SPEC-profile.md](../SPEC-profile.md)                                     |
-| leads (contact form → Supabase)            | ✅ live                                                                      | [SPEC-leads.md](../SPEC-leads.md)                                         |
-| case-studies (`/work`)                     | 🟡 case study 1 live; backtesting pending                                    | [SPEC-case-studies.md](../SPEC-case-studies.md)                           |
-| writing (`/writing`, RSS)                  | ✅ 10-part series live; standalone article 1 (learning loop) live 2026-10-11 | [SPEC-writing.md](../SPEC-writing.md), [intent](intent/writing-series.md) |
-| offerings                                  | Not started                                                                  | [CAPABILITY-MAP.md](../CAPABILITY-MAP.md)                                 |
+| Module                                     | Status                                                                                                    | Spec                                                                      |
+| ------------------------------------------ | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| LinkedIn overhaul                          | ✅ done 2026-10-03                                                                                        | `profile_builder/LINKEDIN_UPDATE_PLAN.md`                                 |
+| foundation (shell, design system, ⌘K, SEO) | ✅ live                                                                                                   | [SPEC-foundation.md](../SPEC-foundation.md)                               |
+| profile (home page, `/cv`, CV PDF)         | ✅ live                                                                                                   | [SPEC-profile.md](../SPEC-profile.md)                                     |
+| leads (contact form → Supabase)            | ✅ live                                                                                                   | [SPEC-leads.md](../SPEC-leads.md)                                         |
+| case-studies (`/work`)                     | 🟡 case study 1 live; backtesting pending                                                                 | [SPEC-case-studies.md](../SPEC-case-studies.md)                           |
+| writing (`/writing`, RSS)                  | ✅ 10-part series live; standalone article 1 (learning loop) live 2026-10-11; slides + revision in review | [SPEC-writing.md](../SPEC-writing.md), [intent](intent/writing-series.md) |
+| offerings                                  | Not started                                                                                               | [CAPABILITY-MAP.md](../CAPABILITY-MAP.md)                                 |
 
 Quality bar on every page: Lighthouse mobile ≥ 95 / 100 / ≥ 95 / 100 (actual 96–99 / 100 / 100 / 100), zero axe violations in both themes, no horizontal scroll at 360 px.
 
@@ -59,6 +59,7 @@ Approved public facts: `~/projects/profile_builder/drafts/00-facts.md` (12+ sect
 - **Commands:** `npm run check` (lint, typecheck, unit, build) and `npm run test:e2e` before every commit; `npm run cv:pdf` after editing `src/content/profile.ts`.
 - **Content:** profile in `src/content/profile.ts`; case studies in `src/content/case-studies/` (MDX + registry); articles in `src/content/writing/` (Markdown + registry).
 - **Editorial team:** reusable workflow scripts in [docs/editorial/workflow/](editorial/workflow/): `editorial-team.workflow.js` (research → write → edit → evaluate, one revision loop) and `minor-fixes.workflow.js`. Run them with the Workflow tool via `scriptPath` and an `args` object (see the script header and the article specs used for parts 1–10 in `docs/editorial/*.meta.json`).
+- **Slides:** articles carry a generated slide deck (`scripts/slides/`, see `docs/editorial/workflow/README.md`); revisions run through `revise-article.workflow.js`.
 - **Never:** publish without the owner's go-ahead; commit secrets or `.confidential-terms`; name the client, fund, expert, people, vendors or internal codenames.
 
 ## 6. Open items
