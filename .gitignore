@@ -49,3 +49,6 @@ next-env.d.ts
 
 # private blocklist for the case-study confidentiality guard (never commit)
 .confidential-terms
+
+# slide PNG exports (regenerate with scripts/slides/build.mts --png)
+/exports/

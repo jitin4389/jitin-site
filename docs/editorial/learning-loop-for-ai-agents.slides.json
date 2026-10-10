@@ -1,0 +1,90 @@
+[
+  {
+    "n": 1,
+    "src": "/writing/learning-loop-for-ai-agents/01-the-complaint.svg",
+    "title": "The complaint: corrected on Monday, repeated on Tuesday",
+    "sub": "The model is stateless by design. The system around it is what forgets.",
+    "caption": "Corrected on Monday, repeated on Tuesday: the model is stateless by design, and nothing around it records, selects or measures.",
+    "alt": "Two chat sessions. On Monday the user says never use the word skyrocket and the assistant agrees. On Tuesday, in a new session with empty context, the assistant uses the word. Three missing things are listed: nothing records the correction in a checkable form, nothing decides which notes shape future answers, nothing measures improvement."
+  },
+  {
+    "n": 2,
+    "src": "/writing/learning-loop-for-ai-agents/02-why-store-and-inject-fails.svg",
+    "title": "Why “store the corrections and inject them” fails",
+    "sub": "The obvious first design breaks within a month, for five structural reasons.",
+    "caption": "The naive design: a growing corrections file pasted into every prompt, and the five ways it fails.",
+    "alt": "A corrections file pasted into every prompt, then five numbered failures: kinds get mixed, facts go stale, text leaks, the list grows, nothing is measured."
+  },
+  {
+    "n": 3,
+    "src": "/writing/learning-loop-for-ai-agents/03-the-learning-loop.svg",
+    "title": "The learning loop: seven stages, a sign-off at each gate",
+    "sub": "What moves between stages is a file. What decides is a person. Not a list in a prompt.",
+    "caption": "The loop: seven rerunnable stages. Every arrow carries a file; every gate has a person.",
+    "alt": "Record, enrich, group, extract, serve, evaluate and approve form a ring. Each arrow names the file that moves to the next stage and carries a sign-off marker. A dashed arrow returns what failed replay from evaluate to extract."
+  },
+  {
+    "n": 4,
+    "src": "/writing/learning-loop-for-ai-agents/04-kinds-of-learning.svg",
+    "title": "Kinds of learning, and how each one is handled",
+    "sub": "The taxonomy decides the serving rule. Without it the serving layer cannot tell a fact from a preference.",
+    "caption": "Five kinds of learning, each with its own serving rule, staleness and position in the package.",
+    "alt": "A table of five kinds of learning: world fact, method rule, answer shape, profile and standing watch, each with an example in the user's words, how it is served, whether it goes stale and its layer. Below: scope, owner and precedence rules."
+  },
+  {
+    "n": 5,
+    "src": "/writing/learning-loop-for-ai-agents/05-one-corrections-journey.svg",
+    "title": "One correction’s journey through the loop",
+    "sub": "Monday’s sentence becomes Tuesday’s behaviour, with a file at every step and a person at the gate.",
+    "caption": "One rule, end to end: from the user's sentence to the next session's behaviour.",
+    "alt": "Eight steps from a user's sentence on Monday, through record, enrich, group, extract, serve and evaluate, to approval and Tuesday's session starting with the new package."
+  },
+  {
+    "n": 6,
+    "src": "/writing/learning-loop-for-ai-agents/06-anatomy-of-a-served-item.svg",
+    "title": "Anatomy of a served item",
+    "sub": "Every item quotes the user’s own words. A world fact is served as a dated claim to check, never as a fact.",
+    "caption": "A learning item carries its kind, scope, verbatim quote and source; the rendering differs by kind.",
+    "alt": "A learning item with kind, scope, verbatim quote, source record and status, each annotated. Two rendered lines: a method rule applied directly, and a world fact rendered as verify before use with its date."
+  },
+  {
+    "n": 7,
+    "src": "/writing/learning-loop-for-ai-agents/07-budget-and-layers.svg",
+    "title": "A package has a budget and layers",
+    "sub": "How-to-work first, watches last. Anything cut is listed, never silently dropped.",
+    "caption": "The package: layered by kind, cut at a budget, with the cut list outside the budget.",
+    "alt": "A context package drawn as four stacked layers with a budget line cutting through the last layer and a not-included list below. Four notes: position matters, order is a design decision, cuts are listed, stable bytes cache well."
+  },
+  {
+    "n": 8,
+    "src": "/writing/learning-loop-for-ai-agents/08-replay-evaluation.svg",
+    "title": "Evaluate by replay before anything goes live",
+    "sub": "Later questions, answered with and without the package, judged blind, measured against what the user actually corrected.",
+    "caption": "Replay: two arms, a blind judge, code guards, and a pass line on corrections the package never saw.",
+    "alt": "A time bar splits sessions at a cutoff date: packages are built from the earlier ones, questions come from the later ones. A later question is answered in two arms, as today and with the package; a blind model judge and code guards score both; the verdict is the pass line on later corrections met."
+  },
+  {
+    "n": 9,
+    "src": "/writing/learning-loop-for-ai-agents/09-pre-registration-and-gates.svg",
+    "title": "Pre-register the test, pin the code, gate each stage",
+    "sub": "Write the pass line before the run. Hash the code and the prompt. A mismatch refuses the run.",
+    "caption": "The registration file fixes the test before the run; one person signs off at each stage.",
+    "alt": "A registration file with hypothesis, pass line, sample, prompt and code hashes and an empty deviations list; a note that a hash mismatch refuses the run. Beside it, seven stages with what the person checks at each sign-off."
+  },
+  {
+    "n": 10,
+    "src": "/writing/learning-loop-for-ai-agents/10-when-not-to-build-this.svg",
+    "title": "When this loop is the wrong tool",
+    "sub": "Build it when corrections are per-user, recur across sessions, and a wrong answer has a cost.",
+    "caption": "Alternatives compared: where notes, vendor memory, retrieval or fine-tuning are enough, and where the loop earns its cost.",
+    "alt": "A comparison table of notes in the prompt, a vendor memory tool, retrieval over transcripts, fine-tuning and this loop, across per-user, provenance, staleness, withdrawal, measurement and build cost. Below, when each simpler option is enough."
+  },
+  {
+    "n": 11,
+    "src": "/writing/learning-loop-for-ai-agents/11-day-1-and-week-1.svg",
+    "title": "Day 1 and week 1",
+    "sub": "Make learning checkable first, then provable.",
+    "caption": "What to build on day 1 and in week 1.",
+    "alt": "Two checklists. Day 1: record schema, taxonomy enum, verbatim-quote check, verify-then-apply rendering, budget with listed cuts, package stamp on each answer. Week 1: cutoff date, extraction prompt and sample, calibrated judge, registration file, named approvers, withdrawal path and cost ceiling. Closing line: approval is a step, not a hope."
+  }
+]

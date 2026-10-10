@@ -1,0 +1,60 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="t d">
+<title id="t">Evaluate by replay before anything goes live</title>
+<desc id="d">A time bar splits sessions at a cutoff date: packages are built from the earlier ones, questions come from the later ones. A later question is answered in two arms, as today and with the package; a blind model judge and code guards score both; the verdict is the pass line on later corrections met.</desc>
+<defs>
+<marker id="ah-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#4F46E5"/></marker>
+<marker id="ah-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#8A8F9C"/></marker>
+<marker id="ah-human" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#B45309"/></marker>
+</defs>
+<rect width="1600" height="900" fill="#FBFAF7"/>
+<g font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<text x="96" y="118" font-size="44" font-weight="600" fill="#14151A" text-anchor="start" letter-spacing="-0.6">Evaluate by replay before anything goes live</text>
+<text x="96" y="162" font-size="22" font-weight="400" fill="#5B5F6B" text-anchor="start">Later questions, answered with and without the package, judged blind, measured against what the user actually corrected.</text>
+<rect x="96" y="212" width="760" height="56" rx="10" fill="#EEEDFC" stroke="#EEEDFC" stroke-width="1.5"/>
+<text x="120" y="246" font-size="16" font-weight="400" fill="#14151A" text-anchor="start">sessions before the cutoff  →  packages are built from these only</text>
+<line x1="872" y1="202" x2="872" y2="278" stroke="#B45309" stroke-width="3"/>
+<text x="872" y="194" font-size="14" font-weight="600" fill="#B45309" text-anchor="middle">cutoff date</text>
+<rect x="888" y="212" width="616" height="56" rx="10" fill="#F1EFEA" stroke="#F1EFEA" stroke-width="1.5"/>
+<text x="912" y="246" font-size="16" font-weight="400" fill="#14151A" text-anchor="start">sessions after  →  their questions become the test; the package never saw them</text>
+<rect x="96" y="382" width="250" height="158" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="221" y="410" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">INPUT</text>
+<text x="221" y="440" font-size="22" font-weight="600" fill="#14151A" text-anchor="middle">A later question</text>
+<text x="221" y="466" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">the first question of a</text>
+<text x="221" y="488" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">session after the cutoff</text>
+<rect x="426" y="322" width="300" height="100" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="576" y="350" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">ARM A</text>
+<text x="576" y="380" font-size="22" font-weight="600" fill="#14151A" text-anchor="middle">As today</text>
+<text x="576" y="406" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">the agent as deployed</text>
+<rect x="426" y="458" width="300" height="100" rx="12" fill="#EEEDFC" stroke="#EEEDFC" stroke-width="1.5"/>
+<text x="576" y="486" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">ARM B</text>
+<text x="576" y="516" font-size="22" font-weight="600" fill="#14151A" text-anchor="middle">With the package</text>
+<text x="576" y="542" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">+ the user’s rules list</text>
+<line x1="354" y1="440" x2="418" y2="372" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<line x1="354" y1="444" x2="418" y2="508" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<rect x="816" y="316" width="330" height="118" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="981" y="344" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">BLIND JUDGE</text>
+<text x="981" y="374" font-size="20" font-weight="600" fill="#14151A" text-anchor="middle">A model, seeded order</text>
+<text x="981" y="400" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">scores method, sourcing, needs;</text>
+<text x="981" y="422" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">never the domain call</text>
+<rect x="816" y="452" width="330" height="120" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="981" y="480" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">CODE GUARDS</text>
+<text x="981" y="510" font-size="20" font-weight="600" fill="#14151A" text-anchor="middle">Deterministic checks</text>
+<text x="981" y="536" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">leak scan · self-reference ·</text>
+<text x="981" y="558" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">length and structure</text>
+<line x1="734" y1="372" x2="808" y2="372" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<line x1="734" y1="508" x2="808" y2="508" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<rect x="1236" y="362" width="268" height="160" rx="12" fill="#FBF0E3" stroke="#B45309" stroke-width="1.5"/>
+<text x="1370" y="390" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">VERDICT</text>
+<text x="1370" y="420" font-size="22" font-weight="600" fill="#14151A" text-anchor="middle">Pass line met?</text>
+<text x="1370" y="446" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">main score: later corrections</text>
+<text x="1370" y="468" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">met, B minus A</text>
+<line x1="1154" y1="372" x2="1228" y2="432" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<line x1="1154" y1="508" x2="1228" y2="452" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<rect x="96" y="612" width="1408" height="110" rx="12" fill="#F1EFEA" stroke="#F1EFEA" stroke-width="1.5"/>
+<text x="124" y="652" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.4">GROUND TRUTH THE PACKAGE NEVER SAW</text>
+<text x="124" y="684" font-size="18" font-weight="400" fill="#14151A" text-anchor="start">What the user asked for, or corrected, later in that same session. If arm B already does it unprompted, the package worked.</text>
+<text x="124" y="710" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">Guards stop the easy wins: an answer that says less, repeats the package’s words, or refers to “my rules”.</text>
+
+<text x="96" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="start">Jitin Gupta  ·  “It doesn’t learn”: a learning loop for AI agents</text>
+<text x="1504" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="end">8 / 11</text>
+</g></svg>

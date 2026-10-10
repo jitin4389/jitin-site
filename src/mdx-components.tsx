@@ -88,14 +88,19 @@ const components: MDXComponents = {
       <table className="w-full text-left text-sm" {...props} />
     </div>
   ),
+  // Tables scroll inside their wrapper, so cells keep normal word wrapping even where the article body
+  // allows breaking anywhere (that rule exists for long URLs at 360 px, not for table text).
   th: (props) => (
     <th
-      className="border-b border-border bg-muted/50 px-3 py-2 font-medium"
+      className="border-b border-border bg-muted/50 px-3 py-2 font-medium [overflow-wrap:normal] whitespace-nowrap"
       {...props}
     />
   ),
   td: (props) => (
-    <td className="border-b border-border/60 px-3 py-2 align-top" {...props} />
+    <td
+      className="min-w-[9rem] border-b border-border/60 px-3 py-2 align-top [overflow-wrap:normal]"
+      {...props}
+    />
   ),
   // GFM task lists ("- [ ]") render as decorative boxes: readers can't tick them on the page,
   // and unlabelled disabled checkboxes fail accessibility checks.
@@ -107,6 +112,36 @@ const components: MDXComponents = {
       />
     ) : null,
   hr: () => <hr className="my-12 border-border" />,
+  // Article slides: `![alt](/writing/<slug>/<n>.svg "Caption")`. Self-contained 16:9 SVGs, so a plain
+  // <img> is right (no optimisation pass, no theme dependence); explicit dimensions avoid layout shift.
+  // The figure links to the file so phone readers can open it full size and zoom.
+  img: ({ src, alt, title }) => (
+    <figure className="mt-8">
+      <a
+        href={src}
+        target="_blank"
+        rel="noopener"
+        aria-label="Open the slide full size"
+        className="block rounded-xl focus-visible:ring-2 focus-visible:ring-ring focus-visible:outline-none"
+      >
+        {/* eslint-disable-next-line @next/next/no-img-element */}
+        <img
+          src={src}
+          alt={alt ?? ""}
+          width={1600}
+          height={900}
+          loading="lazy"
+          decoding="async"
+          className="h-auto w-full rounded-xl border border-border"
+        />
+      </a>
+      {title && (
+        <figcaption className="mt-3 text-center text-sm text-muted-foreground">
+          {title}
+        </figcaption>
+      )}
+    </figure>
+  ),
 };
 
 export function useMDXComponents(): MDXComponents {

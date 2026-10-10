@@ -49,6 +49,14 @@ Same team and gates for a **standalone architecture article** (no series, no Cla
 }
 ```
 
+## revise-article.workflow.js
+
+Revise a published article against a review brief: reviser → editor → evaluator, one fix loop. Args: `{ "repo", "slug", "brief" (markdown), "slidesManifest"? (path to the deck's JSON manifest), "wordRange"? [min, max] }`. With a manifest, every slide must appear exactly once at the start of its section and the prose must not repeat it. First used for the learning-loop article (2026-10-11).
+
+## Slides
+
+Article decks are generated: `node scripts/slides/build.mts <slug> --png` writes SVG masters to `public/writing/<slug>/` and PNG exports to `exports/slides/<slug>/` (git-ignored). One deck file per article under `scripts/slides/decks/`; tokens and primitives in `scripts/slides/lib.mts`. Rule: topic title, one-line takeaway, picture in the middle; a reader who sees only the slides and captions must still get the argument.
+
 ## minor-fixes.workflow.js
 
 One fixer agent per article applies the evaluator's minor issues. Args: `{ "repo": "...", "items": [{ "slug": "...", "issues": [{ "location", "problem", "fix" }] }] }`. Pass `items` as a real JSON array, not a string.

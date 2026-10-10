@@ -1,0 +1,64 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="t d">
+<title id="t">One correction’s journey through the loop</title>
+<desc id="d">Eight steps from a user's sentence on Monday, through record, enrich, group, extract, serve and evaluate, to approval and Tuesday's session starting with the new package.</desc>
+<defs>
+<marker id="ah-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#4F46E5"/></marker>
+<marker id="ah-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#8A8F9C"/></marker>
+<marker id="ah-human" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#B45309"/></marker>
+</defs>
+<rect width="1600" height="900" fill="#FBFAF7"/>
+<g font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<text x="96" y="118" font-size="44" font-weight="600" fill="#14151A" text-anchor="start" letter-spacing="-0.6">One correction’s journey through the loop</text>
+<text x="96" y="162" font-size="22" font-weight="400" fill="#5B5F6B" text-anchor="start">Monday’s sentence becomes Tuesday’s behaviour, with a file at every step and a person at the gate.</text>
+<rect x="96" y="236" width="316" height="150" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="254" y="264" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">1 · MONDAY 09:12</text>
+<text x="254" y="294" font-size="22" font-weight="600" fill="#14151A" text-anchor="middle">The user writes</text>
+<text x="254" y="320" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">“Cite a source for</text>
+<text x="254" y="342" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">every number.”</text>
+<line x1="420" y1="311" x2="452" y2="311" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<rect x="460" y="236" width="316" height="150" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="618" y="264" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">2 · RECORD</text>
+<text x="618" y="294" font-size="22" font-weight="600" fill="#14151A" text-anchor="middle">ses-0002 · turn 2</text>
+<text x="618" y="320" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">answer shown, feedback kept,</text>
+<text x="618" y="342" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">nothing edited later</text>
+<line x1="784" y1="311" x2="816" y2="311" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<rect x="824" y="236" width="316" height="150" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="982" y="264" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">3 · ENRICH</text>
+<text x="982" y="294" font-size="22" font-weight="600" fill="#14151A" text-anchor="middle">labels beside the record</text>
+<text x="982" y="320" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">turn-shape: instruction</text>
+<text x="982" y="342" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">topic: sourcing-rule</text>
+<line x1="1148" y1="311" x2="1180" y2="311" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<rect x="1188" y="236" width="316" height="150" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="1346" y="264" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">4 · GROUP</text>
+<text x="1346" y="294" font-size="22" font-weight="600" fill="#14151A" text-anchor="middle">subject: office-paper</text>
+<text x="1346" y="320" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">from the frozen vocabulary;</text>
+<text x="1346" y="342" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">routed, then verified</text>
+<path d="M1346 394 L1346 482" stroke="#4F46E5" stroke-width="2" fill="none" marker-end="url(#ah-flow)"/>
+<rect x="1188" y="490" width="316" height="150" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="1346" y="518" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">5 · EXTRACT</text>
+<text x="1346" y="548" font-size="22" font-weight="600" fill="#14151A" text-anchor="middle">item li-003</text>
+<text x="1346" y="574" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">kind: method_rule · general</text>
+<text x="1346" y="596" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">quote checked verbatim ✓</text>
+<line x1="1180" y1="565" x2="1148" y2="565" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<rect x="824" y="490" width="316" height="150" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="982" y="518" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">6 · SERVE</text>
+<text x="982" y="548" font-size="22" font-weight="600" fill="#14151A" text-anchor="middle">package v3</text>
+<text x="982" y="574" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">layer “How to work”,</text>
+<text x="982" y="596" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">within budget</text>
+<line x1="816" y1="565" x2="784" y2="565" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<rect x="460" y="490" width="316" height="150" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="618" y="518" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">7 · EVALUATE</text>
+<text x="618" y="548" font-size="22" font-weight="600" fill="#14151A" text-anchor="middle">replay on later questions</text>
+<text x="618" y="574" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">correction “source per number”</text>
+<text x="618" y="596" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">met ✓ · no leak flags</text>
+<line x1="452" y1="565" x2="420" y2="565" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<rect x="96" y="490" width="316" height="150" rx="12" fill="#FBF0E3" stroke="#B45309" stroke-width="1.5"/>
+<text x="254" y="518" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">8 · APPROVE → TUESDAY</text>
+<text x="254" y="548" font-size="22" font-weight="600" fill="#14151A" text-anchor="middle">a person signs off</text>
+<text x="254" y="574" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">live pointer moves to v3;</text>
+<text x="254" y="596" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">Tuesday’s session starts with it</text>
+<text x="96" y="700" font-size="20" font-weight="400" fill="#5B5F6B" text-anchor="start">Every step writes a file the next step reads. A person signs off before the package goes live.</text>
+
+<text x="96" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="start">Jitin Gupta  ·  “It doesn’t learn”: a learning loop for AI agents</text>
+<text x="1504" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="end">5 / 11</text>
+</g></svg>

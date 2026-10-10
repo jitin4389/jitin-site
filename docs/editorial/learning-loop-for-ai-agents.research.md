@@ -1214,3 +1214,93 @@ What changed:
 - **Citations.** All 14 links appear in Section 2 of these notes; neither forbidden source (S16, S32) is cited. One quoted phrase from the harness post (S5, "less likely to inappropriately change or overwrite JSON files compared to Markdown files") was not among the verbatim quotes recorded above, so it was re-fetched and confirmed on the live page; kept as a quote.
 - **Code.** All three code blocks unchanged. Both JSON blocks parse; the Python example was re-run and its output matches the prose (one paraphrased item rejected, watch cut and listed, with-package answer meets 3/3 later corrections, no leak flags).
 - **Confidentiality and claims.** Blocklist scan (case-insensitive, all terms) on article and sidecar: no hits. Only the two approved public facts appear; no numbers, names or subjects were added to the production lessons. British spelling checked; no US variants found.
+
+---
+
+## Revision notes (2026-10-11)
+
+Reviser pass against the three-review brief (architect, practitioner, editor). Edited in place: `src/content/writing/learning-loop-for-ai-agents.md` and the sidecar `learning-loop-for-ai-agents.meta.json`. All eleven slides from `learning-loop-for-ai-agents.slides.json` are placed exactly once, each at the start of the section it illustrates, in the exact `![alt](src "caption")` form from the manifest.
+
+### What changed and why
+
+- **Opening and voice.** The opening is now the Monday/Tuesday scene that the worked example pays off (the 'skyrocket' rule). "Stateless model, stateful system." appears once in the opening; "Approval is a step, not a hope." appears once near the opening and once as the closing line. Paragraph 3 ends with the who-this-is-for line (not fine-tuning, not in-task scratch notes).
+- **Headings and discovery.** Renamed to "Why 'store the corrections and inject them' fails" and "The idea: a learning loop, not a memory list"; "Principles: memory you can check" and "Pitfalls when serving corrections" put 'memory' and 'corrections' into two headings each. Tags are now ai-agents, memory, evals, architecture, human-in-the-loop.
+- **The idea.** The dense stage paragraph is a seven-row table (Stage | Writes | The person checks). The fenced text diagram was dropped because slide 3 carries the loop.
+- **Principles regrouped** under four `###` headings (Record and structure; Extract and serve, with a `####` sub-part for serving; Prove it; Keep it running) with each principle as a bold run-in rule. A two-sentence opener tells senior readers to read only the bold rules and the checklist.
+- **Architecture gaps filled (general, no client numbers):** package id and hash on the record JSON and a manifest paragraph with the `candidate | live | rolled_back` pointer model; shared vs per-user promotion, fixed precedence order, model-proposed/human-confirmed conflicts, tenant partitioning; subject selection, new-user default, placement in the stable prefix, the caching sentence replaced as briefed, and the budget heuristic; pointwise vs pairwise judges, the on-topic rule for "do not do X" corrections, a content floor beside the length ceiling, and the sample-size rule; a new section "When this loop is the wrong tool" (slide 10) with the five options compared in prose, three honest simpler cases and the rule of thumb; deletion and consent expanded to tombstone, rebuild, crypto-shredding or external text store, and re-render without a new eval.
+- **Residue trimmed.** 'enum' and 'sidecar' defined in three words on first use; the capability map now appears once (production section); the signature-first and retired-experiment sentences are general rules; "closes them" is "addresses them"; "by analogy" added to the JSON-vs-Markdown inference.
+- **Example.** Added the extraction prompt sketch (fenced text), a `JUDGE_PROMPT` constant, a `REGISTRATION` dict with both hashes and a refusal on mismatch, the bare-fact check in `check()` with a rejected item (li-008), a supersession (li-007 supersedes li-003; `render()` drops the old item and lists it under "Superseded"), one parroting sentence in the with-package answer so the leak scan fires once and the verdict reads FAIL pending review, and the seeded order printed next to the seed. The prose states that both arm answers are stubs and the run exercises the scorer, not the loop. A registration JSON file follows the script. Internal links: Part 8 at the replay rule, Part 1 at budgets, Part 6 at the provenance check, Part 10 at the personal-data paragraph.
+- **Production section** leads each lesson with the lesson, keeps the approved credential sentence as a subordinate opener, and adds the honest line about not reporting the measured gain. The "Provenance checks" and "Parse once" bullets were cut as duplicates of the principles; "Files and local commands first" became "Keep cost legible".
+- **Checklist** regrouped as Day 1 (half a day, one engineer) and Week 1 (engineer + one reviewer) with an owner per line, including the package stamp, placement decision, `met_if` authoring, withdrawal path and per-stage cost ceiling.
+- **Sidecar.** Description set to the briefed text (155 characters); tags, summary, keyTerms (added "Tombstone"), keyPoints and videoOutline updated (Short hook as beat 1, a demo beat, a story beat, final beat says "day 1 and week 1"); date unchanged.
+
+### What was verified
+
+- Prose length: 3,770 words with code fences and slide image lines excluded (4,380 if the eleven alt/caption lines are counted). Band was 2,600–3,800.
+- Blocklist scan (case-insensitive, every term) on the article, the sidecar and this file: 0 hits.
+- All 14 external URLs in the article appear in Section 2 of these notes; neither forbidden source (S16, S32) is cited. Internal link targets exist as files.
+- Headings start at `##`; no HTML, JSX or import/export outside code fences. All three JSON blocks parse.
+- The Python block was extracted from the article and run with `python3 3.12`; its output is byte-identical to the scratch script's, and the rendered Markdown block in the article equals the package the script prints. Adding a comment to the file makes it print `verdict: REFUSED (code or judge prompt differs from the registration)` and exit 1, as intended. Note for future editors: any change to the script's bytes (other than the `"code_sha256"` line) requires re-pinning that hash, or the example refuses to run.
+
+### Script output (python3, 2026-10-11)
+
+```text
+li-001 answer_shape  ok
+li-002 method_rule   ok
+li-003 method_rule   ok
+li-004 world_fact    ok
+li-005 watch         ok
+li-006 method_rule   quote is not verbatim in the source
+li-007 method_rule   ok
+li-008 world_fact    world fact stated as a bare fact
+
+# Context package pkg-u17-0003
+
+## How to work (apply directly)
+- Do not use the word 'skyrocket'. (user's words: "never use the word 'skyrocket'") [src:ses-0001:turn-04 2025-03-02]
+- Cite a source for every number, with the link inline after the figure. (user's words: "Cite a source for every number and put the link inline, right after the figure") [src:ses-0003:turn-01 2025-03-20]
+
+## How to shape answers (apply directly)
+- Label every figure with its year and unit. (user's words: "Label every figure with its year and unit") [src:ses-0001:turn-04 2025-03-02]
+
+## What the user told you about the world (verify, then apply)
+- VERIFY BEFORE USE: on 2025-03-09 the user said "office paper prices rose about 8% last quarter". Check it against a current source. [src:ses-0002:turn-02 2025-03-09]
+
+## Superseded (not served)
+- li-003 by li-007
+
+## Not included (over budget)
+- li-005 (watch, subject)
+
+[without] judge={'method': 0, 'sourcing': 0, 'needs': 0} later_corrections_met=[] leak_flags=0
+[with] judge={'method': 1, 'sourcing': 1, 'needs': 1} later_corrections_met=['year-and-unit', 'source-per-number', 'no-skyrocket'] leak_flags=1
+
+verdict: FAIL pending review (1 leak flag)
+pinned: code_sha256=8bf703454b2e judge_prompt_sha256=034dca5b3c4e seed=20250401 order=['with', 'without']
+```
+
+---
+
+## Editor's notes (revision) (2026-10-11)
+
+Editor pass over `src/content/writing/learning-loop-for-ai-agents.md`. Sidecar `learning-loop-for-ai-agents.meta.json` re-read against the edited article and left unchanged: valid JSON, all keys present, title, summary, key terms, key points and video outline still match the text (the demo beat still matches the script's run). No claims, names or numbers added anywhere.
+
+### What changed and why
+
+- **Opening.** Kept the Monday/Tuesday scene. Split the "code was the easy part" sentence so it carries one colon, and "just changes things" became "merely changes things".
+- **Captions and prose no longer duplicate.** Three sentences that restated a slide caption were cut or rewritten: the "pipeline of seven stages, each reading and writing files, each rerunnable" line under slide 3 (the caption says it), the "slide above follows one correction" line under slide 5, and the second "structural" sentence closing the naive-design section.
+- **Jargon defined before use.** "Context package" is now defined in the sentence that introduces the stage table ("a short, budgeted block of learned items served to a user's next session"), since the table used "package" before the Principles section explained it. "Provenance" gets its three-word gloss (ids, timestamps, origin) in the Record row, and "replay" gets its gloss in the Evaluate row.
+- **Plainer sentence on event sourcing.** "without the rest of a pattern that Microsoft's guide rightly calls heavy and usually unnecessary" is now two short sentences with the same meaning and the same source link.
+- **Shorter paragraphs.** Five long paragraphs were split at a natural turn: shared-vs-per-user precedence, personal data and withdrawal, judge vs code guards, pre-registration, and the manifest/live pointer. No words changed inside them.
+- **Scannable comparison.** "When this loop is the wrong tool" now lists the five options as bullets with a bold lead, and the three simpler cases as a second list. Wording is the original prose, only reflowed.
+- **Run description.** The one-sentence summary of what the script prints now uses semicolons so each outcome can be scanned.
+- **Terminology.** Checked that "learning item", "context package", "world fact", "pass line", "replay" and "tombstone" are used in one form throughout. "Memory list" is the heading term and the prose term for the naive design; "corrections file" appears only in the slide captions, which are fixed by the manifest.
+
+### What was verified
+
+- Prose length: 3,784 words with code fences and slide image lines excluded (band 2,600–3,800).
+- All three code blocks unchanged. The Python block was re-extracted and byte-compared to the previous version (identical), then run: output unchanged, pinned hashes still match, verdict `FAIL pending review (1 leak flag)`. All three JSON blocks parse.
+- All 14 external URLs in the article appear in Section 2 of these notes; S16 and S32 are not cited. The four internal links and eleven slide files exist.
+- Headings start at `##`; no HTML, JSX or import/export outside code fences.
+- British spelling: the only US form is "Modeling" inside a cited paper title, kept as published. No hype words; "critical" appears only inside a quoted source.
+- Blocklist scan (case-insensitive, every term) on the article, the sidecar and this file: 0 hits. Only the two approved public facts appear in the production section.

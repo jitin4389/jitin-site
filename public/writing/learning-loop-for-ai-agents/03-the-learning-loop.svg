@@ -1,0 +1,70 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="t d">
+<title id="t">The learning loop: seven stages, a sign-off at each gate</title>
+<desc id="d">Record, enrich, group, extract, serve, evaluate and approve form a ring. Each arrow names the file that moves to the next stage and carries a sign-off marker. A dashed arrow returns what failed replay from evaluate to extract.</desc>
+<defs>
+<marker id="ah-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#4F46E5"/></marker>
+<marker id="ah-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#8A8F9C"/></marker>
+<marker id="ah-human" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#B45309"/></marker>
+</defs>
+<rect width="1600" height="900" fill="#FBFAF7"/>
+<g font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<text x="96" y="118" font-size="44" font-weight="600" fill="#14151A" text-anchor="start" letter-spacing="-0.6">The learning loop: seven stages, a sign-off at each gate</text>
+<text x="96" y="162" font-size="22" font-weight="400" fill="#5B5F6B" text-anchor="start">What moves between stages is a file. What decides is a person. Not a list in a prompt.</text>
+<line x1="929.8" y1="346.4" x2="1088.5" y2="378.7" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<text x="1021.0" y="341.4" font-size="17" font-weight="400" fill="#5B5F6B" text-anchor="start" paint-order="stroke" stroke="#FBFAF7" stroke-width="8" stroke-linejoin="round">records</text>
+<rect x="1056.1" y="366.5" width="14" height="14" transform="rotate(45 1063.1 373.5)" fill="#B45309" stroke="#FBFAF7" stroke-width="3"/>
+<line x1="1253.8" y1="464.4" x2="1292.9" y2="536.7" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<text x="1304.0" y="495.9" font-size="17" font-weight="400" fill="#5B5F6B" text-anchor="start" paint-order="stroke" stroke="#FBFAF7" stroke-width="8" stroke-linejoin="round">labels</text>
+<rect x="1279.7" y="518.1" width="14" height="14" transform="rotate(45 1286.7 525.1)" fill="#B45309" stroke="#FBFAF7" stroke-width="3"/>
+<line x1="1225.2" y1="652.3" x2="1139.1" y2="697.9" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<text x="1221.4" y="686.8" font-size="17" font-weight="400" fill="#5B5F6B" text-anchor="start" paint-order="stroke" stroke="#FBFAF7" stroke-width="8" stroke-linejoin="round">subject members</text>
+<rect x="1145.9" y="683.6" width="14" height="14" transform="rotate(45 1152.9 690.6)" fill="#B45309" stroke="#FBFAF7" stroke-width="3"/>
+<line x1="904.3" y1="753.4" x2="699.7" y2="753.4" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<text x="821.4" y="792.3" font-size="17" font-weight="400" fill="#5B5F6B" text-anchor="middle" paint-order="stroke" stroke="#FBFAF7" stroke-width="8" stroke-linejoin="round">items</text>
+<rect x="725.4" y="746.4" width="14" height="14" transform="rotate(45 732.4 753.4)" fill="#B45309" stroke="#FBFAF7" stroke-width="3"/>
+<line x1="464.4" y1="699.8" x2="378.3" y2="654.2" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<text x="396.3" y="697.1" font-size="17" font-weight="400" fill="#5B5F6B" text-anchor="end" paint-order="stroke" stroke="#FBFAF7" stroke-width="8" stroke-linejoin="round">candidate package</text>
+<rect x="385.1" y="654.5" width="14" height="14" transform="rotate(45 392.1 661.5)" fill="#B45309" stroke="#FBFAF7" stroke-width="3"/>
+<line x1="305.2" y1="540.2" x2="344.3" y2="467.9" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<text x="287.7" y="512.1" font-size="17" font-weight="400" fill="#5B5F6B" text-anchor="end" paint-order="stroke" stroke="#FBFAF7" stroke-width="8" stroke-linejoin="round">scores</text>
+<rect x="331.0" y="472.5" width="14" height="14" transform="rotate(45 338.0 479.5)" fill="#B45309" stroke="#FBFAF7" stroke-width="3"/>
+<line x1="507.6" y1="379.5" x2="666.3" y2="347.2" stroke="#4F46E5" stroke-width="2" marker-end="url(#ah-flow)"/>
+<text x="547.8" y="349.6" font-size="17" font-weight="400" fill="#5B5F6B" text-anchor="end" paint-order="stroke" stroke="#FBFAF7" stroke-width="8" stroke-linejoin="round">live package, next session</text>
+<rect x="633.9" y="345.3" width="14" height="14" transform="rotate(45 640.9 352.3)" fill="#B45309" stroke="#FBFAF7" stroke-width="3"/>
+<path d="M405.3 625.5 Q 800 698 898.7 725.8" stroke="#8A8F9C" stroke-width="2" stroke-dasharray="6 6" fill="none" marker-end="url(#ah-muted)"/>
+<text x="800" y="612" font-size="17" font-weight="400" fill="#5B5F6B" text-anchor="middle" paint-order="stroke" stroke="#FBFAF7" stroke-width="8" stroke-linejoin="round">what failed replay goes back for re-extraction</text>
+<rect x="682" y="272" width="236" height="96" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="800" y="300" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">STAGE 1</text>
+<text x="800" y="330" font-size="26" font-weight="600" fill="#14151A" text-anchor="middle">Record</text>
+<text x="800" y="356" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">immutable, with provenance</text>
+<rect x="1104.2" y="357.8" width="236" height="96" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="1222.2" y="385.8" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">STAGE 2</text>
+<text x="1222.2" y="415.8" font-size="26" font-weight="600" fill="#14151A" text-anchor="middle">Enrich</text>
+<text x="1222.2" y="441.8" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">add-only, versioned</text>
+<rect x="1208.5" y="550.7" width="236" height="96" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="1326.5" y="578.7" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">STAGE 3</text>
+<text x="1326.5" y="608.7" font-size="26" font-weight="600" fill="#14151A" text-anchor="middle">Group</text>
+<text x="1326.5" y="634.7" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">frozen vocabulary</text>
+<rect x="916.3" y="705.4" width="236" height="96" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="1034.3" y="733.4" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">STAGE 4</text>
+<text x="1034.3" y="763.4" font-size="26" font-weight="600" fill="#14151A" text-anchor="middle">Extract</text>
+<text x="1034.3" y="789.4" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">typed, verbatim quotes</text>
+<rect x="447.7" y="705.4" width="236" height="96" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="565.7" y="733.4" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">STAGE 5</text>
+<text x="565.7" y="763.4" font-size="26" font-weight="600" fill="#14151A" text-anchor="middle">Serve</text>
+<text x="565.7" y="789.4" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">budgeted, layered</text>
+<rect x="155.5" y="550.7" width="236" height="96" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="273.5" y="578.7" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">STAGE 6</text>
+<text x="273.5" y="608.7" font-size="26" font-weight="600" fill="#14151A" text-anchor="middle">Evaluate</text>
+<text x="273.5" y="634.7" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">replay with vs without</text>
+<rect x="259.8" y="357.8" width="236" height="96" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="377.8" y="385.8" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="middle" letter-spacing="1.4">STAGE 7</text>
+<text x="377.8" y="415.8" font-size="26" font-weight="600" fill="#14151A" text-anchor="middle">Approve</text>
+<text x="377.8" y="441.8" font-size="16" font-weight="400" fill="#5B5F6B" text-anchor="middle">a person signs off</text>
+<line x1="1408" y1="777" x2="1428" y2="777" stroke="#8A8F9C" stroke-width="2" stroke-dasharray="5 5"/>
+<text x="1504" y="782" font-size="17" font-weight="400" fill="#5B5F6B" text-anchor="end">feedback</text>
+<rect x="1328" y="800" width="12" height="12" transform="rotate(45 1334 806)" fill="#B45309" stroke="#FBFAF7" stroke-width="3"/>
+<text x="1504" y="812" font-size="17" font-weight="400" fill="#5B5F6B" text-anchor="end">sign-off by a person</text>
+<text x="96" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="start">Jitin Gupta  ·  “It doesn’t learn”: a learning loop for AI agents</text>
+<text x="1504" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="end">3 / 11</text>
+</g></svg>

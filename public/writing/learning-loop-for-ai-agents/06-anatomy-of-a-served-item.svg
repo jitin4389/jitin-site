@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" width="1600" height="900" role="img" aria-labelledby="t d">
+<title id="t">Anatomy of a served item</title>
+<desc id="d">A learning item with kind, scope, verbatim quote, source record and status, each annotated. Two rendered lines: a method rule applied directly, and a world fact rendered as verify before use with its date.</desc>
+<defs>
+<marker id="ah-flow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#4F46E5"/></marker>
+<marker id="ah-muted" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#8A8F9C"/></marker>
+<marker id="ah-human" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M1 1 L9 5 L1 9 z" fill="#B45309"/></marker>
+</defs>
+<rect width="1600" height="900" fill="#FBFAF7"/>
+<g font-family="Inter, ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif">
+<text x="96" y="118" font-size="44" font-weight="600" fill="#14151A" text-anchor="start" letter-spacing="-0.6">Anatomy of a served item</text>
+<text x="96" y="162" font-size="22" font-weight="400" fill="#5B5F6B" text-anchor="start">Every item quotes the user’s own words. A world fact is served as a dated claim to check, never as a fact.</text>
+<rect x="96" y="220" width="760" height="400" rx="12" fill="#FFFFFF" stroke="#DCDBD5" stroke-width="1.5"/>
+<text x="124" y="260" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.4">LEARNING ITEM li-004</text>
+<text x="124" y="312" font-size="16" font-weight="400" fill="#4F46E5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">kind</text>
+<text x="226" y="312" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">world_fact</text>
+<text x="226" y="336" font-size="15" font-weight="400" fill="#5B5F6B" text-anchor="start">one of five kinds; decides the serving rule</text>
+<line x1="124" y1="350" x2="828" y2="350" stroke="#DCDBD5"/>
+<text x="124" y="374" font-size="16" font-weight="400" fill="#4F46E5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">scope</text>
+<text x="226" y="374" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">subject · office-paper</text>
+<text x="226" y="398" font-size="15" font-weight="400" fill="#5B5F6B" text-anchor="start">general, or specific to one subject</text>
+<line x1="124" y1="412" x2="828" y2="412" stroke="#DCDBD5"/>
+<text x="124" y="436" font-size="16" font-weight="400" fill="#4F46E5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">quote</text>
+<text x="226" y="436" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">“office paper prices rose about 8% last quarter”</text>
+<text x="226" y="460" font-size="15" font-weight="400" fill="#5B5F6B" text-anchor="start">the user’s exact words; checked by code</text>
+<line x1="124" y1="474" x2="828" y2="474" stroke="#DCDBD5"/>
+<text x="124" y="498" font-size="16" font-weight="400" fill="#4F46E5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">source</text>
+<text x="226" y="498" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">ses-0002 · turn 2 · 2025-03-09</text>
+<text x="226" y="522" font-size="15" font-weight="400" fill="#5B5F6B" text-anchor="start">the record it came from, and when</text>
+<line x1="124" y1="536" x2="828" y2="536" stroke="#DCDBD5"/>
+<text x="124" y="560" font-size="16" font-weight="400" fill="#4F46E5" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">status</text>
+<text x="226" y="560" font-size="18" font-weight="600" fill="#14151A" text-anchor="start">active</text>
+<text x="226" y="584" font-size="15" font-weight="400" fill="#5B5F6B" text-anchor="start">changes by appending, never by editing</text>
+<rect x="912" y="220" width="592" height="150" rx="12" fill="#EEEDFC" stroke="#EEEDFC" stroke-width="1.5"/>
+<text x="936" y="254" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.4">A METHOD RULE, RENDERED · APPLY DIRECTLY</text>
+<text x="936" y="286" font-size="16" font-weight="400" fill="#14151A" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- Cite a source for every number.</text>
+<text x="936" y="310" font-size="16" font-weight="400" fill="#14151A" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">  (user’s words: “Cite a source for</text>
+<text x="936" y="334" font-size="16" font-weight="400" fill="#14151A" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">  every number”) [src: ses-0002 t2 2025-03-09]</text>
+<rect x="912" y="406" width="592" height="150" rx="12" fill="#FBF0E3" stroke="#FBF0E3" stroke-width="1.5"/>
+<text x="936" y="440" font-size="12" font-weight="600" fill="#8A8F9C" text-anchor="start" letter-spacing="1.4">A WORLD FACT, RENDERED · VERIFY, THEN APPLY</text>
+<text x="936" y="472" font-size="16" font-weight="400" fill="#14151A" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">- VERIFY BEFORE USE: on 2025-03-09 the user</text>
+<text x="936" y="496" font-size="16" font-weight="400" fill="#14151A" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">  said “office paper prices rose about 8% last</text>
+<text x="936" y="520" font-size="16" font-weight="400" fill="#14151A" text-anchor="start" font-family="ui-monospace, SFMono-Regular, Menlo, Consolas, monospace">  quarter”. Check against a current source.</text>
+<text x="912" y="600" font-size="17" font-weight="400" fill="#5B5F6B" text-anchor="start">A world fact is never restated as a fact: the model cannot check it</text>
+<text x="912" y="626" font-size="17" font-weight="400" fill="#5B5F6B" text-anchor="start">from inside the prompt, so it is served as a dated claim with an instruction.</text>
+<text x="96" y="676" font-size="18" font-weight="400" fill="#5B5F6B" text-anchor="start">Withdrawal is an appended event, so a quote can be removed everywhere by rebuilding the views, never by editing a record.</text>
+
+<text x="96" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="start">Jitin Gupta  ·  “It doesn’t learn”: a learning loop for AI agents</text>
+<text x="1504" y="860" font-size="14" font-weight="400" fill="#8A8F9C" text-anchor="end">6 / 11</text>
+</g></svg>
