@@ -1,6 +1,6 @@
 # Project log: Jitin Gupta personal brand
 
-**Start here in any new session.** One page with the state, the decisions and the open items. Details live in the linked files. Last updated: 2026-10-05.
+**Start here in any new session.** One page with the state, the decisions and the open items. Details live in the linked files. Last updated: 2026-10-10.
 
 ## 1. What this project is
 
@@ -20,35 +20,36 @@
 
 Work accounts (`jitinguptaCS` on GitHub, the CLOUDSUFI Vercel account) must not be used for this project.
 
-## 3. Status (2026-10-05)
+## 3. Status (2026-10-10)
 
-| Module                                     | Status                                    | Spec                                                                      |
-| ------------------------------------------ | ----------------------------------------- | ------------------------------------------------------------------------- |
-| LinkedIn overhaul                          | ✅ done 2026-10-03                        | `profile_builder/LINKEDIN_UPDATE_PLAN.md`                                 |
-| foundation (shell, design system, ⌘K, SEO) | ✅ live                                   | [SPEC-foundation.md](../SPEC-foundation.md)                               |
-| profile (home page, `/cv`, CV PDF)         | ✅ live                                   | [SPEC-profile.md](../SPEC-profile.md)                                     |
-| leads (contact form → Supabase)            | ✅ live                                   | [SPEC-leads.md](../SPEC-leads.md)                                         |
-| case-studies (`/work`)                     | 🟡 case study 1 live; backtesting pending | [SPEC-case-studies.md](../SPEC-case-studies.md)                           |
-| writing (`/writing`, RSS)                  | ✅ 10-part series live                    | [SPEC-writing.md](../SPEC-writing.md), [intent](intent/writing-series.md) |
-| offerings                                  | Not started                               | [CAPABILITY-MAP.md](../CAPABILITY-MAP.md)                                 |
+| Module                                     | Status                                                                                     | Spec                                                                      |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------- |
+| LinkedIn overhaul                          | ✅ done 2026-10-03                                                                         | `profile_builder/LINKEDIN_UPDATE_PLAN.md`                                 |
+| foundation (shell, design system, ⌘K, SEO) | ✅ live                                                                                    | [SPEC-foundation.md](../SPEC-foundation.md)                               |
+| profile (home page, `/cv`, CV PDF)         | ✅ live                                                                                    | [SPEC-profile.md](../SPEC-profile.md)                                     |
+| leads (contact form → Supabase)            | ✅ live                                                                                    | [SPEC-leads.md](../SPEC-leads.md)                                         |
+| case-studies (`/work`)                     | 🟡 case study 1 live; backtesting pending                                                  | [SPEC-case-studies.md](../SPEC-case-studies.md)                           |
+| writing (`/writing`, RSS)                  | ✅ 10-part series live; standalone article 1 (learning loop) in PR #18, awaiting "publish" | [SPEC-writing.md](../SPEC-writing.md), [intent](intent/writing-series.md) |
+| offerings                                  | Not started                                                                                | [CAPABILITY-MAP.md](../CAPABILITY-MAP.md)                                 |
 
 Quality bar on every page: Lighthouse mobile ≥ 95 / 100 / ≥ 95 / 100 (actual 96–99 / 100 / 100 / 100), zero axe violations in both themes, no horizontal scroll at 360 px.
 
 ## 4. Key decisions (newest first)
 
-| Date       | Decision                                                                                                                                                                                                    | Why                                                                                                          |
-| ---------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------ |
-| 2026-10-04 | Writing series produced by a multi-agent team (researcher, writer, editor, evaluator) with **one human gate: the owner says "publish"** before any merge to production                                      | Owner has little review time; evaluator checks accuracy, originality, confidentiality, claims, runnable code |
-| 2026-10-04 | Udemy "Claude Code" course used **only as a topic map**; all content original (own experience + official docs)                                                                                              | Copyright and Udemy terms; owned content can become his own course and videos                                |
-| 2026-10-04 | Audience for the series: working developers and tech leads; "In one minute" boxes for juniors. **Track B** (AI foundations for students/juniors, tool-agnostic, age-appropriate) deferred                   | Mixed audiences weaken both; Anthropic consumer services require 18+                                         |
-| 2026-10-04 | Articles are portable plain Markdown with summary, key terms, key points and a video outline per article                                                                                                    | Future Medium/LinkedIn/Discord cross-posts and YouTube lectures/Shorts                                       |
-| 2026-10-04 | Work section launched with case study 1 only                                                                                                                                                                | Backtesting notes not yet available                                                                          |
-| 2026-10-04 | Case studies: **methodology only** for CLOUDSUFI work; private git-ignored blocklist `.confidential-terms` guards all content (tests report counts, never terms); claims guard allows only approved numbers | Client confidentiality                                                                                       |
-| 2026-10-04 | Contact form: Supabase only (no email alerts), honeypot + 5/hour per hashed IP, no newsletter yet                                                                                                           | Owner's choice; newsletter moved to writing                                                                  |
-| 2026-10-03 | One-page home with sections; CV PDF generated from `src/content/profile.ts` (now the CV source of truth; `profile_builder/cv/CV-master.md` frozen); no photo; phone never published                         | Single source of truth; privacy                                                                              |
-| 2026-10-03 | Stack: Next.js 16, Tailwind 4, shadcn/ui, Vercel; Linear-inspired design, indigo accent, ⌘K menu; public repo; no analytics yet                                                                             | Owner's preference; personal brand                                                                           |
-| 2026-10-03 | Title: **Applied AI Architect** (Jul 2025–present), previously Senior Software Engineer – Applied AI (Oct 2024–Jun 2025)                                                                                    | More relevant and higher impact than "Product Owner"                                                         |
-| 2026-10-03 | Hedge fund (~$1B AUM) and "globally recognized expert on technology-driven economic disruption" may be mentioned; never named                                                                               | Owner approval                                                                                               |
+| Date       | Decision                                                                                                                                                                                                                                                           | Why                                                                                                          |
+| ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------ |
+| 2026-10-10 | Standalone architecture articles generalise production work into principles (no project specifics); produced by `docs/editorial/workflow/architecture-article.workflow.js`. First: a learning loop for AI agents, from the owner's "the system doesn't learn" work | Owner's call: a general, principle-led piece is more useful and safer than a project write-up                |
+| 2026-10-04 | Writing series produced by a multi-agent team (researcher, writer, editor, evaluator) with **one human gate: the owner says "publish"** before any merge to production                                                                                             | Owner has little review time; evaluator checks accuracy, originality, confidentiality, claims, runnable code |
+| 2026-10-04 | Udemy "Claude Code" course used **only as a topic map**; all content original (own experience + official docs)                                                                                                                                                     | Copyright and Udemy terms; owned content can become his own course and videos                                |
+| 2026-10-04 | Audience for the series: working developers and tech leads; "In one minute" boxes for juniors. **Track B** (AI foundations for students/juniors, tool-agnostic, age-appropriate) deferred                                                                          | Mixed audiences weaken both; Anthropic consumer services require 18+                                         |
+| 2026-10-04 | Articles are portable plain Markdown with summary, key terms, key points and a video outline per article                                                                                                                                                           | Future Medium/LinkedIn/Discord cross-posts and YouTube lectures/Shorts                                       |
+| 2026-10-04 | Work section launched with case study 1 only                                                                                                                                                                                                                       | Backtesting notes not yet available                                                                          |
+| 2026-10-04 | Case studies: **methodology only** for CLOUDSUFI work; private git-ignored blocklist `.confidential-terms` guards all content (tests report counts, never terms); claims guard allows only approved numbers                                                        | Client confidentiality                                                                                       |
+| 2026-10-04 | Contact form: Supabase only (no email alerts), honeypot + 5/hour per hashed IP, no newsletter yet                                                                                                                                                                  | Owner's choice; newsletter moved to writing                                                                  |
+| 2026-10-03 | One-page home with sections; CV PDF generated from `src/content/profile.ts` (now the CV source of truth; `profile_builder/cv/CV-master.md` frozen); no photo; phone never published                                                                                | Single source of truth; privacy                                                                              |
+| 2026-10-03 | Stack: Next.js 16, Tailwind 4, shadcn/ui, Vercel; Linear-inspired design, indigo accent, ⌘K menu; public repo; no analytics yet                                                                                                                                    | Owner's preference; personal brand                                                                           |
+| 2026-10-03 | Title: **Applied AI Architect** (Jul 2025–present), previously Senior Software Engineer – Applied AI (Oct 2024–Jun 2025)                                                                                                                                           | More relevant and higher impact than "Product Owner"                                                         |
+| 2026-10-03 | Hedge fund (~$1B AUM) and "globally recognized expert on technology-driven economic disruption" may be mentioned; never named                                                                                                                                      | Owner approval                                                                                               |
 
 Approved public facts: `~/projects/profile_builder/drafts/00-facts.md` (12+ sector models, 15+ person team, ~$1B AUM, ~2% MAPE, 20% dropout reduction, etc.).
 
@@ -71,4 +72,4 @@ Approved public facts: `~/projects/profile_builder/drafts/00-facts.md` (12+ sect
 
 ## 7. Change history
 
-15 merged PRs on GitHub (foundation #1–#4, profile #5–#6, leads #7–#8, case studies #9–#10, writing #11–#15). Each PR description lists changes and verification.
+17 merged PRs on GitHub (foundation #1–#4, profile #5–#6, leads #7–#8, case studies #9–#10, writing #11–#15, project log #16–#17). Open: #18 (standalone article: learning loop for AI agents). Each PR description lists changes and verification.
