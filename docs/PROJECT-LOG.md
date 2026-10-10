@@ -22,15 +22,15 @@ Work accounts (`jitinguptaCS` on GitHub, the CLOUDSUFI Vercel account) must not 
 
 ## 3. Status (2026-10-10)
 
-| Module                                     | Status                                                                                                    | Spec                                                                      |
-| ------------------------------------------ | --------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| LinkedIn overhaul                          | ✅ done 2026-10-03                                                                                        | `profile_builder/LINKEDIN_UPDATE_PLAN.md`                                 |
-| foundation (shell, design system, ⌘K, SEO) | ✅ live                                                                                                   | [SPEC-foundation.md](../SPEC-foundation.md)                               |
-| profile (home page, `/cv`, CV PDF)         | ✅ live                                                                                                   | [SPEC-profile.md](../SPEC-profile.md)                                     |
-| leads (contact form → Supabase)            | ✅ live                                                                                                   | [SPEC-leads.md](../SPEC-leads.md)                                         |
-| case-studies (`/work`)                     | 🟡 case study 1 live; backtesting pending                                                                 | [SPEC-case-studies.md](../SPEC-case-studies.md)                           |
-| writing (`/writing`, RSS)                  | ✅ 10-part series live; standalone article 1 (learning loop) live 2026-10-11; slides + revision in review | [SPEC-writing.md](../SPEC-writing.md), [intent](intent/writing-series.md) |
-| offerings                                  | Not started                                                                                               | [CAPABILITY-MAP.md](../CAPABILITY-MAP.md)                                 |
+| Module                                     | Status                                                                                       | Spec                                                                      |
+| ------------------------------------------ | -------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
+| LinkedIn overhaul                          | ✅ done 2026-10-03                                                                           | `profile_builder/LINKEDIN_UPDATE_PLAN.md`                                 |
+| foundation (shell, design system, ⌘K, SEO) | ✅ live                                                                                      | [SPEC-foundation.md](../SPEC-foundation.md)                               |
+| profile (home page, `/cv`, CV PDF)         | ✅ live                                                                                      | [SPEC-profile.md](../SPEC-profile.md)                                     |
+| leads (contact form → Supabase)            | ✅ live                                                                                      | [SPEC-leads.md](../SPEC-leads.md)                                         |
+| case-studies (`/work`)                     | 🟡 case study 1 live; backtesting pending                                                    | [SPEC-case-studies.md](../SPEC-case-studies.md)                           |
+| writing (`/writing`, RSS)                  | ✅ 10-part series live; standalone article 1 (learning loop) live with 11 slides, 2026-10-11 | [SPEC-writing.md](../SPEC-writing.md), [intent](intent/writing-series.md) |
+| offerings                                  | Not started                                                                                  | [CAPABILITY-MAP.md](../CAPABILITY-MAP.md)                                 |
 
 Quality bar on every page: Lighthouse mobile ≥ 95 / 100 / ≥ 95 / 100 (actual 96–99 / 100 / 100 / 100), zero axe violations in both themes, no horizontal scroll at 360 px.
 
@@ -73,4 +73,4 @@ Approved public facts: `~/projects/profile_builder/drafts/00-facts.md` (12+ sect
 
 ## 7. Change history
 
-18 merged PRs on GitHub (foundation #1–#4, profile #5–#6, leads #7–#8, case studies #9–#10, writing #11–#15, project log #16–#17, standalone article #18). Each PR description lists changes and verification.
+20 merged PRs on GitHub (foundation #1–#4, profile #5–#6, leads #7–#8, case studies #9–#10, writing #11–#15, project log #16–#17, standalone article #18–#20). Each PR description lists changes and verification.
