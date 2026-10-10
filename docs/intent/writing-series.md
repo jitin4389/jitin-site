@@ -22,3 +22,11 @@
 | 8   | Evaluating agent output: from vibes to evidence                       | ✅ live 2026-10-04 |
 | 9   | Choosing models and providers: cloud, gateways and local models       | ✅ live 2026-10-04 |
 | 10  | Working responsibly with AI, and explaining it to others              | ✅ live 2026-10-04 |
+
+## Standalone articles (outside the series)
+
+Architecture pieces generalised from production work. Produced by `docs/editorial/workflow/architecture-article.workflow.js`; methodology only, no client, product, subject or numbers beyond the approved facts.
+
+| Slug                          | Title                                                                | Status                 |
+| ----------------------------- | -------------------------------------------------------------------- | ---------------------- |
+| `learning-loop-for-ai-agents` | "It doesn't learn": an architecture for a learning loop in AI agents | In review (2026-10-10) |
