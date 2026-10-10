@@ -27,6 +27,6 @@
 
 Architecture pieces generalised from production work. Produced by `docs/editorial/workflow/architecture-article.workflow.js`; methodology only, no client, product, subject or numbers beyond the approved facts.
 
-| Slug                          | Title                                                                | Status                 |
-| ----------------------------- | -------------------------------------------------------------------- | ---------------------- |
-| `learning-loop-for-ai-agents` | "It doesn't learn": an architecture for a learning loop in AI agents | In review (2026-10-10) |
+| Slug                          | Title                                                                | Status             |
+| ----------------------------- | -------------------------------------------------------------------- | ------------------ |
+| `learning-loop-for-ai-agents` | "It doesn't learn": an architecture for a learning loop in AI agents | ✅ live 2026-10-11 |
